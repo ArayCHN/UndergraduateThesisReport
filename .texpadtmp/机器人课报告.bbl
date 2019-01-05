@@ -1,0 +1,206 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\providecommand{\href}[2]{\url{#2}}
+\providecommand{\doi}[1]{DOI: \href{https://doi.org/#1}{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax\relax\else
+  \urlstyle{same}\fi
+
+\bibitem[Polydoros\ et~al.(2017)Polydoros and
+  Nalpantidis]{Model-Based_RL_robotics}
+Polydoros A~S, Nalpantidis L.
+\newblock Survey of model-based reinforcement learning: Applications on
+  robotics\allowbreak[J/OL].
+\newblock Journal of Intelligent {\&} Robotic Systems, 2017, 86\penalty0 (2):
+  153-173.
+\newblock \url{https://doi.org/10.1007/s10846-017-0468-y}.
+
+\bibitem[Sutton\ et~al.(2018)Sutton and Barto]{Sutton_book}
+Sutton R~S, Barto A~G.
+\newblock Reinforcement learning: An introduction\allowbreak[M/OL].
+\newblock Second ed.
+\newblock The MIT Press, 2018.
+\newblock \url{http://incompleteideas.net/book/the-book-2nd.html}
+
+\bibitem[Sutton(1988)]{Sutton_problem_formulation}
+Sutton R~S.
+\newblock Learning to predict by the methods of temporal
+  differences\allowbreak[J/OL].
+\newblock Machine Learning, 1988, 3\penalty0 (1): 9-44.
+\newblock \url{https://doi.org/10.1007/BF00115009}.
+
+\bibitem[Bellman(1957)]{Bellman_MDP}
+Bellman R.
+\newblock A markovian decision process\allowbreak[J].
+\newblock Indiana Univ. Math. J., 1957, 6: 679-684.
+
+\bibitem[DRL(2017)]{DRL_for_driving}
+Deep reinforcement learning framework for autonomous driving\allowbreak[J].
+\newblock Electronic Imaging, 2017, 2017\penalty0 (19).
+
+\bibitem[Bellman(2003)]{Bellman_DP}
+Bellman R~E.
+\newblock Dynamic programming\allowbreak[M].
+\newblock New York, NY, USA: Dover Publications, Inc., 2003
+
+\bibitem[Watkins\ et~al.(1992)Watkins and Dayan]{Q_learning}
+Watkins C~J~C~H, Dayan P.
+\newblock Q-learning\allowbreak[J/OL].
+\newblock Machine Learning, 1992, 8\penalty0 (3): 279-292.
+\newblock \url{https://doi.org/10.1007/BF00992698}.
+
+\bibitem[{van Seijen}(2016)]{n_step_bootstrapping}
+{van Seijen} H.
+\newblock {Effective Multi-step Temporal-Difference Learning for Non-Linear
+  Function Approximation}\allowbreak[J].
+\newblock arXiv e-prints, 2016: arXiv:1608.05151.
+
+\bibitem[{Li}(2017)]{deepRL_overview}
+{Li} Y.
+\newblock {Deep Reinforcement Learning: An Overview}\allowbreak[J].
+\newblock arXiv e-prints, 2017: arXiv:1701.07274.
+
+\bibitem[Mnih\ et~al.(2013)Mnih, Kavukcuoglu, Silver, Graves, Antonoglou,
+  Wierstra, and Riedmiller]{atari_2013}
+Mnih V, Kavukcuoglu K, Silver D, et~al.
+\newblock Playing atari with deep reinforcement
+  learning\allowbreak[M]//\allowbreak{}NIPS Deep Learning Workshop.
+\newblock [S.l.: s.n.], 2013
+
+\bibitem[{Lillicrap}\ et~al.(2015){Lillicrap}, {Hunt}, {Pritzel}, {Heess},
+  {Erez}, {Tassa}, {Silver}, and {Wierstra}]{DDPG}
+{Lillicrap} T~P, {Hunt} J~J, {Pritzel} A, et~al.
+\newblock {Continuous control with deep reinforcement learning}\allowbreak[J].
+\newblock arXiv e-prints, 2015: arXiv:1509.02971.
+
+\bibitem[Mnih\ et~al.(2016)Mnih, Badia, Mirza, Graves, Lillicrap, Harley,
+  Silver, and Kavukcuoglu]{A3C}
+Mnih V, Badia A~P, Mirza M, et~al.
+\newblock Asynchronous methods for deep reinforcement
+  learning\allowbreak[C/OL]//\allowbreak{}Balcan M~F, Weinberger K~Q.
+\newblock Proceedings of Machine Learning Research: volume~48\quad Proceedings
+  of The 33rd International Conference on Machine Learning.
+\newblock New York, New York, USA: PMLR, 2016: 1928-1937.
+\newblock \url{http://proceedings.mlr.press/v48/mniha16.html}.
+
+\bibitem[Schulman\ et~al.(2015)Schulman, Levine, Moritz, Jordan, and
+  Abbeel]{TRPO}
+Schulman J, Levine S, Moritz P, et~al.
+\newblock Trust region policy optimization\allowbreak[C]//\allowbreak{}ICML.
+\newblock [S.l.: s.n.], 2015.
+
+\bibitem[{Wu}\ et~al.(2017){Wu}, {Mansimov}, {Liao}, {Grosse}, and {Ba}]{ACKTR}
+{Wu} Y, {Mansimov} E, {Liao} S, et~al.
+\newblock {Scalable trust-region method for deep reinforcement learning using
+  Kronecker-factored approximation}\allowbreak[J].
+\newblock arXiv e-prints, 2017: arXiv:1708.05144.
+
+\bibitem[Wang\ et~al.(2017)Wang, Bapst, Heess, Mnih, Munos, Kavukcuoglu, and
+  de~Freitas]{ACER}
+Wang Z, Bapst V, Heess N, et~al.
+\newblock Sample efficient actor-critic with experience
+  replay\allowbreak[C]//\allowbreak{}ICLR.
+\newblock [S.l.: s.n.], 2017.
+
+\bibitem[Schulman\ et~al.(2017)Schulman, Wolski, Dhariwal, Radford, and
+  Klimov]{PPO}
+Schulman J, Wolski F, Dhariwal P, et~al.
+\newblock Proximal policy optimization algorithms\allowbreak[Z].
+\newblock [S.l.: s.n.], 2017.
+
+\bibitem[Silver\ et~al.(2018)Silver, Hubert, Schrittwieser, Antonoglou, Lai,
+  Guez, Lanctot, Sifre, Kumaran, Graepel, Lillicrap, Simonyan, and
+  Hassabis]{AlphaZero}
+Silver D, Hubert T, Schrittwieser J, et~al.
+\newblock A general reinforcement learning algorithm that masters chess, shogi,
+  and go through self-play\allowbreak[J/OL].
+\newblock Science, 2018, 362\penalty0 (6419): 1140-1144.
+\newblock \url{http://science.sciencemag.org/content/362/6419/1140}.
+
+\bibitem[Tieleman\ et~al.(2012)Tieleman and Hinton]{RMSProp}
+Tieleman T, Hinton G.
+\newblock Lecture 6.5 rmsprop: Divide the gradient by a running average of its
+  recent magnitude.\allowbreak[J].
+\newblock COURSERA: Neural Networks for Machine Learning, 2012, 4.
+
+\bibitem[Qian(1999)]{SGD_momentum}
+Qian N.
+\newblock On the momentum term in gradient descent learning
+  algorithms\allowbreak[J/OL].
+\newblock Neural Netw., 1999, 12\penalty0 (1): 145-151.
+\newblock \url{http://dx.doi.org/10.1016/S0893-6080(98)00116-6}.
+
+\bibitem[{Ruder}(2016)]{GD_overview}
+{Ruder} S.
+\newblock {An overview of gradient descent optimization
+  algorithms}\allowbreak[J].
+\newblock arXiv e-prints, 2016: arXiv:1609.04747.
+
+\bibitem[Mnih\ et~al.(2015)Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare,
+  Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik,
+  Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis]{nature2015}
+Mnih V, Kavukcuoglu K, Silver D, et~al.
+\newblock Human-level control through deep reinforcement
+  learning\allowbreak[J/OL].
+\newblock Nature, 2015, 518: 529 EP -.
+\newblock \url{https://doi.org/10.1038/nature14236}.
+
+\bibitem[Krizhevsky\ et~al.(2012)Krizhevsky, Sutskever, and E.~Hinton]{AlexNet}
+Krizhevsky A, Sutskever I, E.~Hinton G.
+\newblock Imagenet classification with deep convolutional neural
+  networks\allowbreak[J].
+\newblock Neural Information Processing Systems, 2012, 25.
+
+\bibitem[Boyd\ et~al.(2004)Boyd and Vandenberghe]{Convex_optimization_book}
+Boyd S, Vandenberghe L.
+\newblock Convex optimization\allowbreak[M].
+\newblock [S.l.]: {Cambridge University Press}, 2004
+
+\bibitem[Silver\ et~al.(2014)Silver, Lever, Heess, Degris, Wierstra, and
+  Riedmiller]{DPG}
+Silver D, Lever G, Heess N, et~al.
+\newblock Deterministic policy gradient
+  algorithms\allowbreak[C/OL]//\allowbreak{}ICML'14: Proceedings of the 31st
+  International Conference on International Conference on Machine Learning -
+  Volume 32.
+\newblock JMLR.org, 2014: I-387-I-395.
+\newblock \url{http://dl.acm.org/citation.cfm?id=3044805.3044850}.
+
+\bibitem[Degris\ et~al.(2012)Degris, White, and
+  Sutton]{off-policy_actor-critic}
+Degris T, White M, Sutton R~S.
+\newblock Linear off-policy actor-critic\allowbreak[C]//\allowbreak{}ICML.
+\newblock [S.l.: s.n.], 2012.
+
+\bibitem[Silver\ et~al.(2016)Silver, Huang, Maddison, Guez, Sifre, van~den
+  Driessche, Schrittwieser, Antonoglou, Panneershelvam, Lanctot, Dieleman,
+  Grewe, Nham, Kalchbrenner, Sutskever, Lillicrap, Leach, Kavukcuoglu, Graepel,
+  and Hassabis]{AlphaGo}
+Silver D, Huang A, Maddison C~J, et~al.
+\newblock Mastering the game of {Go} with deep neural networks and tree
+  search\allowbreak[J].
+\newblock Nature, 2016, 529\penalty0 (7587): 484-489.
+
+\bibitem[Oh\ et~al.(2015)Oh, Guo, Lee, Lewis, and
+  Singh]{action-conditional_prediction}
+Oh J, Guo X, Lee H, et~al.
+\newblock Action-conditional video prediction using deep networks in atari
+  games\allowbreak[M/OL]//\allowbreak{}Cortes C, Lawrence N~D, Lee D~D, et~al.
+\newblock Advances in Neural Information Processing Systems 28.
+\newblock Curran Associates, Inc., 2015: 2863-2871.
+\newblock
+  \url{http://papers.nips.cc/paper/5859-action-conditional-video-prediction-using-deep-networks-in-atari-games.pdf}
+
+\bibitem[Racani\`{e}re\ et~al.(2017)Racani\`{e}re, Weber, Reichert, Buesing,
+  Guez, Jimenez~Rezende, Puigdom\`{e}nech~Badia, Vinyals, Heess, Li, Pascanu,
+  Battaglia, Hassabis, Silver, and Wierstra]{I2A}
+Racani\`{e}re S, Weber T, Reichert D, et~al.
+\newblock Imagination-augmented agents for deep reinforcement
+  learning\allowbreak[M/OL]//\allowbreak{}Guyon I, Luxburg U~V, Bengio S,
+  et~al.
+\newblock Advances in Neural Information Processing Systems 30.
+\newblock Curran Associates, Inc., 2017: 5690-5701.
+\newblock
+  \url{http://papers.nips.cc/paper/7152-imagination-augmented-agents-for-deep-reinforcement-learning.pdf}
+
+\end{thebibliography}

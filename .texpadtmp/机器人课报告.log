@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.11.19)  5 JAN 2019 09:48
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.11.19)  5 JAN 2019 10:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1868,48 +1868,48 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )) (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.aux)
 \openout1 = `机器人课报告.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 24.
-LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 24.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 26.
+LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 26.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 26.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/omsntxsy.fd
 File: omsntxsy.fd 2012/11/14 Fontinst v1.933 font definitions for OMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 26.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 26.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 24.
+LaTeX Info: Redefining \selectfont on input line 26.
 \c@mv@tabular=\count317
 \c@mv@boldtabular=\count318
 Package caption Info: Begin \AtBeginDocument code.
@@ -1928,7 +1928,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 99.
 )
-Package hyperref Info: Link coloring OFF on input line 24.
+Package hyperref Info: Link coloring OFF on input line 26.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1937,9 +1937,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count319
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
  (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.out) (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.out)
 \@outlinefile=\write3
 \openout3 = `机器人课报告.out'.
@@ -1983,25 +1983,42 @@ LaTeX Info: Redefining \nameref on input line 24.
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
-. Redefining command \Pifont with sig. 'm' on line 24.
+. Redefining command \Pifont with sig. 'm' on line 26.
 .................................................
 File: figures/thu-fig-logo.pdf Graphic file (type QTm)
 <use  "figures/thu-fig-logo.pdf" >
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 18.06749pt on input line 40.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <18.06749> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 40.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <12.045> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 18.06749pt on input line 40.
+(Font)              scaled to size 12.045pt on input line 42.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 22.08249pt on input line 43.
+(Font)              scaled to size 22.08249pt on input line 45.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <22.08249> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 22.08249pt on input line 43.
+(Font)              scaled to size 22.08249pt on input line 45.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 18.06749pt on input line 46.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <18.06749> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 46.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 18.06749pt on input line 46.
  [1
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+File: figures/thu-fig-logo.pdf Graphic file (type QTm)
+<use  "figures/thu-fig-logo.pdf" >
+
+Package Fancyhdr Warning: \headheight is too small (14.22636pt): 
+ Make it at least 20.07498pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2]
 *************************************************
 * fontspec warning: "script-not-exist"
 * 
@@ -2018,12 +2035,12 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 . 
 . Could not resolve font Heiti SC/I (it probably doesn't exist).
 .................................................
-LaTeX Font Info:    Try loading font information for T1+qhv on input line 55.
+LaTeX Font Info:    Try loading font information for T1+qhv on input line 71.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 10.84042pt on input line 55.
+(Font)              scaled to size 10.84042pt on input line 71.
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2039,7 +2056,7 @@ LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 13.55052pt on input line 55.
+(Font)              scaled to size 13.55052pt on input line 71.
  (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.toc
 LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 1.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
@@ -2067,253 +2084,103 @@ File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 \openout4 = `机器人课报告.toc'.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.03374pt on input line 62.
- [2
+(Font)              scaled to size 9.03374pt on input line 80.
+ [3
 
 
 ]
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 12.64714pt on input line 67.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 11.74377pt on input line 70.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.045pt on input line 71.
+(Font)              scaled to size 12.64714pt on input line 84.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 71.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <8> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 71.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 71.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 1 undefined on input line 71.
-
-
-Package natbib Warning: Citation `Sutton_problem_formulation' on page 1 undefined on input line 73.
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <12.045> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 73.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.045pt on input line 73.
-
-Package natbib Warning: Citation `Bellman_MDP' on page 1 undefined on input line 78.
-
-
-Package natbib Warning: Citation `DRL_for_driving' on page 1 undefined on input line 78.
-
-[1
+(Font)              scaled to size 8.0pt on input line 85.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.045pt on input line 87.
+ [1
 
 ]
-
-Package natbib Warning: Citation `Bellman_DP' on page 2 undefined on input line 81.
-
-Package hyperref Info: bookmark level for unknown equation defaults to 0 on input line 84.
-
-Package natbib Warning: Citation `Sutton_book' on page 2 undefined on input line 93.
-
-
-Package natbib Warning: Citation `Bellman_DP' on page 2 undefined on input line 94.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 2 undefined on input line 94.
-
-
-Package natbib Warning: Citation `Q_learning' on page 2 undefined on input line 94.
-
-
-Package natbib Warning: Citation `Sutton_problem_formulation' on page 2 undefined on input line 94.
-
-
-Package natbib Warning: Citation `n_step_bootstrapping' on page 2 undefined on input line 94.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 2 undefined on input line 94.
-
-
-Package natbib Warning: Citation `deepRL_overview' on page 2 undefined on input line 97.
-
-[2]
-
-Package natbib Warning: Citation `Sutton_book' on page 3 undefined on input line 108.
-
-
-Package natbib Warning: Citation `atari_2013' on page 3 undefined on input line 109.
-
-
-Package natbib Warning: Citation `deepRL_overview' on page 3 undefined on input line 109.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 3 undefined on input line 109.
-
-
-Package natbib Warning: Citation `DDPG' on page 3 undefined on input line 110.
-
-
-Package natbib Warning: Citation `A3C' on page 3 undefined on input line 110.
-
-
-Package natbib Warning: Citation `TRPO' on page 3 undefined on input line 110.
-
-
-Package natbib Warning: Citation `ACKTR' on page 3 undefined on input line 110.
-
-
-Package natbib Warning: Citation `ACER' on page 3 undefined on input line 110.
-
-
-Package natbib Warning: Citation `PPO' on page 3 undefined on input line 110.
-
-
-Package natbib Warning: Citation `AlphaZero' on page 3 undefined on input line 110.
-
-
-Underfull \hbox (badness 1769) in paragraph at lines 110--110
+Package hyperref Info: bookmark level for unknown equation defaults to 0 on input line 100.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 11.74377pt on input line 109.
+ [2] [3]
+Underfull \hbox (badness 1210) in paragraph at lines 129--129
 []\EU1/SongtiSC(0)/m/n/12.045 在 深 度 强 化 学 习 中，|  比 较 著 名 的 算 法 有 \T1/ntxtlf/m/n/12.045 DDPG$[]$\EU1/SongtiSC(0)/m/n/12.045 ，| \T1/ntxtlf/m/n/12.045 A2C$[]$\EU1/SongtiSC(0)/m/n/12.045 ，| \T1/ntxtlf/m/n/12.045 TRPO$[]$\EU1/SongtiSC(0)/m/n/12.045 ，|
  []
 
-[3]
-
-Package natbib Warning: Citation `RMSProp' on page 4 undefined on input line 111.
-
-
-Package natbib Warning: Citation `SGD_momentum' on page 4 undefined on input line 111.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 4 undefined on input line 111.
-
-
-Package natbib Warning: Citation `GD_overview' on page 4 undefined on input line 111.
-
-
-Package natbib Warning: Citation `atari_2013' on page 4 undefined on input line 115.
-
-
-Package natbib Warning: Citation `nature2015' on page 4 undefined on input line 115.
-
-
-Package natbib Warning: Citation `deepRL_overview' on page 4 undefined on input line 115.
-
-
-Package natbib Warning: Citation `AlexNet' on page 4 undefined on input line 119.
-
-
-Package natbib Warning: Citation `A3C' on page 4 undefined on input line 121.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 4 undefined on input line 121.
-
-[4]
-
-Package natbib Warning: Citation `TRPO' on page 5 undefined on input line 129.
-
+[4] [5]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 135.
-
-Package natbib Warning: Citation `Convex_optimization_book' on page 5 undefined on input line 136.
-
-
-Package natbib Warning: Citation `ACKTR' on page 5 undefined on input line 136.
-
-
-Package natbib Warning: Citation `PPO' on page 5 undefined on input line 136.
-
-[5]
-LaTeX Font Info:    Try loading font information for TS1+ntxtlf on input line 138.
+(Font)              scaled to size 6.0pt on input line 154.
+LaTeX Font Info:    Try loading font information for TS1+ntxtlf on input line 157.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.045pt on input line 138.
-
-
-Package natbib Warning: Citation `DPG' on page 6 undefined on input line 143.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 6 undefined on input line 143.
-
-
-Package natbib Warning: Citation `A3C' on page 6 undefined on input line 143.
-
-
-Package natbib Warning: Citation `off-policy_actor-critic' on page 6 undefined on input line 143.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 6 undefined on input line 143.
-
-
-Package natbib Warning: Citation `DDPG' on page 6 undefined on input line 153.
-
-[6]
-
-Package natbib Warning: Citation `AlphaGo' on page 7 undefined on input line 162.
-
-
-Package natbib Warning: Citation `AlphaZero' on page 7 undefined on input line 162.
-
-
-Package natbib Warning: Citation `Sutton_book' on page 7 undefined on input line 169.
-
+(Font)              scaled to size 12.045pt on input line 157.
+ [6] [7]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.045pt on input line 169.
+(Font)              scaled to size 12.045pt on input line 188.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 169.
+(Font)              scaled to size 8.0pt on input line 188.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.0pt on input line 169.
-[7]
-
-Package natbib Warning: Citation `Sutton_book' on page 8 undefined on input line 175.
-
-
-Package natbib Warning: Citation `action-conditional_prediction' on page 8 undefined on input line 175.
-
-
-Package natbib Warning: Citation `action-conditional_prediction' on page 8 undefined on input line 176.
-
-
-Package natbib Warning: Citation `I2A' on page 8 undefined on input line 176.
-
+(Font)              scaled to size 6.0pt on input line 188.
 File: figures/I2A.pdf Graphic file (type QTm)
-<use  "figures/I2A.pdf" >
+ <use  "figures/I2A.pdf" >
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 11.04124pt on input line 180.
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 180.
+(Font)              scaled to size 11.04124pt on input line 199.
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 199.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 11.04124pt on input line 180.
+(Font)              scaled to size 11.04124pt on input line 199.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.06006pt on input line 180.
+(Font)              scaled to size 8.06006pt on input line 199.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.07271pt on input line 180.
+(Font)              scaled to size 6.07271pt on input line 199.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 11.04124pt on input line 180.
+(Font)              scaled to size 11.04124pt on input line 199.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.06006pt on input line 180.
+(Font)              scaled to size 8.06006pt on input line 199.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.07271pt on input line 180.
+(Font)              scaled to size 6.07271pt on input line 199.
+ [8] [9] [10] (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.bbl
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.53937pt on input line 1.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.53937pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.0pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 5.0pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.53937pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 7.0pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 5.0pt on input line 16.
+
+Underfull \hbox (badness 1546) in paragraph at lines 59--62
+[]\T1/ntxtlf/m/n/10.53937 Li Y.  Deep Re-in-force-ment Learn-ing: An Overview[J].  arXiv e-prints, 2017:
+ []
+
+[11
 
 
-Package natbib Warning: Citation `I2A' on page 8 undefined on input line 183.
 
-[8] [9]
-No file 机器人课报告.bbl.
+])
 \tf@thm=\write5
 \openout5 = `机器人课报告.thm'.
 
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 235.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 235.
-(/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 235.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 235.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
+ [12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
+ (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 253.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 253.
  ) 
 Here is how much of TeX's memory you used:
- 34694 strings out of 493591
- 639875 string characters out of 6143545
- 655790 words of memory out of 5000000
- 37612 multiletter control sequences out of 15000+600000
- 79127 words of font info for 113 fonts, out of 8000000 for 9000
+ 34799 strings out of 493591
+ 643093 string characters out of 6143545
+ 655995 words of memory out of 5000000
+ 37716 multiletter control sequences out of 15000+600000
+ 91552 words of font info for 139 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 70i,18n,96p,10438b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,18n,96p,10438b,616s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.pdf (11 pages).
+Output written on /Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/机器人课报告.pdf (15 pages).

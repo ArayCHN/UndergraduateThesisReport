@@ -31,6 +31,9 @@
 \makecover
 
 %% 目录
+% 设置目录层级，三级小标题全部显示
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
 \tableofcontents
 
 %% 符号对照表
@@ -48,6 +51,10 @@
   
   \subsection{问题描述}
   \subsection{发展现状及研究方向}
+  看一下雷老师给的案例是怎么写的？具体应该写哪方面的内容？
+  看论文Survey的Autonomous Vehicles
+    论文Adaptive Game-Theoretic Decision Making for Autonomous Vehicle Control at Roundabouts底下有很多的相关论文
+
   \subsection{选题意义及研究方案}
 
 \section{理论基础}
@@ -170,8 +177,12 @@
   \subsection{部分可观测的马尔可夫决策过程}
     我们要解决的问题是典型的部分可观测马尔科夫决策过程。当在马尔可夫过程中，状态$s$不能被完全观测时（例如汽车只能看到自己视野范围内的几辆车），我们称这个问题为部分可观测马尔科夫决策过程（partially observable Markov decision process, POMDP）。POMDP在强化学习社区中被当做一种特殊的问题看待，也围绕这类问题衍生出许多解决方案。看论文DRQ-POMDP
   
+  \subsection{有模型和无模型结合的高效强化学习}
+  有模型无模型的论文Temporal Difference Models: Model-Free Deep RL for Model-Based Control，注意看看arxiv底下的引用
+  
   \subsection{强化学习在自动驾驶领域的应用}
     看论文Survey的Autonomous Vehicles
+    论文Adaptive Game-Theoretic Decision Making for Autonomous Vehicle Control at Roundabouts底下有很多的相关论文
 
 \section{课题内容及开展情况}
   \subsection{第一阶段}
