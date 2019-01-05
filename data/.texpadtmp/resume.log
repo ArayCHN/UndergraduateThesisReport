@@ -1,0 +1,1367 @@
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.11.19)  25 DEC 2018 15:36
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**resume.tex
+(./resume.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+
+./resume.tex:1: LaTeX Error: Environment resume undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \begin{resume}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./resume.tex:3: Undefined control sequence.
+l.3   \resumeitem
+                 {个人简历}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./resume.tex:3: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3   \resumeitem{个
+                     人简历}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 个 in font nullfont!
+Missing character: There is no 人 in font nullfont!
+Missing character: There is no 简 in font nullfont!
+Missing character: There is no 历 in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 3--4
+[] 
+ []
+
+
+./resume.tex:5: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5   x
+       xxx 年 xx 月 xx 日出生于 xx 省 xx 县。
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 年 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 月 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 日 in font nullfont!
+Missing character: There is no 出 in font nullfont!
+Missing character: There is no 生 in font nullfont!
+Missing character: There is no 于 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 省 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 县 in font nullfont!
+Missing character: There is no 。 in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 5--6
+[]
+ []
+
+
+./resume.tex:7: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7   x
+       xxx 年 9 月考入 xx 大学 xx 系 xx 专业，xxxx 年 7 月本科...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 年 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 月 in font nullfont!
+Missing character: There is no 考 in font nullfont!
+Missing character: There is no 入 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 大 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 系 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 专 in font nullfont!
+Missing character: There is no 业 in font nullfont!
+Missing character: There is no ， in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 年 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no 月 in font nullfont!
+Missing character: There is no 本 in font nullfont!
+Missing character: There is no 科 in font nullfont!
+Missing character: There is no 毕 in font nullfont!
+Missing character: There is no 业 in font nullfont!
+Missing character: There is no 并 in font nullfont!
+Missing character: There is no 获 in font nullfont!
+Missing character: There is no 得 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 士 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 位 in font nullfont!
+Missing character: There is no 。 in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 7--8
+[]
+ []
+
+
+./resume.tex:9: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9   x
+       xxx 年 9 月免试进入 xx 大学 xx 系攻读 xx 学位至今。
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 年 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 月 in font nullfont!
+Missing character: There is no 免 in font nullfont!
+Missing character: There is no 试 in font nullfont!
+Missing character: There is no 进 in font nullfont!
+Missing character: There is no 入 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 大 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 系 in font nullfont!
+Missing character: There is no 攻 in font nullfont!
+Missing character: There is no 读 in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 位 in font nullfont!
+Missing character: There is no 至 in font nullfont!
+Missing character: There is no 今 in font nullfont!
+Missing character: There is no 。 in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 9--10
+[]
+ []
+
+./resume.tex:11: Undefined control sequence.
+l.11   \researchitem
+                    {发表的学术论文} % 发表的和录用的合在一起
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./resume.tex:11: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11   \researchitem{发
+                        表的学术论文} % 发表的和录用的合在一起
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 发 in font nullfont!
+Missing character: There is no 表 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 术 in font nullfont!
+Missing character: There is no 论 in font nullfont!
+Missing character: There is no 文 in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 11--12
+[] 
+ []
+
+
+./resume.tex:14: LaTeX Error: Environment publications undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14   \begin{publications}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./resume.tex:15: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15     \item Y
+                ang Y, Ren T L, Zhang L T, et al. Miniature microphone with ...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no Y in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no R in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no Z in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no F in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no 收 in font nullfont!
+Missing character: There is no 录 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 检 in font nullfont!
+Missing character: There is no 索 in font nullfont!
+Missing character: There is no 号 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no F in font nullfont!
+Missing character: There is no Z in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:18: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18     \item 杨
+                  轶, 张宁欣, 任天令, 等. 硅基铁电微声学器�...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 杨 in font nullfont!
+Missing character: There is no 轶 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 张 in font nullfont!
+Missing character: There is no 宁 in font nullfont!
+Missing character: There is no 欣 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 任 in font nullfont!
+Missing character: There is no 天 in font nullfont!
+Missing character: There is no 令 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 等 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 硅 in font nullfont!
+Missing character: There is no 基 in font nullfont!
+Missing character: There is no 铁 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 微 in font nullfont!
+Missing character: There is no 声 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 器 in font nullfont!
+Missing character: There is no 件 in font nullfont!
+Missing character: There is no 中 in font nullfont!
+Missing character: There is no 薄 in font nullfont!
+Missing character: There is no 膜 in font nullfont!
+Missing character: There is no 残 in font nullfont!
+Missing character: There is no 余 in font nullfont!
+Missing character: There is no 应 in font nullfont!
+Missing character: There is no 力 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 研 in font nullfont!
+Missing character: There is no 究 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 中 in font nullfont!
+Missing character: There is no 国 in font nullfont!
+Missing character: There is no 机 in font nullfont!
+Missing character: There is no 械 in font nullfont!
+Missing character: There is no 工 in font nullfont!
+Missing character: There is no 程 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no 收 in font nullfont!
+Missing character: There is no 录 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 检 in font nullfont!
+Missing character: There is no 索 in font nullfont!
+Missing character: There is no 号 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:20: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20     \item 杨
+                  轶, 张宁欣, 任天令, 等. 集成铁电器件中的�...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 杨 in font nullfont!
+Missing character: There is no 轶 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 张 in font nullfont!
+Missing character: There is no 宁 in font nullfont!
+Missing character: There is no 欣 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 任 in font nullfont!
+Missing character: There is no 天 in font nullfont!
+Missing character: There is no 令 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 等 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 集 in font nullfont!
+Missing character: There is no 成 in font nullfont!
+Missing character: There is no 铁 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 器 in font nullfont!
+Missing character: There is no 件 in font nullfont!
+Missing character: There is no 中 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 关 in font nullfont!
+Missing character: There is no 键 in font nullfont!
+Missing character: There is no 工 in font nullfont!
+Missing character: There is no 艺 in font nullfont!
+Missing character: There is no 研 in font nullfont!
+Missing character: There is no 究 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 仪 in font nullfont!
+Missing character: There is no 器 in font nullfont!
+Missing character: There is no 仪 in font nullfont!
+Missing character: There is no 表 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 报 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no 源 in font nullfont!
+Missing character: There is no 刊 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:22: LaTeX Error: \begin{document} ended by \end{publications}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22   \end{publications}
+                         
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./resume.tex:26: LaTeX Error: Environment publications undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26   \begin{publications}
+                           [before=\publicationskip,after=\publicationskip]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./resume.tex:26: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26   \begin{publications}[
+                            before=\publicationskip,after=\publicationskip]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+./resume.tex:26: Undefined control sequence.
+l.26 ...egin{publications}[before=\publicationskip
+                                                  ,after=\publicationskip]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no , in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no = in font nullfont!
+./resume.tex:26: Undefined control sequence.
+l.26 ...re=\publicationskip,after=\publicationskip
+                                                  ]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ] in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 26--27
+[] 
+ []
+
+
+./resume.tex:27: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27     \item Y
+                ang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting recogn...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no Y in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no R in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no Z in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no U in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no 已 in font nullfont!
+Missing character: There is no 被 in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no F in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no 录 in font nullfont!
+Missing character: There is no 用 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no 源 in font nullfont!
+Missing character: There is no 刊 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:29: LaTeX Error: \begin{document} ended by \end{publications}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.29   \end{publications}
+                         
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./resume.tex:33: LaTeX Error: Environment publications undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33   \begin{publications}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./resume.tex:34: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34     \item W
+                u X M, Yang Y, Cai J, et al. Measurements of ferroelectric MEMS
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no W in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no X in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no J in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no F in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no 收 in font nullfont!
+Missing character: There is no 录 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 检 in font nullfont!
+Missing character: There is no 索 in font nullfont!
+Missing character: There is no 号 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no K in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:37: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37     \item 贾
+                  泽, 杨轶, 陈兢, 等. 用于压电和电容微麦克�...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 贾 in font nullfont!
+Missing character: There is no 泽 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 杨 in font nullfont!
+Missing character: There is no 轶 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 陈 in font nullfont!
+Missing character: There is no 兢 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 等 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 用 in font nullfont!
+Missing character: There is no 于 in font nullfont!
+Missing character: There is no 压 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 和 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 容 in font nullfont!
+Missing character: There is no 微 in font nullfont!
+Missing character: There is no 麦 in font nullfont!
+Missing character: There is no 克 in font nullfont!
+Missing character: There is no 风 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 体 in font nullfont!
+Missing character: There is no 硅 in font nullfont!
+Missing character: There is no 腐 in font nullfont!
+Missing character: There is no 蚀 in font nullfont!
+Missing character: There is no 相 in font nullfont!
+Missing character: There is no 关 in font nullfont!
+Missing character: There is no 研 in font nullfont!
+Missing character: There is no 究 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 压 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 与 in font nullfont!
+Missing character: There is no 声 in font nullfont!
+Missing character: There is no 光 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no 收 in font nullfont!
+Missing character: There is no 录 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 检 in font nullfont!
+Missing character: There is no 索 in font nullfont!
+Missing character: There is no 号 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:39: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.39     \item 伍
+                  晓明, 杨轶, 张宁欣, 等. 基于MEMS技术的集成�...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 伍 in font nullfont!
+Missing character: There is no 晓 in font nullfont!
+Missing character: There is no 明 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 杨 in font nullfont!
+Missing character: There is no 轶 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 张 in font nullfont!
+Missing character: There is no 宁 in font nullfont!
+Missing character: There is no 欣 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 等 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 基 in font nullfont!
+Missing character: There is no 于 in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no 技 in font nullfont!
+Missing character: There is no 术 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 集 in font nullfont!
+Missing character: There is no 成 in font nullfont!
+Missing character: There is no 铁 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 硅 in font nullfont!
+Missing character: There is no 微 in font nullfont!
+Missing character: There is no 麦 in font nullfont!
+Missing character: There is no 克 in font nullfont!
+Missing character: There is no 风 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 中 in font nullfont!
+Missing character: There is no 国 in font nullfont!
+Missing character: There is no 集 in font nullfont!
+Missing character: There is no 成 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 路 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no . in font nullfont!
+
+./resume.tex:41: LaTeX Error: \begin{document} ended by \end{publications}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41   \end{publications}
+                         
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./resume.tex:43: Undefined control sequence.
+l.43   \researchitem
+                    {研究成果} % 有就写，没有就删除
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./resume.tex:43: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.43   \researchitem{研
+                        究成果} % 有就写，没有就删除
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 研 in font nullfont!
+Missing character: There is no 究 in font nullfont!
+Missing character: There is no 成 in font nullfont!
+Missing character: There is no 果 in font nullfont!
+
+./resume.tex:44: LaTeX Error: Environment achievements undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.44   \begin{achievements}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 43--45
+[] 
+ []
+
+
+./resume.tex:45: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.45     \item 任
+                  天令, 杨轶, 朱一平, 等. 硅基铁电微声学传�...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 任 in font nullfont!
+Missing character: There is no 天 in font nullfont!
+Missing character: There is no 令 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 杨 in font nullfont!
+Missing character: There is no 轶 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 朱 in font nullfont!
+Missing character: There is no 一 in font nullfont!
+Missing character: There is no 平 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 等 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 硅 in font nullfont!
+Missing character: There is no 基 in font nullfont!
+Missing character: There is no 铁 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 微 in font nullfont!
+Missing character: There is no 声 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 传 in font nullfont!
+Missing character: There is no 感 in font nullfont!
+Missing character: There is no 器 in font nullfont!
+Missing character: There is no 畴 in font nullfont!
+Missing character: There is no 极 in font nullfont!
+Missing character: There is no 化 in font nullfont!
+Missing character: There is no 区 in font nullfont!
+Missing character: There is no 域 in font nullfont!
+Missing character: There is no 控 in font nullfont!
+Missing character: There is no 制 in font nullfont!
+Missing character: There is no 和 in font nullfont!
+Missing character: There is no 电 in font nullfont!
+Missing character: There is no 极 in font nullfont!
+Missing character: There is no 连 in font nullfont!
+Missing character: There is no 接 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 方 in font nullfont!
+Missing character: There is no 法 in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 中 in font nullfont!
+Missing character: There is no 国 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no 中 in font nullfont!
+Missing character: There is no 国 in font nullfont!
+Missing character: There is no 专 in font nullfont!
+Missing character: There is no 利 in font nullfont!
+Missing character: There is no 公 in font nullfont!
+Missing character: There is no 开 in font nullfont!
+Missing character: There is no 号 in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:47: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.47     \item R
+                en T L, Yang Y, Zhu Y P, et al. Piezoelectric micro acoustic...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no R in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no Z in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no Y in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no U in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no 美 in font nullfont!
+Missing character: There is no 国 in font nullfont!
+Missing character: There is no 发 in font nullfont!
+Missing character: There is no 明 in font nullfont!
+Missing character: There is no 专 in font nullfont!
+Missing character: There is no 利 in font nullfont!
+Missing character: There is no 申 in font nullfont!
+Missing character: There is no 请 in font nullfont!
+Missing character: There is no 号 in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+./resume.tex:49: LaTeX Error: \begin{document} ended by \end{achievements}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.49   \end{achievements}
+                         
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./resume.tex:51: LaTeX Error: \begin{document} ended by \end{resume}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.51 \end{resume}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+)
+! Emergency stop.
+<*> resume.tex
+              
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 11 strings out of 493591
+ 287 string characters out of 6143545
+ 55754 words of memory out of 5000000
+ 3519 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1347 hyphenation exceptions out of 8191
+ 7i,1n,7p,96b,43s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.

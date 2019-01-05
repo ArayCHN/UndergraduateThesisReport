@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: /Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/main.aux
+The style file: ../thuthesis-numeric.bst
+Database file #1: ../../../references/bibtex/all_references.bib
+I was expecting an "="---line 79 of file ../../../references/bibtex/all_references.bib
+ : publication 
+ :             date ="2017-01-29T00:00:00",
+I'm skipping whatever remains of this entry
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty author in DRL_for_driving
+You've used 27 entries,
+            3363 wiz_defined-function locations,
+            954 strings with 12607 characters,
+and the built_in function-call counts, 254419 in all, are:
+= -- 26544
+> -- 26783
+< -- 26568
++ -- 8507
+- -- 268
+* -- 1049
+:= -- 27512
+add.period$ -- 88
+call.type$ -- 27
+change.case$ -- 55
+chr.to.int$ -- 7802
+cite$ -- 29
+duplicate$ -- 561
+empty$ -- 1689
+format.name$ -- 491
+if$ -- 73641
+int.to.chr$ -- 1
+int.to.str$ -- 28
+missing$ -- 0
+newline$ -- 157
+num.names$ -- 81
+pop$ -- 11487
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 30868
+stack$ -- 0
+substring$ -- 8593
+swap$ -- 82
+text.length$ -- 307
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 357
+warning$ -- 1
+while$ -- 390
+width$ -- 0
+write$ -- 425
+(There was 1 error message)
