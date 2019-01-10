@@ -1,22 +1,24 @@
 \begin{denotation}[3cm]
-\item[HPC] 高性能计算 (High Performance Computing)
-\item[cluster] 集群
-\item[Itanium] 安腾
-\item[SMP] 对称多处理
-\item[API] 应用程序编程接口
-\item[PI] 聚酰亚胺
-\item[MPI] 聚酰亚胺模型化合物，N-苯基邻苯酰亚胺
-\item[PBI] 聚苯并咪唑
-\item[MPBI] 聚苯并咪唑模型化合物，N-苯基苯并咪唑
-\item[PY] 聚吡咙
-\item[PMDA-BDA]	均苯四酸二酐与联苯四胺合成的聚吡咙薄膜
-\item[$\Delta G$] 活化自由能 (Activation Free Energy)
-\item[$\chi$] 传输系数 (Transmission Coefficient)
-\item[$E$] 能量
-\item[$m$] 质量
-\item[$c$] 光速
-\item[$P$] 概率
-\item[$T$] 时间
-\item[$v$] 速度
-\item[劝学] 君子曰：学不可以已。
+\item[MDP] 马尔可夫过程 (Markov Decision Process)
+\item[$s$] 状态（任意状态）
+\item[$a$] 行动（任意行动）
+\item[$\pi$] 策略
+\item[$\pi(s)$] 策略函数
+\item[$\pi(a|s)$] 策略在状态$s$下采取行动$a$的概率
+\item[$r$] 奖励
+\item[$r(s, a)$] 在状态$s$下采取行动$a$获得的奖励
+\item[$G_t$] 时间$t$之后的总奖励
+\item[$v(s)$] 状态$s$的价值函数
+\item[$q_\pi(s, a)$] 在策略$\pi$下，在状态$s$下采取行动$a$的价值
+\item[$V(s)$] 状态$s$的价值函数的估计值
+\item[$Q(s, a)$] 状态$s$，动作$a$的价值的估计值
+\item[$p(s'|s, a)$] 在状态$s$采取动作$a$，状态转移到$s'$的概率
+\item[$p(s', r|s, a)$] 在状态$s$采取动作$a$，状态转移到$s'$并且获得奖励$r$的概率
+\item[$\pi(a|s, \theta)$] 策略函数的参数是$\theta$，在状态$s$下采取行动$a$的概率
+\item[$\pi_\theta$] 策略函数，其参数为$\theta$
+\item[$\bigtriangledown \pi(a|s, \theta)$] 策略函数的参数是$\theta$，在状态$s$下采取行动$a$的概率对$\theta$的导数
+\item[$\gamma$] 总奖励$G_t$计算时，对于后续$R_{t+t_i}$的折扣率
+\item[$\rho$] 重要性采样比例（importance-sampling ratio）
+\item[TD] 时序差异（temporal-difference）
+\item[$\delta_t$] 时序差异误差（TD error）
 \end{denotation}

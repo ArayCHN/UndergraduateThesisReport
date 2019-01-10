@@ -3,51 +3,164 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/main.aux
 The style file: ../thuthesis-numeric.bst
 Database file #1: ../../../references/bibtex/all_references.bib
-I was expecting an "="---line 79 of file ../../../references/bibtex/all_references.bib
- : publication 
- :             date ="2017-01-29T00:00:00",
+You're missing a field name---line 7 of file ../../../references/bibtex/all_references.bib
+ :   
+ :   % url = {http://incompleteideas.net/book/the-book-2nd.html},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 22 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % doi="10.1007/BF00115009",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 36 of file ../../../references/bibtex/all_references.bib
+ :    
+ :    %   coden = "IUMJAB",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 46 of file ../../../references/bibtex/all_references.bib
+ :  
+ :  % address = {New York, NY, USA},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 61 of file ../../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2016arXiv160805151V},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 69 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % parent_itemid = "infobike://ist/ei",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 97 of file ../../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2017arXiv170107274L},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 138 of file ../../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2015arXiv150902971L},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 155 of file ../../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2017arXiv170805144W},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 186 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % issn="1573-0565",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 201 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % url={https://doi.org/10.1038/nature14236}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 212 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % doi = {10.1145/3065386}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 227 of file ../../../references/bibtex/all_references.bib
+ :   
+ :   % pdf =    {http://proceedings.mlr.press/v48/mniha16.pdf},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 251 of file ../../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2016arXiv160904747R},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 267 of file ../../../references/bibtex/all_references.bib
+ :  
+ :  % url = {http://dx.doi.org/10.1016/S0893-6080(98)00116-6},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 280 of file ../../../references/bibtex/all_references.bib
+ :  
+ :  % location = {Beijing, China},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 306 of file ../../../references/bibtex/all_references.bib
+ :  
+ :  % url = {http://dx.doi.org/10.1177/0278364913495721},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 337 of file ../../../references/bibtex/all_references.bib
+ :     
+ :     % issn = {0036-8075},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 359 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % editor = {I. Guyon and U. V. Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 370 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % editor = {C. Cortes and N. D. Lawrence and D. D. Lee and M. Sugiyama and R. Garnett},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 389 of file ../../../references/bibtex/all_references.bib
+ : 
+ : % doi="10.1007/s10846-017-0468-y",
+(Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty year in waymo
+Warning--empty year in DRL_for_driving
+Warning--empty year in Sutton_book
+Warning--empty year in action-conditional_prediction
+Warning--empty year in I2A
 Warning--empty author in DRL_for_driving
-You've used 27 entries,
+Warning--empty year in DRL_for_driving
+Warning--empty year in Sutton_book
+Warning--empty year in Sutton_book
+Warning--empty year in action-conditional_prediction
+Warning--empty year in action-conditional_prediction
+Warning--empty year in I2A
+Warning--empty year in I2A
+You've used 34 entries,
             3363 wiz_defined-function locations,
-            954 strings with 12607 characters,
-and the built_in function-call counts, 254419 in all, are:
-= -- 26544
-> -- 26783
-< -- 26568
-+ -- 8507
-- -- 268
-* -- 1049
-:= -- 27512
-add.period$ -- 88
-call.type$ -- 27
-change.case$ -- 55
-chr.to.int$ -- 7802
-cite$ -- 29
-duplicate$ -- 561
-empty$ -- 1689
-format.name$ -- 491
-if$ -- 73641
+            973 strings with 13048 characters,
+and the built_in function-call counts, 304407 in all, are:
+= -- 31715
+> -- 32046
+< -- 31777
++ -- 10166
+- -- 310
+* -- 1211
+:= -- 32846
+add.period$ -- 97
+call.type$ -- 34
+change.case$ -- 69
+chr.to.int$ -- 9363
+cite$ -- 49
+duplicate$ -- 705
+empty$ -- 2093
+format.name$ -- 575
+if$ -- 88189
 int.to.chr$ -- 1
-int.to.str$ -- 28
+int.to.str$ -- 35
 missing$ -- 0
-newline$ -- 157
-num.names$ -- 81
-pop$ -- 11487
+newline$ -- 180
+num.names$ -- 97
+pop$ -- 13852
 preamble$ -- 1
-purify$ -- 27
+purify$ -- 34
 quote$ -- 0
-skip$ -- 30868
+skip$ -- 36948
 stack$ -- 0
-substring$ -- 8593
-swap$ -- 82
-text.length$ -- 307
+substring$ -- 10155
+swap$ -- 94
+text.length$ -- 361
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 357
-warning$ -- 1
-while$ -- 390
+type$ -- 450
+warning$ -- 13
+while$ -- 451
 width$ -- 0
-write$ -- 425
-(There was 1 error message)
+write$ -- 490
+(There were 21 error messages)
