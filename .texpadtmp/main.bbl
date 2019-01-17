@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{38}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{#1}
 \providecommand{\href}[2]{\url{#2}}
@@ -40,10 +40,9 @@ Deep reinforcement learning framework for autonomous driving\allowbreak[J].
   Wie{\ss}ner]{SUMO}
 Lopez P~A, Behrisch M, Bieker-Walz L, et~al.
 \newblock Microscopic traffic simulation using
-  sumo\allowbreak[C/OL]//\allowbreak{}The 21st IEEE International Conference on
+  sumo\allowbreak[C]//\allowbreak{}The 21st IEEE International Conference on
   Intelligent Transportation Systems.
-\newblock IEEE, 2018.
-\newblock \url{https://elib.dlr.de/124092/}.
+\newblock [S.l.]: IEEE, 2018.
 
 \bibitem[Michel(1998)]{Webots}
 Michel O.
@@ -215,16 +214,41 @@ Racani\`{e}re S, Weber T, Reichert D, et~al.
   Processing Systems 30.
 \newblock [S.l.: s.n.]
 
-\bibitem[Dhariwal\ et~al.(2017)Dhariwal, Hesse, Klimov, Nichol, Plappert,
-  Radford, Schulman, Sidor, Wu, and Zhokhov]{openAI_baselines}
-Dhariwal P, Hesse C, Klimov O, et~al.
-\newblock Openai baselines\allowbreak[J].
-\newblock GitHub repository, 2017.
-
 \bibitem[Hausknecht\ et~al.(2015)Hausknecht and Stone]{DRQ}
 Hausknecht M~J, Stone P.
 \newblock Deep recurrent q-learning for partially observable
   mdps\allowbreak[C]//\allowbreak{}AAAI Fall Symposia.
 \newblock [S.l.: s.n.], 2015.
+
+\bibitem[Hochreiter\ et~al.(1997)Hochreiter and Schmidhuber]{LSTM}
+Hochreiter S, Schmidhuber J.
+\newblock Long short-term memory\allowbreak[J].
+\newblock Neural computation, 1997, 9\penalty0 (8): 1735-1780.
+
+\bibitem[Zyner\ et~al.(2018)Zyner, Worrall, and
+  Nebot]{RNN_predict_driver_intention}
+Zyner A, Worrall S, Nebot E.
+\newblock A recurrent neural network solution for predicting driver intention
+  at unsignalized intersections\allowbreak[J].
+\newblock IEEE Robotics and Automation Letters, 2018, PP: 1-1.
+
+\bibitem[N\ et~al.(2017)N, H, I, and A.]{explicit_decision_tree}
+N L, H C, I K, et~al.
+\newblock An explicit decision tree approach for automated
+  driving\allowbreak[J].
+\newblock ASME. Dynamic Systems and Control Conference, 2017, 1.
+
+\bibitem[Tian\ et~al.(2018)Tian, Li, Li, Kolmanovsky, Girard, and
+  Yildiz]{game_theory}
+Tian R, Li S, Li N, et~al.
+\newblock Adaptive game-theoretic decision making for autonomous vehicle
+  control at roundabouts\allowbreak[Z].
+\newblock [S.l.: s.n.], 2018.
+
+\bibitem[Dhariwal\ et~al.(2017)Dhariwal, Hesse, Klimov, Nichol, Plappert,
+  Radford, Schulman, Sidor, Wu, and Zhokhov]{openAI_baselines}
+Dhariwal P, Hesse C, Klimov O, et~al.
+\newblock Openai baselines\allowbreak[J].
+\newblock GitHub repository, 2017.
 
 \end{thebibliography}

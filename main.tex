@@ -231,20 +231,73 @@
       \par 图\ref{fig:I2A}c)展示了网络整体架构，可以看到整体网络的输入为$o_t$，也就是对状态$S_t$的观测，输出为策略$\pi$和价值函数估值$V$（用于actor-critic架构）。因此，这个结构满足A3C的基本框架。在框架内部，网络结构采用了含有预测模型网络处理的输入，也采用了无模型网络处理的输入，分别作为两个分支，最后通过一个子网络汇合。具体的结构参数可以参见论文\cite{I2A}的附录。通过引入这个特殊的网络结构，I2A算法将习得的模型结合进了原有的无模型学习框架中。同时，实验结果表明，这里的模型可以有错误和不精确的地方，学习结果依然是鲁棒的。
   
   \subsection{部分可观测的马尔可夫决策过程}
-    我们要解决的问题是典型的部分可观测马尔科夫决策过程。当在马尔可夫过程中，状态$s$不能被完全观测时（例如汽车只能看到自己视野范围内的几辆车），我们称这个问题为部分可观测马尔科夫决策过程（partially observable Markov decision process, POMDP）。POMDP在强化学习社区中被当做一种特殊的问题看待，也围绕这类问题衍生出许多解决方案。看论文DRQ-POMDP
+    我们要解决的问题是典型的部分可观测马尔科夫决策过程。当在马尔可夫过程中，状态$s$不能被完全观测时（例如汽车只能看到自己视野范围内的几辆车），我们称这个问题为部分可观测马尔科夫决策过程（partially observable Markov decision process, POMDP）。POMDP在强化学习社区中被当做一种特殊的问题看待，也围绕这类问题衍生出许多解决方案。2015年，Hausknecht等人提出了DRQN\cite{DRQ}（deep recurrent Q network），把它应用于经过修改的部分可观测的Atari游戏上并取得了比DQN更好的结果。\par
+    DRQN利用了循环神经网络（RNN，recurrent neural network）和LSTM\cite{LSTM}（long short term memory）的概念，用这样一层LSTM神经元替代DQN网络全联通层的第一层。在我们的设计中，LSTM也被用来解决状态部分可观测的问题。
   
   \subsection{有模型和无模型结合的高效强化学习}
-  有模型无模型的论文Temporal Difference Models: Model-Free Deep RL for Model-Based Control，注意看看arxiv底下的引用
+    有模型强化学习和无模型强化学习有各自的优缺点和适用场合。例如，有模型强化学习可以大大提高样本利用率，但是如果模型有偏差，会造成习得错误的策略，对于一些特别复杂的问题，很难得到精准的模型。无模型的强化学习可以应用在复杂场景，但是样本利用率很低，在一些容易规范化的问题中不宜采用。因此我们考虑在环岛路径规划中结合两者的优势。\par
+    2018年，Pong等人提出了结合有模型和无模型的一种训练方法\cite{TDM}。
+    还有很多相关论文！！
+    有模型无模型的论文Temporal Difference Models: Model-Free Deep RL for Model-Based Control，注意看看arxiv底下的引用
+  
+  \subsection{多任务分层强化学习}
+    多任务和分层强化学习
+    Automated vehicle overtaking based on a multiple-goal reinforcement learning framework
   
   \subsection{强化学习在自动驾驶领域的应用}
-    看论文Survey的Autonomous Vehicles
-    目前对于自动驾驶在环岛环境下的路径规划问题，尚没有采用强化学习解决的方案。有人使用博弈论的方法对这个问题进行了探索。
-    论文Adaptive Game-Theoretic Decision Making for Autonomous Vehicle Control at Roundabouts底下有很多的相关论文
+    目前对于自动驾驶在环岛环境下的路径规划这一特定问题，尚没有采用强化学习解决的方案。2018年，Zyner等人提出了利用RNN估计环岛车辆目的地的方法\cite{RNN_predict_driver_intention}。他们的工作采用了深度学习的算法，但是只是涉及预估，并没有涉及具体策略的制定。\par
+    2017年，Li等人提出了一种基于搜索树的自动驾驶决策算法\cite{explicit_decision_tree}。他们的算法和强化学习类似，不过是通过依次设定初始状态，之后采用搜索+剪枝的方法来完成对$Q(s, a)$的估计，并记录在表格里面。这种方法比较平凡，并且只能应对观测空间较小，并且动作空间离散的问题，因此实际应用能力比较有限。\par
+    2018年，Ran等人使用博弈论的方法对这个问题进行了探索\cite{game_theory}。他们采用的算法类似于强化学习，但也有所不同。在这篇文章中，决策过程利用了博弈论的方案。作者将车辆的驾驶人员分为保守和激进两种类型，在驾驶过程中，智能体自主车辆（ego vehicle）会不断依据对方司机的行为更新对对方车辆（opponent vehicle）分类的估计（通过神经网络完成）。完成这个估计以后，智能体会采取博弈的方法，每次采用某一行动，让对方采取它策略下的行动，由此预测对方在此后$n$步的行为。通过暴力搜索，可以得到最优的一个行动序列$A_t, A_{t+1}, ..., A_{t+n-1}$。通过大量的训练，作者拟合了一个神经网络去存储状态$S_t$到最优动作$A_t$的映射，从而在实际操作中避免了搜索（离线训练）。
+    \begin{figure}[H] % use float package if you want it here
+        \centering
+        \includegraphics[scale=1.5]{game_theory_structure}
+        \caption{论文\cite{game_theory}提出的基于博弈论的决策方案整体框架。}
+        \label{fig:game_theory_structure}
+    \end{figure}
+    \par 图片\ref{fig:game_theory_structure}展示了基于博弈论的算法的整体框架。其整体流程如下：首先，某一状态输入神经网络B，判断其是否属于``关键状态''（义为，这个状态下两辆车是否已经足够接近，开始相互影响），如果是，则进入下一步，通过神经网络C依据对方车辆的行为来判断对方车辆的类别是保守还是激进；判断结束后，将判断结果和当前状态一起输入神经网络A，从而获取当前状态下应采取的最优行动。这其中的神经网络都是依据上面提到的博弈论算法来进行预训练的。\par
+    这个算法本质上是一个有监督学习算法，通过大量的训练``记忆''每个场景下应该采取的策略。和强化学习的区别在于，此基于博弈论的算法没有对状态和行动的价值进行估计，同时，由于没有获取环境的实际反馈（例如在仿真环境中，训练实际是否成功，并没有作为神经网络训练的输入），而是先验地认为通过对对方车辆类型的分类+预测可以获取最优解，因此并不够准确。这个方法的另一个缺陷在于对方的策略未必是简单的极限保守和极限激进两种，因此这个预测是不准确的。这也是我们在今后实验设计中需要考虑的问题：我们的对弈方驾驶车辆是怎样进行驾驶的？应该采取怎样的策略？\par
 
 \section{课题内容及开展情况}
   \subsection{第一阶段}
-  目前已经完成如前所述的算法I的实现和实验。我们利用openAI的baseline算法库\cite{openAI_baselines}，采用DDPG\cite{DDPG}算法，结合LSTM\cite{DRQ}，在我们的实验平台上实现了基线方案，测试数据如下。\par
-  我们对观察空间进行这样的建模：
+  \subsubsection{综述}
+  目前已经完成如前所述的算法I的实现和实验。我们利用openAI的baseline算法库\cite{openAI_baselines}，采用DDPG\cite{DDPG}算法，结合LSTM\cite{DRQ}搭建网络，在我们的实验平台（SUMO+Webots）上实现了基线方案。\par
+  \subsubsection{建模方法}
+  简要对我们的我们对观察空间进行这样的建模：我们关注离智能体车辆最近的两辆其他车辆，$C_1$和$C_2$。观察空间定义为
+  $$[d^{C_1},\space v^{C_1},\space cos\theta^{C_1},\space sin\theta^{C_1},\space d^{C_2},\space v^{C_2},\space cos\theta^{C_2},\space sin\theta^{C_2},\space
+  x^{ego},\space y^{ego},\space v^{ego},\space a^{ego}
+  ]^T$$
+  其中$d$表示距离，$v$表示速度，$a$表示加速度。\par
+  为了避免高维度的动作空间，车辆只决定每一时刻的加速和减速值，介于$[-1, 1]$。车辆的方向由预先规定的路径点决定，由事先设计好的PID控制器直接进行调控，而不受强化学习算法的决策控制。
+  \subsubsection{奖励函数设计}
+  我们的奖励函数有如下机制：
+  \begin{itemize}
+    \item $0.95$的奖励，当智能体驶出环岛
+    \item $0.2$的奖励，每次足够接近一个预先确定的路径点时
+    \item $0.05 \dot (v-19)/30 $，表示速度越快得到的奖励越多
+    \item $-0.4$的奖励（惩罚），当智能体偏离道路
+    \item $-100$的奖励，当智能体发生碰撞时
+  \end{itemize}
+  \subsubsection{实验结果}
+  实验结果如图\ref{fig:experiment_phaseI}。我们可以看出，汽车在2000次训练后可以以75\%以上的成功率通过环岛。在测试中，我们采用经过500次训练后得到的智能体，在双车道四进口的环岛进行五次测试，环岛车流量分别为1辆/5s和1辆/20s。具体成功率统计数据呈现在表格\ref{table:experiment_phaseI}中。\par
+  \begin{figure}[H] % use float package if you want it here
+        \centering
+        \includegraphics[scale=1.0]{exp_result}
+        \caption{DDPG算法训练的实验结果。（a）为平均获得的奖励值（b）为汽车在仿真环境中的平均速度（c）为平均成功率。每个数据点均为五十次训练的平均值，横坐标为百次训练，每次训练以发生事故或通过环岛为终止条件。}
+        \label{fig:experiment_phaseI}
+  \end{figure}
+  
+  \begin{table}[h!]
+  \centering
+  \caption{实验成功率统计（百分比）}
+  \label{table:experiment_phaseI}
+  \begin{tabular}[c]{|c||c|c|c|c|c||c|}
+  \hline
+  \textbf{平均车流量$n$（1辆/$n$s）} & \textbf{1}& \textbf{2}& \textbf{3}& \textbf{4}& \textbf{5}& \textbf{平均成功率}\\
+  \hline
+  5 & 75.4 & 73.8 & 75.0 & 77.0 & 74.8 & 75.2 $\pm$ 1.0 \\ \hline
+  20 & 94.0 & 94.4 & 94.0 & 94.6 & 97.0 & 94.8 $\pm$ 1.1 \\ \hline
+  \end{tabular}
+  \end{table}
   
   \subsection{第二阶段}
     第二阶段我们将着重开展结合无模型和有模型强化学习的算法研究。目前已经进行了文献调研，具体工作将在后续完成。
