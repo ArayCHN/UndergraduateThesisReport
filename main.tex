@@ -240,7 +240,7 @@
   
   \subsection{有模型和无模型结合的高效强化学习}
     有模型强化学习和无模型强化学习有各自的优缺点和适用场合。例如，有模型强化学习可以大大提高样本利用率，但是如果模型有偏差，会造成习得错误的策略，对于一些特别复杂的问题，很难得到精准的模型。无模型的强化学习可以应用在复杂场景，但是样本利用率很低，在一些容易规范化的问题中不宜采用。因此我们考虑在环岛路径规划中结合两者的优势。\par
-    2017年，Bansal等人提出MBMF算法（Model-Based Priors for Model-Free RL）\cite{MBMF}，首先训练出系统的动力学特性，作为一个函数$s_{t+1} = f(s_t, a)$，把这个模型方程$f$作为后续无模型强化学习训练的预先输入，相当于初始值比较准确。\par
+    2017年，Bansal等人提出MBMF算法（Model-Based Priors for Model-Free RL）\cite{MBMF}。记策略为$\pi_\theta$，代价函数为$J = -G_{t:t+n}$。MBMF最终想要得到的是代价函数$J$和策略参数$\theta$的关系$J(\theta)$，从而优化策略的参数。MBMF的算法如下：首先根据观察，训练出系统的动力学特性，记为一个函数$s_{t+1} = f(s_t, a)$（模型）。接下来，利用$f$，可以预测在某个策略$\pi_\theta$下，对应的奖励值期望（原文称之为代价函数$J$），记为$J_{MB}(\theta)$。这是基于模型得到的代价函数估计值。考虑到这个模型存在偏差，MBMF的MF部分把$J_{MB}(\theta)$作为初值，利用观察到的数据对$(\theta, J(\theta))$，进行拟合函数优化，优化得到最终的函数$J_{MF}(\theta)$。特别地，在上述拟合函数$f, J_{MB}, J_{MF}$当中，他们没有使用神经网络，而是使用了高斯过程\cite{Gaussian_process}（gaussian process, GP）和贝叶斯优化（Bayesian optimization, BO）的方法。MBMF的论文认为，通过引入模型，提高了采样效率，加速了学习过程，通过无模型的训练部分，避免了模型的偏差问题。从而两者的优势被结合起来。因此，MBMF算法的关键在于，把$J_{MB}$作为贝叶斯优化的一个``初值''。与Dyna架构\cite{Sutton_book}不同，MBMF的MF部分只采用真实环境里采集的数据集$(\theta, J(\theta))$对拟合函数$J_{MF}$进行优化，而不像Dyna架构利用学习到的模型去生成了大量的合成数据。\par
     2018年，Pong等人提出了结合有模型和无模型的一种训练方法时许差异模型（temporal-difference model, TDM）\cite{TDM}。之前的一些论文通过目标条件价值函数（goal-conditioned value function）$Q(s, a, s_g)$的定义，将无模型强化学习（仅学习$Q$值）和有模型强化学习（需要学习状态转移概率分布$p(s_{t+1}|s_t, a)$）被联系在了一起。其中，$s_g$表示某一目标状态。如果定义奖励函数$r(s_t, a, s_{t+1}, s_g) = -D(s_{t+1}, s_g)$，其中，$D$为一个表示状态间距离的函数，那么$Q(s, a, s_g)$最终将收敛于$-D(s_{t+1}, s_g)$。$Q(s, a, s_g)$表示的含义是就是从$s$转移到$s_g$的能力，因此包含了模型的信息，但同时，这个方法没有显式地去学习状态转移函数，无模型强化学习方法能够用的地方它也都能用。TDM的贡献在于引入了时序差异的目标条件价值函数，$Q(s, a, s_g, \tau)$，表示在$\tau$步之内，状态$s$采取行动$a$后，再通过某种方式转移到$s_g$的能力。因此，$Q$的定义（和更新方法）为
     \begin{align}
       Q(s_t, a_t, s_g, \tau) = \mathbb{E}_{s_{t+1} \sim s_t, a}[-D(s_{t+1}, s_g)1[\tau = 0] + \max_a Q(s_{t+1}, a, s_g, \tau - 1)1[\tau \neq 0]]
@@ -262,8 +262,14 @@
     
   \subsection{强化学习和模型预测控制的对比}
   模型预测控制\cite{MPC}（MPC, model-predictive control）是一种最优控制的算法，主要利用模型对确定性离散时间系统进行控制。MPC和RL有许多相似之处。MPC和RL的主要区别在于，RL会``学习''一个模型或者不显式地利用模型，而MPC则利用模型进行预测，从而进行最优化\cite{MPC_VS_RL}。\par
-  MPC的方法如下：
-  \par 在RL的研究中，有不少利用/结合MPC的算法（在这里找一些！！我的论文中本来就有一些，pieter abbeel也有一些无人机的论文！！）。
+  MPC的方法如下：假设环境的模型为$s_{t+1} = f(s_t, a_t)$，每次规划后面$n$步的行动序列$a_t, a_{t+1}, ..., a_{t+n-1}$，选取最优策略序列的头一个行动$a_t^*$作为最优行动。
+  \begin{align}
+  \begin{aligned}
+        a_t^* = \argmax_{a_t, s_{t+1}, a_{t+1}, s_{t+2}, ... , a_{t+n-1}, s_{t+n}} G_{t:t+n-1}
+    \text{  subject to } s_{t+i+1} = f(s_{t+i}, a_{t+i})
+  \end{aligned}
+  \end{align}
+  \par 在RL的研究中，有不少利用/结合MPC的算法（在这里找一些！！我的论文中本来就有:TDM，pieter abbeel也有一些无人机的论文！！）。
   
   \subsection{强化学习在自动驾驶领域的应用}
     目前对于自动驾驶在环岛环境下的路径规划这一特定问题，尚没有采用强化学习解决的方案。2018年，Zyner等人提出了利用RNN估计环岛车辆目的地的方法\cite{RNN_predict_driver_intention}。他们的工作采用了深度学习的算法，但是只是涉及预估，并没有涉及具体策略的制定。\par
