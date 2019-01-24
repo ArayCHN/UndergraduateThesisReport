@@ -1,4 +1,4 @@
-\begin{thebibliography}{38}
+\begin{thebibliography}{42}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{#1}
 \providecommand{\href}[2]{\url{#2}}
@@ -224,6 +224,31 @@ Hausknecht M~J, Stone P.
 Hochreiter S, Schmidhuber J.
 \newblock Long short-term memory\allowbreak[J].
 \newblock Neural computation, 1997, 9\penalty0 (8): 1735-1780.
+
+\bibitem[Bansal\ et~al.(2017)Bansal, Calandra, Chua, Levine, and Tomlin]{MBMF}
+Bansal S, Calandra R, Chua K, et~al.
+\newblock Mbmf: Model-based priors for model-free reinforcement
+  learning\allowbreak[Z].
+\newblock [S.l.: s.n.], 2017.
+
+\bibitem[Pong\ et~al.(2018)Pong, Gu, Dalal, and Levine]{TDM}
+Pong V, Gu S, Dalal M, et~al.
+\newblock Temporal difference models: Model-free deep rl for model-based
+  control\allowbreak[M]//\allowbreak{}ICLR.
+\newblock [S.l.: s.n.], 2018.
+
+\bibitem[Morari\ et~al.(1999)Morari and Lee]{MPC}
+Morari M, Lee J~H.
+\newblock Model predictive control: past, present and future\allowbreak[J].
+\newblock Computers \& Chemical Engineering, 1999, 23\penalty0 (4): 667 - 682.
+
+\bibitem[Ernst\ et~al.(2009)Ernst, Glavic, Capitanescu, and
+  Wehenkel]{MPC_VS_RL}
+Ernst D, Glavic M, Capitanescu F, et~al.
+\newblock Reinforcement learning versus model predictive control: A comparison
+  on a power system problem\allowbreak[J].
+\newblock IEEE Transactions on Systems, Man, and Cybernetics, Part B
+  (Cybernetics), 2009, 39\penalty0 (2): 517-529.
 
 \bibitem[Zyner\ et~al.(2018)Zyner, Worrall, and
   Nebot]{RNN_predict_driver_intention}

@@ -122,7 +122,11 @@
       在这里，我们将用一些研究者所默认的记号对我们的问题进行数学抽象。假设下标$t$表示任一时刻，而$S_t$代表某一时刻的状态，$A_t$表示智能体采取的行动，$\pi$表示智能体的策略，$R_t$表示智能体某一步获得的奖励。我们的目标是让智能体通过学习，获得尽可能大的总奖励，记为$G$。有时我们可以定义
       $$ G = \sum_{t} R_t $$
       但是多数时候我们会考虑加入一个折扣$\gamma$($0 < \gamma < 1$)，认为一个行为直接获得的奖励对它更有意义，而很久以后获得的奖励与这个行为的关联越来越小，记为
-      $$ G_{t_0} = \sum_{t = t0}^{t_n} \gamma^{t-t_0} R_t $$ 其中$t_n$要么是一个过程因为某种原因终止的时刻，要么是$\infty$。\par
+      \begin{align}
+        G_{t_0} = \sum_{t = t0}^{t_n} \gamma^{t-t_0} R_t
+        \label{eq:G}
+      \end{align}
+      \par 其中$t_n$要么是一个过程因为某种原因终止的时刻，要么是$\infty$。\par
       强化学习解决的是一个马尔可夫决策过程（MDP）\cite{Bellman_MDP}。在MDP中，$S_{t+1}$只取决于$S_t$和$A_t$，而不受到之前历史过程的影响。也就是说，$S_t$状态本身就包含了它所有的历史对后续过程的影响。在这个假设下，我们可以这样表达强化学习的目标\cite{DRL_for_driving}：记$v^{\pi}(s)$为状态$s$的价值函数。我们有$$ v^{\pi}(s) = E[G_{t_0} | S_{t_0} = s, \pi(s) ] $$
       $$ J(\pi) = \max_{\pi} E(v^{\pi}(s)) $$
       $$ \pi^*(s) = \argmax_{\pi} J(\pi) $$
@@ -139,7 +143,7 @@
     
     \subsubsection{典型算法综述}
       强化学习包含许多的算法，也有很多分类方法。其中，有一大类是列表方法，可以理解为是把$v(s)$保存起来的方法；另一大类是近似方法，也就是用一个函数去近似$v(s)$\cite{Sutton_book}。其中，第二类方法在近年来使用最多，神经网络使得函数可以近似非常复杂的映射关系，也让许多复杂问题通过强化学习得到了解决。\par
-      列表式的强化学习方法包括动态规划\cite{Bellman_DP}，蒙特卡罗方法，时序差分学习（Temporal-difference learning，简称TD方法，包括Sarsa\cite{Sutton_book}, Q-learning\cite{Q_learning}）\cite{Sutton_problem_formulation}，多步自助法（n-step bootstrapping）\cite{n_step_bootstrapping}，Dyna规划方法\cite{Sutton_book}等。\par
+      列表式的强化学习方法包括动态规划\cite{Bellman_DP}，蒙特卡罗方法，时序差分学习（Temporal-difference learning，简称TD方法，包括Sarsa\cite{Sutton_book}, Q-learning\cite{Q_learning}）\cite{Sutton_problem_formulation}，多步自助法\cite{n_step_bootstrapping}（n-step bootstrapping），Dyna规划方法\cite{Sutton_book}等。\par
       TD方法是列表法强化学习的核心。这一族的算法有许多衍生版本，但其核心是利用经验不断更新价值函数$V(s)$，直至其收敛。更新的基本模式为
       $$ V(s) \gets V(s) + \alpha [r + V(s') - V(s)] $$
       \par 其中，$\alpha$表示函数更新的步幅。而当我们用$Q(s, a)$去替代$V(s)$的时候，算法就成为了Sarsa（state, action, reward, state, action \cite{deepRL_overview}）：
@@ -236,13 +240,30 @@
   
   \subsection{有模型和无模型结合的高效强化学习}
     有模型强化学习和无模型强化学习有各自的优缺点和适用场合。例如，有模型强化学习可以大大提高样本利用率，但是如果模型有偏差，会造成习得错误的策略，对于一些特别复杂的问题，很难得到精准的模型。无模型的强化学习可以应用在复杂场景，但是样本利用率很低，在一些容易规范化的问题中不宜采用。因此我们考虑在环岛路径规划中结合两者的优势。\par
-    2018年，Pong等人提出了结合有模型和无模型的一种训练方法\cite{TDM}。
-    还有很多相关论文！！
-    有模型无模型的论文Temporal Difference Models: Model-Free Deep RL for Model-Based Control，注意看看arxiv底下的引用
+    2017年，Bansal等人提出MBMF算法（Model-Based Priors for Model-Free RL）\cite{MBMF}，首先训练出系统的动力学特性，作为一个函数$s_{t+1} = f(s_t, a)$，把这个模型方程$f$作为后续无模型强化学习训练的预先输入，相当于初始值比较准确。\par
+    2018年，Pong等人提出了结合有模型和无模型的一种训练方法时许差异模型（temporal-difference model, TDM）\cite{TDM}。之前的一些论文通过目标条件价值函数（goal-conditioned value function）$Q(s, a, s_g)$的定义，将无模型强化学习（仅学习$Q$值）和有模型强化学习（需要学习状态转移概率分布$p(s_{t+1}|s_t, a)$）被联系在了一起。其中，$s_g$表示某一目标状态。如果定义奖励函数$r(s_t, a, s_{t+1}, s_g) = -D(s_{t+1}, s_g)$，其中，$D$为一个表示状态间距离的函数，那么$Q(s, a, s_g)$最终将收敛于$-D(s_{t+1}, s_g)$。$Q(s, a, s_g)$表示的含义是就是从$s$转移到$s_g$的能力，因此包含了模型的信息，但同时，这个方法没有显式地去学习状态转移函数，无模型强化学习方法能够用的地方它也都能用。TDM的贡献在于引入了时序差异的目标条件价值函数，$Q(s, a, s_g, \tau)$，表示在$\tau$步之内，状态$s$采取行动$a$后，再通过某种方式转移到$s_g$的能力。因此，$Q$的定义（和更新方法）为
+    \begin{align}
+      Q(s_t, a_t, s_g, \tau) = \mathbb{E}_{s_{t+1} \sim s_t, a}[-D(s_{t+1}, s_g)1[\tau = 0] + \max_a Q(s_{t+1}, a, s_g, \tau - 1)1[\tau \neq 0]]
+    \end{align}
+    \par 和传统强化学习对$G$的定义\eqref{eq:G}不同，TDM算法不采用折扣$\gamma$。$\tau$的引入也让TDM算法能够进行稀疏采样，每隔$K$个时间才对奖励$r$进行一次累积，从而加快训练速度。
+    \begin{align}
+    \begin{aligned}
+      & a_t = \argmax_{a_{t:K:t+T}, s_{t:K:t+T}} \sum_{i = t, t+K, ..., t+T} r(s_i, a_i)\\
+      \text{subject to } &Q(s_i, a_i, s_{i+K}, K-1) = 0 \text{,   } \forall i \in \{t, t+K, ..., t+T-K\} 
+      \label{eq:TDM_k}
+    \end{aligned}
+    \end{align}
+    \par $K$最终可以扩大到$T$，也就是，不再考虑过程中其余时刻的奖励函数值，直接用$T$时刻的奖励函数值作为总价值。这在一些路径规划问题中是非常有用的（例如，奖励函数非常稀疏，只有在最终到达目的地时才出现一个大的奖励）。
+    \par 注意到\eqref{eq:TDM_k}是一个有限制的优化问题，为了避免解这样一个问题，TDM的论文在实际操作中采用了一些构造$Q$函数形式的技巧，具体内容参加论文\cite{TDM}，不在此详细讨论。不过，TDM的一个限制是它只适用于结果导向的问题，例如一个任务的目标是到达一个地点，而收获的奖励和到达这个点过程中的路径细节无关。因为只有这样，才可以采用稀疏采样获取的奖励值作为总的奖励，来优化$a_t$的选择。
   
   \subsection{多任务分层强化学习}
     多任务和分层强化学习
     Automated vehicle overtaking based on a multiple-goal reinforcement learning framework
+    
+  \subsection{强化学习和模型预测控制的对比}
+  模型预测控制\cite{MPC}（MPC, model-predictive control）是一种最优控制的算法，主要利用模型对确定性离散时间系统进行控制。MPC和RL有许多相似之处。MPC和RL的主要区别在于，RL会``学习''一个模型或者不显式地利用模型，而MPC则利用模型进行预测，从而进行最优化\cite{MPC_VS_RL}。\par
+  MPC的方法如下：
+  \par 在RL的研究中，有不少利用/结合MPC的算法（在这里找一些！！我的论文中本来就有一些，pieter abbeel也有一些无人机的论文！！）。
   
   \subsection{强化学习在自动驾驶领域的应用}
     目前对于自动驾驶在环岛环境下的路径规划这一特定问题，尚没有采用强化学习解决的方案。2018年，Zyner等人提出了利用RNN估计环岛车辆目的地的方法\cite{RNN_predict_driver_intention}。他们的工作采用了深度学习的算法，但是只是涉及预估，并没有涉及具体策略的制定。\par

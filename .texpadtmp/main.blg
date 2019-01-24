@@ -122,45 +122,45 @@ Warning--empty year in action-conditional_prediction
 Warning--empty year in action-conditional_prediction
 Warning--empty year in I2A
 Warning--empty year in I2A
-You've used 38 entries,
+You've used 42 entries,
             3363 wiz_defined-function locations,
-            994 strings with 13736 characters,
-and the built_in function-call counts, 332254 in all, are:
-= -- 34614
-> -- 34937
-< -- 34644
-+ -- 11099
-- -- 343
-* -- 1338
-:= -- 35891
-add.period$ -- 108
-call.type$ -- 38
-change.case$ -- 77
-chr.to.int$ -- 10205
-cite$ -- 53
-duplicate$ -- 784
-empty$ -- 2324
-format.name$ -- 637
-if$ -- 96228
+            1017 strings with 14420 characters,
+and the built_in function-call counts, 362354 in all, are:
+= -- 37755
+> -- 38063
+< -- 37749
++ -- 12107
+- -- 378
+* -- 1476
+:= -- 39165
+add.period$ -- 120
+call.type$ -- 42
+change.case$ -- 85
+chr.to.int$ -- 11116
+cite$ -- 57
+duplicate$ -- 865
+empty$ -- 2573
+format.name$ -- 700
+if$ -- 104936
 int.to.chr$ -- 1
-int.to.str$ -- 39
+int.to.str$ -- 43
 missing$ -- 0
-newline$ -- 199
-num.names$ -- 109
-pop$ -- 15063
+newline$ -- 219
+num.names$ -- 121
+pop$ -- 16352
 preamble$ -- 1
-purify$ -- 38
+purify$ -- 42
 quote$ -- 0
-skip$ -- 40338
+skip$ -- 44022
 stack$ -- 0
-substring$ -- 11071
-swap$ -- 107
-text.length$ -- 400
+substring$ -- 12072
+swap$ -- 121
+text.length$ -- 440
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 507
+type$ -- 561
 warning$ -- 13
-while$ -- 502
+while$ -- 554
 width$ -- 0
-write$ -- 546
+write$ -- 605
 (There were 21 error messages)

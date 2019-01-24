@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.11.19)  17 JAN 2019 16:32
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.11.19)  24 JAN 2019 10:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2227,43 +2227,47 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <11.04124> not available
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 11.04124pt on input line 106.
  [3] [4]
-Package hyperref Info: bookmark level for unknown equation defaults to 0 on input line 132.
+Package hyperref Info: bookmark level for unknown equation defaults to 0 on input line 128.
  [5] [6]
-Underfull \hbox (badness 1210) in paragraph at lines 158--158
+Underfull \hbox (badness 1210) in paragraph at lines 162--162
 []\EU1/SongtiSC(0)/m/n/12.045 在 深 度 强 化 学 习 中，|  比 较 著 名 的 算 法 有 \T1/ntxtlf/m/n/12.045 DDPG$[]$\EU1/SongtiSC(0)/m/n/12.045 ，| \T1/ntxtlf/m/n/12.045 A2C$[]$\EU1/SongtiSC(0)/m/n/12.045 ，| \T1/ntxtlf/m/n/12.045 TRPO$[]$\EU1/SongtiSC(0)/m/n/12.045 ，|
  []
 
 [7] [8]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 183.
+(Font)              scaled to size 6.0pt on input line 187.
  [9] [10]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.045pt on input line 217.
+(Font)              scaled to size 12.045pt on input line 221.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 217.
+(Font)              scaled to size 8.0pt on input line 221.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.0pt on input line 217.
+(Font)              scaled to size 6.0pt on input line 221.
 File: figures/I2A.pdf Graphic file (type QTm)
  <use  "figures/I2A.pdf" >
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 11.04124pt on input line 228.
+(Font)              scaled to size 11.04124pt on input line 232.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.06006pt on input line 228.
+(Font)              scaled to size 8.06006pt on input line 232.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.07271pt on input line 228.
- [11] [12]
+(Font)              scaled to size 6.07271pt on input line 232.
+ [11] [12] [13]
 File: figures/game_theory_structure.png Graphic file (type QTm)
  <use  "figures/game_theory_structure.png" >
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.06006pt on input line 251.
- [13] [14]
+(Font)              scaled to size 8.06006pt on input line 274.
+ [14] [15]
 File: figures/exp_result.pdf Graphic file (type QTm)
  <use  "figures/exp_result.pdf" >
-Overfull \hbox (11.20049pt too wide) in paragraph at lines 281--282
+Overfull \hbox (11.20049pt too wide) in paragraph at lines 304--305
  [][] 
  []
 
-[15] [16] (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/main.bbl
+[16]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[17] [18] (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/main.bbl
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.53937pt on input line 1.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
@@ -2281,28 +2285,32 @@ Underfull \hbox (badness 1546) in paragraph at lines 88--91
 []\T1/ntxtlf/m/n/10.53937 Li Y.  Deep Re-in-force-ment Learn-ing: An Overview[J].  arXiv e-prints, 2017:
  []
 
-[17
+[19
 
 
 
-] [18])
+] [20])
 \tf@thm=\write5
 \openout5 = `main.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 364.
- [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 364.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 387.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 387.
  (/Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 364.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 364.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 387.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 387.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 34992 strings out of 493591
- 649774 string characters out of 6143545
- 658087 words of memory out of 5000000
- 37877 multiletter control sequences out of 15000+600000
+ 35027 strings out of 493591
+ 651170 string characters out of 6143545
+ 658418 words of memory out of 5000000
+ 37912 multiletter control sequences out of 15000+600000
  106970 words of font info for 163 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  70i,18n,96p,10436b,657s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/main.pdf (22 pages).
+Output written on /Users/WangRui/Aray_THU/Thesis_undergrad/thesis_proposal/proposal_report/.texpadtmp/main.pdf (24 pages).
