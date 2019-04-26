@@ -1,3 +1,12 @@
+# Rui Wang's Undergraduate Thesis
+## Skill Reusable Hierarchical Reinforcement Learning with Intrinsic Guidance
+
+**Coauthors: Siyuan Li, Chongjie Zhang @ [IIIS MIG](http://iiis.tsinghua.edu.cn/~zhang/), Tsinghua University**
+
+## Acknowledgement
+
+Below is the forked `README` from ThuThesis. I thank ThuThesis and its development team for making this LaTeX template possible. I won't be able to graduate (at least comfortably) without their contribution.
+
 [![Build Status](https://travis-ci.org/xueruini/thuthesis.svg?branch=master)](https://travis-ci.org/xueruini/thuthesis) [![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # What's ThuThesis?
