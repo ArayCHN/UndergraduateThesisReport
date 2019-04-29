@@ -24,7 +24,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{thuthesis}
-[2018/05/17 5.4.5 Tsinghua University Thesis Template]
+%[2018/05/17 5.4.5 Tsinghua University Thesis Template]
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
 \def\version{5.4.5}
@@ -324,8 +324,8 @@
     nameformat=\relax,
     numberformat=\relax,
     titleformat=\thu@chapter@titleformat,
-    lofskip=0pt,
-    lotskip=0pt,
+%    lofskip=0pt,
+%    lotskip=0pt,
   },
   section={
     afterindent=true,
@@ -535,6 +535,7 @@
     \vskip2cm
     {\sihao\thu@postdoctor@date@title\hskip1em\underline\thu@postdoctordate}
   \end{center}}
+% 下面是封面的题目部分格式！
 \newcommand{\thu@first@titlepage@other}{
   \begin{center}
     \vspace*{-1.6cm}
@@ -545,9 +546,11 @@
       {\ifcsname lishu\endcsname\yihao\lishu\ziju{0.5}\thu@schoolname\else\includegraphics{tsinghua}\fi}
       \par\vskip1.5cm
       {\xiaochu\heiti\ziju{0.5}\textbf\thu@bachelor@subtitle}
-      \vskip2.2cm\hskip0.8cm
+      \vskip0.2cm\hskip0.1cm
+      \xiaochu\heiti\ziju{0.3}\textbf\thu@bachelor@proposaltitle
+      \vskip2.2cm%\hskip0.8cm
+      \parbox[t]{15cm}{\centering
       \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
-      \parbox[t]{12cm}{%
       \ignorespaces\yihao[1.51]%
       \renewcommand{\CJKunderlinebasesep}{0.25cm}%
       \renewcommand{\ULthickness}{1.3pt}%
@@ -556,7 +559,8 @@
       \else
         \def\CJKunderlinecolor{\color{black}}%
       \fi
-      \CJKunderline*{\thu@ctitle}}%
+      %\CJKunderline*{\thu@ctitle}% 注释掉以后，改用下一句话，标题没有下划线
+      \thu@ctitle}
       \vskip1.3cm
     \else
       \vskip0.8cm
@@ -705,25 +709,26 @@
       \sanhao\bfseries\sffamily\thu@edate
     \end{center}}
   \end{center}}
-\newcommand{\thu@authorization@mk}{%
-  \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
-  \begin{center}\erhao\heiti\thu@authtitle\end{center}
-  \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
-  \thu@authorization\par
-  \textbf{\thu@authorizationaddon}\par
-  \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
-  \ifthu@bachelor
-    \indent\mbox{\thu@authorsig\thu@underline\relax%
-    \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
-  \else
-    \begingroup
-      \parindent0pt\xiaosi
-      \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
-                     \thu@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
-      \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
-                     \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}
-    \endgroup
-  \fi}
+% 关于学位论文使用授权的说明
+%\newcommand{\thu@authorization@mk}{%
+%  \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
+%  \begin{center}\erhao\heiti\thu@authtitle\end{center}
+%  \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
+%  \thu@authorization\par
+%  \textbf{\thu@authorizationaddon}\par
+%  \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
+%  \ifthu@bachelor
+%    \indent\mbox{\thu@authorsig\thu@underline\relax%
+%    \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
+%  \else
+%    \begingroup
+%      \parindent0pt\xiaosi
+%      \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
+%                     \thu@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
+%      \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
+%                     \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}
+%    \endgroup
+%  \fi}
 \def\makecover{%
   \thu@setup@pdfinfo\thu@makecover}
 \def\thu@setup@pdfinfo{%
@@ -746,7 +751,8 @@
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
       \IfNoValueTF{#1}{%
-        \ifthu@bachelor\thu@authorization@mk\else%
+        %\ifthu@bachelor \thu@authorization@mk\else%
+        \ifthu@bachelor \relax \else%
           \begin{list}{}{%
             \topsep\z@%
             \listparindent\parindent%
@@ -762,7 +768,7 @@
     \fi
   \end{titlepage}
   \normalsize
-  \thu@makeabstract
+  %\thu@makeabstract
   \let\@tabular\thu@tabular}
 \newbox\thu@kw
 \newcommand\thu@put@keywords[2]{%
@@ -805,25 +811,25 @@
   labelsep*=0.5cm,
   itemindent=0pt,
 }
-\NewDocumentEnvironment{acknowledgement}{o}{%
-    \thu@chapter*{\thu@ackname}
-  }
-  {
-    \ifthu@postdoctor\relax\else%
-      \IfNoValueTF{#1}{%
-        \thu@chapter*{\thu@declarename}
-        \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
-        {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
-         \thu@backdate\thu@underline[2.5cm]\relax}%
-      }{%
-        \includepdf[pagecommand={\thispagestyle{thu@empty}%
-          \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
-        }]{#1}%
-      }%
-    \fi
-  }
-\let\ack\acknowledgement
-\let\endack\endacknowledgement
+%\NewDocumentEnvironment{acknowledgement}{o}{%
+%    \thu@chapter*{\thu@ackname}
+%  }
+%  {
+%    \ifthu@postdoctor\relax\else%
+%      \IfNoValueTF{#1}{%
+%        \thu@chapter*{\thu@declarename}
+%        \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
+%        {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
+%         \thu@backdate\thu@underline[2.5cm]\relax}%
+%      }{%
+%        \includepdf[pagecommand={\thispagestyle{thu@empty}%
+%          \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
+%        }]{#1}%
+%      }%
+%    \fi
+%  }
+%\let\ack\acknowledgement
+%\let\endack\endacknowledgement
 \def\thu@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
   \let\oldnumberline\numberline
   \def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}

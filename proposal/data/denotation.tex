@@ -1,0 +1,29 @@
+\begin{denotation}[3cm]
+\item[$s$] 状态（任意状态）
+\item[$a$] 行动（任意行动）
+\item[$\pi$] 策略
+\item[$\pi(s)$] 策略函数
+\item[$\pi(a|s)$] 策略在状态$s$下采取行动$a$的概率
+\item[$r$] 奖励
+\item[$r(s, a)$] 在状态$s$下采取行动$a$获得的奖励
+\item[$G_t$] 时间$t$之后的总奖励
+\item[$v(s)$] 状态$s$的价值函数
+\item[$q_\pi(s, a)$] 在策略$\pi$下，在状态$s$下采取行动$a$的价值
+\item[$V(s)$] 状态$s$的价值函数的估计值
+\item[$Q(s, a)$] 状态$s$，动作$a$的价值的估计值
+\item[$p(s'|s, a)$] 在状态$s$采取动作$a$，状态转移到$s'$的概率
+\item[$p(s', r|s, a)$] 在状态$s$采取动作$a$，状态转移到$s'$并且获得奖励$r$的概率
+\item[$\pi(a|s, \theta)$] 策略函数的参数是$\theta$，在状态$s$下采取行动$a$的概率
+\item[$\pi_\theta$] 策略函数，其参数为$\theta$
+\item[$\bigtriangledown \pi(a|s, \theta)$] 策略函数的参数是$\theta$，在状态$s$下采取行动$a$的概率对$\theta$的导数
+\item[$\gamma$] 总奖励$G_t$计算时，对于后续$R_{t+t_i}$的折扣率
+\item[$\rho$] 重要性采样比例（importance-sampling ratio）
+\item[$\delta_t$] 时序差异误差（TD error）
+\item[RL] 强化学习（reinforcement learning）
+\item[MPC] 模型预测控制（model-predictive control）
+\item[TD] 时序差异（temporal-difference）
+\item[MDP] 马尔可夫过程 (Markov Decision Process)
+\item[POMDP] 部分可观测的马尔可夫过程 (Partially Observable Markov Decision Process)
+\item[DQN] 深度Q-学习神经网络（Deep Q Network）
+\item[DRQN] 深度循环Q-学习神经网络（Deep Recurrent Q Network）
+\end{denotation}

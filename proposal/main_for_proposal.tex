@@ -1,0 +1,394 @@
+\documentclass[degree=bachelor, tocarialchapter, pifootnote]{thuthesis}
+% 选项
+%   degree=[bachelor|master|doctor|postdoctor], % 必选，学位类型
+%   secret,                % 可选（默认：关闭），是否有密级
+%   tocarialchapter,       % 可选（默认：关闭），章目录中使用黑体（这项表示同时打开下面两项）
+%   tocarialchapterentry,  % 可选（默认：关闭），单独控制章标题在目录中使用黑体
+%   tocarialchapterpage,   % 可选（默认：关闭），单独控制章页码在目录中使用黑体
+%   pifootnote,            % 可选（默认：关闭），页脚编号采用 pifont 字体符号，建议打开
+
+% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
+\usepackage{thuthesis}
+
+% 下面的包让argmax之类的，_{}的东西显示在argmax正下方
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+% 定义所有的图片文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+% 可以在这里修改配置文件中的定义。导言区可以使用中文。
+\def\myname{王芮}
+
+\begin{document}
+
+%%% 封面部分
+\frontmatter
+\input{data/cover}
+% 如果使用授权说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
+% \makecover[scan-auth.pdf]
+\makecover
+
+%% 目录
+% 设置目录层级，三级小标题全部显示
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\tableofcontents
+
+%% 符号对照表
+\input{data/denotation}
+
+
+%%% 正文部分
+\mainmatter
+%\include{data/chap01}
+%\include{data/chap02}
+\renewcommand\thesection{\arabic {section}} % use this command to disable chapter numbering
+
+\section{研究课题介绍}
+  \subsection{选题背景及意义}
+    \subsubsection{选题背景}
+      自动驾驶成为近年来人工智能领域发展最迅猛的技术之一，Alphabet旗下的子公司Waymo为代表的一批自动驾驶企业已经让车辆上路\cite{waymo}。不过在复杂场景下，这些车辆的行为仍然不够智能，需要人类驾驶员的干预。\par
+      自Deepmind的科学家在$Nature$发文提出深度强化学习在游戏中的应用后\cite{nature2015}，强化学习作为人工智能的下一个发展大方向，也在2015-2018年迎来了爆发点。然而，尽管强化学习在棋牌等游戏中获得了巨大的成功，目前的强化学习在自动驾驶上仍没有成熟的应用。\par
+      把强化学习应用于自动驾驶是一个极其自然的想法。自动驾驶的应用场景本质上是移动机器人的问题，而强化学习应用于机器人更是由来已久\cite{RL_in_robotics}\cite{Model-Based_RL_robotics}\cite{DRL_for_driving}。因此，在这个项目中我们考虑了一个较为复杂的自动驾驶场景——环岛场景，希望应用强化学习框架，设计出适合于自动驾驶在此类场景中决策的算法。
+    
+    \subsubsection{自动驾驶的问题}
+      把强化学习应用于自动驾驶是一个自然的想法，我们可以利用强化学习进行决策，由此构建一个自动驾驶的框架\cite{DRL_for_driving}。\par
+      在图\ref{fig:self-driving_overview}中，我们绘制了一个框架的示意图。可以看出，决策（decision-making, planning）是自动驾驶的``大脑''，是在不同场景中处理问题的核心算法。\par
+      \begin{figure}[H] % use float package if you want it here
+        \centering
+        \includegraphics[scale=0.5]{driving_overview}
+        \caption{自动驾驶的基本框架：三个回路，从左到右依次是感知，决策，和控制}
+        \label{fig:self-driving_overview}
+      \end{figure}
+      事实上，感知算法和控制算法目前都已经做的相应较为成熟，并且由于其一般性更强，因此解决得比较好。相比之下，自动驾驶的决策目前仍然依赖于人工基于规则编码，缺乏泛化的能力。环岛路径规划涉及到与其他智能体的高频交互，例如超车换道，路权退让，环岛路径汇入汇出等，是自动驾驶的一个复杂场景。
+      
+    \subsubsection{强化学习的问题}
+      强化学习是一种强人工智能范式。它目前的应用场景集中于虚拟游戏和机器人领域，其中，能够在产品中得到成熟使用的只有游戏环境。当前的强化学习算法存在以下问题：
+      \begin{itemize}
+        \item 样本利用率非常低，需要进行大量训练。
+        \item 对于环境的过拟合，导致已习得策略的迁移困难。
+        \item 真实环境的不稳定性，导致任务无法识别，习得策略应用困难。
+      \end{itemize}
+      \par 因此，我们希望通过针对环岛路径规划这一具体问题的研究，对强化学习的应用和如何解决这些缺点进行一些探索。具体的，我们将从结合有模型与无模型强化学习的角度，和分层、多任务强化学习的角度，探究提升强化学习\textit{样本利用率}和\textit{解决复杂任务能力}的方法。在后续部分我们会详细阐释我们采用的方法。
+  
+  \subsection{场景描述}
+    在本节，我们会对环岛路径规划问题的具体实验设计进行介绍。\par
+    我们在仿真环境中建设双车道环岛。分为三进口、四进口两类；每一类场景有根据车流密度1辆/5s和1辆/20s（新车进入环岛的频率）分为两种情况，这样一种形成四种实验场景，如示意图\ref{fig:experiments}所示。
+      \begin{figure}[H] % use float package if you want it here
+        \centering
+        \includegraphics[scale=0.4]{experiments_design}
+        \caption{四个实验场景，(A) 三进口，1辆/20s (B) 四进口，1辆/20s (C) 三进口，1辆/5s (D) 四进口，1辆/5s}
+        \label{fig:experiments}
+      \end{figure}
+    \par 所有其他车辆都遵循基于规则的驾驶方案进行驾驶。
+    \par 之所以选择四个实验场景，是基于我们对算法的设计。我们将有三套不同的算法在实验环境中进行对比，具体对比内容将在后面介绍。
+    \par 具体任务类似于一个最优控制问题。我们对车辆的控制量$u$是一个二维向量，第一维代表刹车/油门强度，第二维表示是否变道。
+    $$ u = [u_1\; u_2]^T,\: \space u_1 \in [-1, 1],\: \space u_2 \in {0, 1} $$
+    \par 控制目标是让车辆尽快、稳定地无事故地通过环岛。具体如何量化这些指标，取决于我们如何设计强化学习的奖励函数。初始条件是车辆以一个定速度到达环岛入口。和最优控制的区别在于，我们无法用一个简单的微分方程表达车辆的状态方程，因而这个问题也不再是简单的最优控制问题。在理论基础一节，我们会介绍强化学习如何去表达一个复杂环境的动态特性。
+
+  \subsection{研究方案}
+    实验平台采用SUMO\cite{SUMO}+Webots\cite{Webots}进行搭建。SUMO负责生成交通流，而Webots则用于构建车辆模型。\par
+    我们采用强化学习范式来解决环岛路径规划问题。我们把算法研究分为三个阶段。
+    \begin{enumerate}
+      \item 第I阶段，利用现有算法，解决部分可观测的马尔可夫问题的强化学习。
+      \item 第II阶段，结合无模型和基于模型的强化学习算法，用于提升采样效率。
+      \item 第III阶段，多任务强化学习框架，具体包括复杂任务分解、相似子任务识别、知识共享、子任务策略重组的方法。
+    \end{enumerate}
+    \par 这三个阶段的算法将会和之前介绍的四个场景进行结合，从而用于检验算法效果，如表\ref{table:experiments}所示。
+    \begin{table}[h!]
+    \centering
+    \caption{实验设计}
+    \label{table:experiments}
+    \begin{tabular}[c]{|c|c|c|c|c|}
+    \hline
+    \textbf{实验场景} & \textbf{I和II对比} & \textbf{I和III对比} & \textbf{II和III对比}\\
+    \hline \hline
+    A   & 训练时间 & 训练时间 & $\times$ \\ \hline
+    B   & 获得奖励值 & 获得奖励值 & 训练时间 \\ \hline
+    C   & 获得奖励值 & 获得奖励值 & 训练时间 \\ \hline
+    D   & $\times$ & $\times$ & 获得奖励值 \\
+    \hline
+    \end{tabular}
+    \end{table}
+
+\section{理论基础}
+  由于我们的问题描述是一个比较典型化的强化学习问题，输入是由仿真环境提供的低维度抽象信息，而输出是在$[-1, 1]$之间的一个值，因此模型本身比较简单。仿真环境虽然提供了较为具体和复杂的场景，但是在强化学习理论中，这都作为``环境''被理解，而暂不考虑``环境''内部的动态特性问题。我们在下一阶段的工作中会考虑将模型进行一定程度的拓展，更多地囊括进``环境''本身的特性，但也不会超脱出典型强化学习模型的范畴。因此，我们在理论部分将会首先对现有的强化学习理论进行一个总结，再拓展到强化学习在自动驾驶问题中的运用。
+  \subsection{强化学习文献综述}
+    在强化学习的著作\textit{Reinforcement Learning An Introduction}\cite{Sutton_book}中，Sutton对强化学习的理论进行了详尽的讨论。在这里，我们对强化学习的发展做一个精炼的综述，并从契合课题的框架进行一些讨论。另外，我们还将详细讨论强化学习的一些最新进展和它们在本课题中的应用。
+    \subsubsection{问题描述}
+      Sutton在1988年首次提出强化学习问题的一般描述\cite{Sutton_problem_formulation}。诸如学习走路、学习下棋的一般性问题都可以归为强化学习的问题。强化学习问题的四个基本元素是：一个策略（policy），一个奖励函数（reward），一个价值函数（value function）和一个环境模型（model）。例如，自动驾驶问题中，智能体面对它观察到的一个周边车流的\textbf{环境}，会给出一个输出，例如以某一加速度加速。在采取这一行动之后，智能体会得到一个\textbf{奖励}（可能有延迟），例如它到达了目的地，我们给它价值$100$的奖励。而如何决定加速度，就是我们想要智能体去学习的\textbf{策略}。在制定策略的过程中，智能体会去试图衡量目前所处状态的\textbf{价值}（价值函数），例如周围车辆非常拥堵，这个状态的价值就比较低，是我们希望避免进入的状态；而车前非常空旷则可能是我们赋予价值较高，希望进入的状态。\par
+      在这里，我们将用一些研究者所默认的记号对我们的问题进行数学抽象。假设下标$t$表示任一时刻，而$S_t$代表某一时刻的状态，$A_t$表示智能体采取的行动，$\pi$表示智能体的策略，$R_t$表示智能体某一步获得的奖励。我们的目标是让智能体通过学习，获得尽可能大的总奖励，记为$G$。有时我们可以定义
+      $$ G = \sum_{t} R_t $$
+      但是多数时候我们会考虑加入一个折扣$\gamma$($0 < \gamma < 1$)，认为一个行为直接获得的奖励对它更有意义，而很久以后获得的奖励与这个行为的关联越来越小，记为
+      \begin{align}
+        G_{t_0} = \sum_{t = t0}^{t_n} \gamma^{t-t_0} R_t
+        \label{eq:G}
+      \end{align}
+      \par 其中$t_n$要么是一个过程因为某种原因终止的时刻，要么是$\infty$。\par
+      强化学习解决的是一个马尔可夫决策过程（MDP）\cite{Bellman_MDP}。在MDP中，$S_{t+1}$只取决于$S_t$和$A_t$，而不受到之前历史过程的影响。也就是说，$S_t$状态本身就包含了它所有的历史对后续过程的影响。在这个假设下，我们可以这样表达强化学习的目标\cite{DRL_for_driving}：记$v^{\pi}(s)$为状态$s$的价值函数。我们有$$ v^{\pi}(s) = E[G_{t_0} | S_{t_0} = s, \pi(s) ] $$
+      $$ J(\pi) = \max_{\pi} E(v^{\pi}(s)) $$
+      $$ \pi^*(s) = \argmax_{\pi} J(\pi) $$
+    \par 强化学习的终极目标就是找到这个$\pi^*(s)$。Bellman在\textit{Dynamic Programming}一书中提出了著名的Bellman最优性等式\cite{Bellman_DP}
+    \begin{align}
+       v_*(s) = \max_{a} \sum_{s', r}p(s', r | s, a)[r + \gamma v_*(s')]
+    \end{align}
+    \par 同时，我们用$q(s, a)$表示在状态$s$下采取行动$a$可以获得的价值，那么Bellman最优性等式又可以表示为
+    \begin{align}
+       q_*(s, a) = \sum_{s', r}p(s', r | s, a)[r + \gamma \max_{a'} q_*(s', a')]
+    \end{align}
+
+    \par 这两个表达式在后续的推导中会非常有用。
+    
+    \subsubsection{典型算法综述}
+      强化学习包含许多的算法，也有很多分类方法。其中，有一大类是列表方法，可以理解为是把$v(s)$保存起来的方法；另一大类是近似方法，也就是用一个函数去近似$v(s)$\cite{Sutton_book}。其中，第二类方法在近年来使用最多，神经网络使得函数可以近似非常复杂的映射关系，也让许多复杂问题通过强化学习得到了解决。\par
+      列表式的强化学习方法包括动态规划\cite{Bellman_DP}，蒙特卡罗方法，时序差分学习（Temporal-difference learning，简称TD方法，包括Sarsa\cite{Sutton_book}, Q-learning\cite{Q_learning}）\cite{Sutton_problem_formulation}，多步自助法\cite{n_step_bootstrapping}（n-step bootstrapping），Dyna规划方法\cite{Sutton_book}等。\par
+      TD方法是列表法强化学习的核心。这一族的算法有许多衍生版本，但其核心是利用经验不断更新价值函数$V(s)$，直至其收敛。更新的基本模式为
+      $$ V(s) \gets V(s) + \alpha [r + V(s') - V(s)] $$
+      \par 其中，$\alpha$表示函数更新的步幅。而当我们用$Q(s, a)$去替代$V(s)$的时候，算法就成为了Sarsa（state, action, reward, state, action \cite{deepRL_overview}）：
+      $$ Q(s, a) \gets Q(s, a) + \alpha [r + \gamma Q(s', a') - Q(s, a)] $$
+      \par 注意这里，$a'$是依据当前策略$\pi$采取的行动。而当我们把$Q(s', a')$替换成$\max_{a'} Q(s', a')$的时候，算法就成为了Q-学习法（Q-learning）：
+      \begin{align}
+      \label{eq:Q_learning}
+        Q(s, a) \gets Q(s, a) + \alpha [r + \gamma \max_{a'} Q(s', a') - Q(s, a)]
+      \end{align}
+      \par 在这里，我们发现Sarsa和Q-学习的重要区别：Sarsa是同策略学习的（on-policy），估算$Q$值时采用的策略就是当前策略，而Q-学习是采用异策略（off-policy）学习的，估算$Q$值时采用的策略不是当前策略，而是最优策略。同策略与异策略也作为强化学习中的两种并行方法，本身并不改变算法架构，但是会影响收敛性等特性。许多算法都可以在这个维度上进行变异。\par
+      注意到在以上的算法中，我们每一步都对$Q$或者$V$进行更新。在多步骤自助法（n-step bootstrapping）中，我们则将更新进行延迟。例如，某一行动结束，$n$步过后，我们才观察这一行为造成的影响，并且对它的值进行更新，其更新方式如下
+      $$ V(S_t) \gets V(S_t) + \alpha(G_{t:t+n} - V(S_t)) $$
+      \par 其中，$G_{t:t+n} = \sum_{i = 1}^{n}\gamma^{i-1}R_{t+i} + \gamma^n V(S_{t+n})$
+      \par Sutton等人指出，多步骤自助法强化学习在训练时的表现往往比蒙特卡罗和TD方法都要更优\cite{Sutton_book}。
+      \par 归功于深度强化学习的提出\cite{atari_2013}\cite{deepRL_overview}，近似函数的方法在近年来得到了极大的发展。近似函数有两种基本思路。第一种，是用某一类型的函数去近似状态的价值函数$v(s)$，从而帮助智能体根据不同的$v$采取不同的策略。第二种思路是跳过$v$的计算，而直接使用函数去近似一个策略$\pi$。在第二种思路中，$\pi(s)$的输出将直接是智能体应该采取的行为（或者行为的一个概率分布）。这种方法被称为``策略优化''，围绕策略优化问题衍生出一系列的策略梯度求解方法，成为近年来强化学习的热点研究方向之一。进一步的，在策略优化问题中，如果我们同时对价值函数$v(s)$进行近似和更新，那么可以得到一类框架，我们称之为actor-critic架构\cite{Sutton_book}。在后续的篇目中，我们会对此进行具体介绍。\par
+      在深度强化学习中，比较著名的算法有DDPG\cite{DDPG}，A2C\cite{A3C}，TRPO\cite{TRPO}，ACKTR\cite{ACKTR}，ACER\cite{ACER}，PPO\cite{PPO}等。这些算法全部忽略了环境的模型，或者环境模型是学习得到的（TRPO）。还有一类算法，其中的环境模型是提前设计建模得到的而非习得，其中有代表性的就是AlphaZero\cite{AlphaZero}。这类算法也是我们想探究的方向——是否通过提前建模，能够让自动驾驶车辆在环岛这类复杂环境中有更好的表现？在接下来的章节中，我们会详细介绍其中有代表性，并且在我们的场景下易于使用的算法。\par
+      另外，在对价值函数进行优化时（梯度下降），不同的算法可能带来不同的结果。A3C采用了RMSProp算法\cite{RMSProp}，我们往往还可以选择随机梯度下降法（SGD），带动量的随机梯度下降法\cite{SGD_momentum}等方法，在算法设计时需要进行尝试和选择。Sutton在书中对此进行了讨论\cite{Sutton_book}。此外，Ruder在2016的一篇综述文中对各种梯度下降算法进行了详尽的探讨\cite{GD_overview}。
+
+      
+    \subsubsection{无模型的深度强化学习}
+      Mnih等人在2013年首度提出深度Q-网络（deep Q-network，简称DQN）\cite{atari_2013}，2015年，他们的另一篇论文同样描述了DQN\cite{nature2015}，激发了一轮深度神经网络与强化学习结合的热潮\cite{deepRL_overview}。DQN的基本思路是创造一个很一般的端到端的网络$Q(s, a | \theta)$，其中$\theta$是这个网络的参数。例如对于一个游戏，网络的输入直接就是未处理的图像，输出直接就是在某个阶段，游戏中的动作对应的价值。在传统Q-learning的框架下，DQN在每一步更新$q(s, a)$值的时候，不是直接使用\eqref{eq:Q_learning}，而是利用梯度下降法去更新网络$Q$的参数$\theta$，使得$Q$估值总损失最小
+      \begin{align*}
+        \bigtriangledown_{\theta_i}Loss(\theta_i) = E_{s, a, s'}[(r+\gamma \max_{a'}Q(s', a'|\theta_{i-1}) - Q(s, a|\theta_i))\bigtriangledown_{\theta_i}Q(s, a|\theta_i)]
+      \end{align*}
+      这里DQN的网络结构参考了Hinton等人提出的AlexNet\cite{AlexNet}，也就是典型的卷积神经网络（CNN）结构。DQN的最大贡献在于，由于使用了经验回放的方法，DQN可以收敛，从而使得深度神经网络在强化学习中的应用成为了可能。由于神经网络的高度非线性，DQN得以模拟足够复杂的场景。DQN在Atari系列游戏中取得了突破性的进展，甚至在一些游戏中超越了人类专家的水平。\par
+      不过由于我们想探究的问题更多地涉及到低维度的传感器信息输入，而不是高维度的图像直接输入，因此DQN一类的方法对我们的帮助并不是很大。而策略梯度方法则对我们有很大的借鉴意义，因此我们也将集中讨论这一类的方法。\par
+      前面我们提到，在策略优化问题中，有一类架构被称为actor-critic架构。Mnih等人在2016年提出的A3C（asynchronous advantage actor-critic）算法\cite{A3C}成为应用actor-critic架构的经典案例。A3C算法同时维护一个策略函数$\pi(a|s; \theta)$和一个价值函数的估计$V(s; \theta_v )$，这两个函数均为卷积神经网络CNN，并且两个网络除了输出层以外的层均是共享的。其中， $\pi(a|s; \theta)$称为actor，而$V(s; \theta_v )$称为critic。actor-critic会计算一个``优势''，定义为$\delta = R + \gamma V(S'; \theta_v) - V(S; \theta_v)$\cite{Sutton_book}。A3C借鉴了多步骤自助法的思路（设步数为$k$），在计算优势时，变异为$\delta_t = \sum_{i = 0}^{k - 1}\gamma^i r_{t+i} + \gamma^k V(S_{t+k}; \theta_v) - V(S; \theta_v)$。每一步，我们依然对$\theta$和$\theta_v$进行更新，梯度的计算方法如下（注意计算梯度以后，还需要选择一个梯度下降方法对$\theta$和$\theta_v$进行更新）
+      \begin{align}
+      \label{eq:A3C_gradient1}
+          d\theta &= \delta_t \bigtriangledown_{\theta} log_\pi(A_t|S_t; \theta)\\
+      \label{eq:A3C_gradient2}
+          d\theta_v &= \delta_t \bigtriangledown_{\theta_v} \delta_t^2
+      \end{align}
+      \par 如果我们采用多个智能体并行训练，把它们各自的梯度叠加在一起（也就是累加每个智能体各自求得的\eqref{eq:A3C_gradient1}\eqref{eq:A3C_gradient2}式），最后统一更新$\theta$和$\theta_v$，就称之为异步训练方法，这种算法也因此被称为asynchronous advantage actor-critic。如果条件受限没有异步，而只是用一个智能体进行训练，这个算法就称为A2C（advantage actor-critic）。actor-critic架构被认为是能够有效加速训练的，因此越来越多的算法都基于这一架构进行设计。\par
+      2015年，Schulamn等人提出了经典的（Trust Region Policy Optimization, TRPO）算法\cite{TRPO}。在文章中，他们首先从理论上证明了一种策略迭代更新的MM（minorization-maximization）算法，可以确保策略对应的总价值（$\eta(\pi) = E_{s_0}[\sum \gamma^t r(s_t); \pi_\theta]$）单调不下降。依据这一理论基础，他们进行了多步近似，将MM算法中的优化（求$\argmax$）的问题转化为了一个更简单的加限制的优化问题（信任空间优化，trust-region optimization）。在进行进一步近似后，优化式中的期望形式可以用蒙特卡罗方法进行估算。最后，优化式本身则利用一种近似的方法进行优化。在实验中，他们采用了神经网络作为策略$\pi$的表达。TRPO的更新方法是：
+      \begin{align}
+        \begin{aligned}
+          \theta = \argmax_\theta E\bigg[\frac{\pi_\theta(a|s)}{\pi_{\theta_{old}}(a|s)}Q_{\theta_{old}}(s, a)\bigg]\\
+          \text{subject to } E[D_{KL}(\pi_{\theta_{old}}(\cdot|s)||\pi_\theta(\cdot|s))] \leq \delta
+        \end{aligned}
+      \end{align}
+      \par 其中，$\delta$是一个认为选定的小值。注意，在论文的附录中，作者提出采用一阶近似对上式进行求解，优化问题就可以就变为一个典型的拉格朗日共轭问题\cite{Convex_optimization_book}。不过，由于TRPO只是保证了每一步更新，策略都变得更好，却没有考虑探索性，因此，TRPO的结果很容易困在局部最优值。在Schulman之后，Wu等人于2017年又提出了一个改进算法ACKTR\cite{ACKTR}（Actor Critic using Kronecker-Factored Trust Region），采用actor-critic架构，并利用Kronecker因子去近似梯度下降。同年，Schulman等人又提出了PPO算法\cite{PPO}，在实现难度和算法表现方面取得了平衡。PPO算法的基本思路有三点：
+      \begin{itemize}
+        \item 去除TRPO的优化限制条件，在TRPO的基础上，采用一个clip函数，从而阻止$\theta$每一次更新太大，确保收敛
+        \item 在优化的函数里，通过引入系数的形式，同时优化actor和critic，整个优化过程只有一个优化目标函数
+        \item 通过在优化目标中加入一个熵奖励，增加算法的探索性
+      \end{itemize}
+      \par PPO把强化学习问题转化为一个形式简单的单一函数优化问题，在许多方面取得了比以往算法（A2C, ACER, TRPO, etc.）更优的表现。\par
+      在2015年，Silver首度提出了针对连续动作空间的确定性算法DPG（deterministic policy gradient）\cite{DPG}。与确定性算法对应的是随机算法，也就是策略是行动的概率分布。在高维的动作空间内（例如动作是连续的），DPG比与之对应的随机算法获得了更优的结果。DPG采用actor-critic架构，并且是异策略（off-policy）训练的。注意这里，DPG的actor-critic架构与Sutton书中提到的actor-critic架构有所区别。它是不以价值函数作为基准的，而正常的actor-critic架构应该以价值函数作为基准，计算优势，再进行求导\cite{Sutton_book}，参见前面提到的A3C算法\cite{A3C}。同时，DPG算法采用的是Q-learning结构，不是用$V(s)$对价值进行估计，而是用$Q(s, \pi(s))$对价值进行估计。由于算法本身是确定性的，DPG与随机异策略actor-critic架构\cite{off-policy_actor-critic}不同，不需要针对策略进行重要性采样（importance sampling，在\cite{Sutton_book}中有详细讨论）。DPG本身没有选择神经网络，而是可以采用一般的函数，尤其是线性函数。\par
+      DPG算法对$\pi(s)$和$\mu(s)$的更新方法如下：
+      \begin{align}
+        \begin{aligned}
+          &\delta_t = r_t + \gamma Q(S_{t+1}, A_{t+1};\theta_Q) - Q(S_t, A_t;\theta_Q)\\
+          &\theta_Q \gets \theta_Q + \alpha_{\theta_Q}\delta_t \bigtriangledown_{\theta_Q}Q(s, a;\theta_Q)\\
+          &\theta_\mu \gets \theta_\mu + \alpha_{\theta_\mu}\bigtriangledown_{\theta_\mu}\mu(s;\theta_\mu)\bigtriangledown_{a}Q(s, a;\theta_Q)|_{a = \mu(s;\theta_\mu)}
+        \end{aligned}
+        \label{eq:DPG_update}
+      \end{align}
+      \par 基于DPG，Lillicrap等人提出的改进算法，DDPG算法\cite{DDPG}，则全面采用了深度神经网络。为了能够让训练收敛，DDPG使用了一个目标网络（target network）的概念。目标网络的定义是缓慢地跟踪依据梯度下降优化得到的网络参数$\theta_Q$和$\theta_\mu$，$\theta_Q$是状态行动对的价值估计网络$Q$的参数，而$\theta_\mu$是actor-critic架构中actor采用的策略的参数。目标网络参数$\theta_Q'$和$\theta_\mu'$的更新方法如下（在每一步迭代过后进行这个更新）：
+      \begin{align*}
+        \theta' = \tau \theta + (1-\tau) \theta', \tau \ll 1
+        \label{eq:target_network}
+      \end{align*}
+      \par 这样，相当于强迫目标网络缓慢地变化，从而增强了训练的收敛性。目标网络主要用于带入\eqref{eq:DPG_update}中$\delta_t$的计算。同时，DDPG采用了经验回放的方法，在每一步迭代中都采用之前历史中一批随机挑选的过往经验进行批量计算，而非一步的结果，这样可以确保网络训练时不带有时序偏差。另外，DDPG没有像DPG一样采用异策略学习，而是在策略基础上加上一个噪声分布以确保``探索''性。\par
+    
+    \subsubsection{有模型的深度强化学习}
+      有模型的深度强化学习问题可以分为模型是``习得''的和模型是给定的两种。在这里，我们首先关注一下给定模型的强化学习的应用。
+      \par 在模型给定的算法中，最著名的例子就是2016年提出的AlphaGo\cite{AlphaGo}。Deepmind在2017年进一步提出了AlphaZero\cite{AlphaZero}，其算法和AlphaGo相比有几大特点：
+      \begin{enumerate}
+        \item AlphaZero完全采用逐步迭代的方式，而AlphaGo在训练中会挑选之前出现过的最好策略
+        \item AlphaZero拥有的先验知识只有棋盘的格局和下棋的规则，并且这些知识只用来进行模拟
+        \item AlphaZero对参数的变动更加鲁棒，不同棋类游戏用的都是同一套参数
+        \item AlphaZero在训练中没有对输入进行任何数据加强的操作，而AlphaGo则对棋盘进行了镜像操作
+      \end{enumerate}
+      \par AlphaZero采用蒙特卡罗树状搜索（Monte Carlo Tree Search, MCTS\cite{Sutton_book}）的方法，每次优先访问训练历史中访问次数低，但访问概率$\pi(a|s)$应该较高，且$Q(s, a)$的状态行为对$(s, a)$。同时，在此基础上加上一个噪声（在AlphaZero的例子中，一个狄利赫里分布的噪声），确保探索性。AlphaZero采用深度卷积神经网络作为策略$\pi(s)$的拟合函数，其输出为$\pi(s) = (\mathbf{p}, v)$，其中，$\mathbf{p}$为在某个状态下选择各个行为的概率，$v$为根据$s$推测的状态估值,$v = \mathbb{E}[z]$（胜负平局，$z$的值分别为$+1, -1, 0$）。针对该网络定义的损失函数为
+      \begin{align}
+        L = (z-v)^2 - \pi^T log \mathbf(p) + \lambda ||\theta||^2
+      \end{align}
+      \par 可以看出，这个损失函数试图使$v$的预测和棋局结果$z$更加接近；$\pi$代表了训练中各个动作的搜索概率，损失函数试图让神经网络的输出$\mathbf(p)$与之尽可能接近。
+      \par 这里所谓“给定模型”，其实就是环境是已知的，不需要真的和环境交互，而是在仿真里直接进行下棋这个活动即可。然而，这也意味着这个问题本身与直接和未知环境交互并没有区别。尽管模型给定，算法并没有从模型本身得出什么规律，因此这个模型本质上就是一个环境。\par
+      在强化学习问题中，从与环境的交互历史中逐渐学习到模型，则是另一个有趣的思路。在\cite{Sutton_book}中，Dyna架构就是这样一种思路。在强化学习中，利用模型去近似求解$v(s)$是一个``规划''（planning）问题。传统的列表式方法可以根据训练中得到的环境反馈不断更新模型。2015年，Oh等人在\cite{action-conditional_prediction}一文中提出了一种利用神经网络学习高维度环境的方法，使得复杂环境的模拟也成为了可能。\par 
+      基于\cite{action-conditional_prediction}的结果，Racani\`{e}re等人在论文\cite{I2A}中提出了一种利用模型去增强无模型强化学习的方案，简称为I2C算法。这种方法本质上是细化了的A3C算法。注意到A3C本身是一个无模型的方法，它仅仅依赖于$\pi(a|s)$和$v(s)$的估计（回顾一下\eqref{eq:A3C_gradient1}\eqref{eq:A3C_gradient2}两个更新式）。但是，I2C算法修改了$\theta$的组织形式，构建了一个较为复杂的网络结构，因而引入了环境模型。其基本架构如图\ref{fig:I2A}所示。
+      \begin{figure}[H] % use float package if you want it here
+        \centering
+        \includegraphics{I2A}
+        \caption{I2A的基本结构：a) 一个预先训练好的神经网络，可以预测在策略$\hat{\pi}$下，状态$s$的一系列时序变化；b) 一个子网络，用于``理解''a)的输出结果；c) 整体架构}
+        \label{fig:I2A}
+      \end{figure}
+      \par 图\ref{fig:I2A}c)展示了网络整体架构，可以看到整体网络的输入为$o_t$，也就是对状态$S_t$的观测，输出为策略$\pi$和价值函数估值$V$（用于actor-critic架构）。因此，这个结构满足A3C的基本框架。在框架内部，网络结构采用了含有预测模型网络处理的输入，也采用了无模型网络处理的输入，分别作为两个分支，最后通过一个子网络汇合。具体的结构参数可以参见论文\cite{I2A}的附录。通过引入这个特殊的网络结构，I2A算法将习得的模型结合进了原有的无模型学习框架中。同时，实验结果表明，这里的模型可以有错误和不精确的地方，学习结果依然是鲁棒的。
+  
+  \subsection{部分可观测的马尔可夫决策过程}
+    我们要解决的问题是典型的部分可观测马尔科夫决策过程。当在马尔可夫过程中，状态$s$不能被完全观测时（例如汽车只能看到自己视野范围内的几辆车），我们称这个问题为部分可观测马尔科夫决策过程（partially observable Markov decision process, POMDP）。POMDP在强化学习社区中被当做一种特殊的问题看待，也围绕这类问题衍生出许多解决方案。2015年，Hausknecht等人提出了DRQN\cite{DRQ}（deep recurrent Q network），把它应用于经过修改的部分可观测的Atari游戏上并取得了比DQN更好的结果。\par
+    DRQN利用了循环神经网络（RNN，recurrent neural network）和LSTM\cite{LSTM}（long short term memory）的概念，用这样一层LSTM神经元替代DQN网络全联通层的第一层。在我们的设计中，LSTM也被用来解决状态部分可观测的问题。
+  
+  \subsection{有模型和无模型结合的高效强化学习}
+    有模型强化学习和无模型强化学习有各自的优缺点和适用场合。例如，有模型强化学习可以大大提高样本利用率，但是如果模型有偏差，会造成习得错误的策略，对于一些特别复杂的问题，很难得到精准的模型。无模型的强化学习可以应用在复杂场景，但是样本利用率很低，在一些容易规范化的问题中不宜采用。因此我们考虑在环岛路径规划中结合两者的优势。\par
+    2017年，Bansal等人提出MBMF算法（Model-Based Priors for Model-Free RL）\cite{MBMF}。记策略为$\pi_\theta$，代价函数为$J = -G_{t:t+n}$。MBMF最终想要得到的是代价函数$J$和策略参数$\theta$的关系$J(\theta)$，从而优化策略的参数。MBMF的算法如下：首先根据观察，训练出系统的动力学特性，记为一个函数$s_{t+1} = f(s_t, a)$（模型）。接下来，利用$f$，可以预测在某个策略$\pi_\theta$下，对应的奖励值期望（原文称之为代价函数$J$），记为$J_{MB}(\theta)$。这是基于模型得到的代价函数估计值。考虑到这个模型存在偏差，MBMF的MF部分把$J_{MB}(\theta)$作为初值，利用观察到的数据对$(\theta, J(\theta))$，进行拟合函数优化，优化得到最终的函数$J_{MF}(\theta)$。特别地，在上述拟合函数$f, J_{MB}, J_{MF}$当中，他们没有使用神经网络，而是使用了高斯过程\cite{Gaussian_process}（gaussian process, GP）和贝叶斯优化\cite{Bayesian_optimization}（Bayesian optimization, BO）的方法。MBMF的论文认为，通过引入模型，提高了采样效率，加速了学习过程，通过无模型的训练部分，避免了模型的偏差问题。从而两者的优势被结合起来。因此，MBMF算法的关键在于，把$J_{MB}$作为贝叶斯优化的一个``初值''。与Dyna架构\cite{Sutton_book}不同，MBMF的MF部分只采用真实环境里采集的数据集$(\theta, J(\theta))$对拟合函数$J_{MF}$进行优化，而不像Dyna架构利用学习到的模型去生成了大量的合成数据。\par
+    2018年，Pong等人提出了结合有模型和无模型的一种训练方法时许差异模型（temporal-difference model, TDM）\cite{TDM}。之前的一些论文通过目标条件价值函数（goal-conditioned value function）$Q(s, a, s_g)$的定义，将无模型强化学习（仅学习$Q$值）和有模型强化学习（需要学习状态转移概率分布$p(s_{t+1}|s_t, a)$）被联系在了一起。其中，$s_g$表示某一目标状态。如果定义奖励函数$r(s_t, a, s_{t+1}, s_g) = -D(s_{t+1}, s_g)$，其中，$D$为一个表示状态间距离的函数，那么$Q(s, a, s_g)$最终将收敛于$-D(s_{t+1}, s_g)$。$Q(s, a, s_g)$表示的含义是就是从$s$转移到$s_g$的能力，因此包含了模型的信息，但同时，这个方法没有显式地去学习状态转移函数，无模型强化学习方法能够用的地方它也都能用。TDM的贡献在于引入了时序差异的目标条件价值函数，$Q(s, a, s_g, \tau)$，表示在$\tau$步之内，状态$s$采取行动$a$后，再通过某种方式转移到$s_g$的能力。因此，$Q$的定义（和更新方法）为
+    \begin{align}
+      Q(s_t, a_t, s_g, \tau) = \mathbb{E}_{s_{t+1} \sim s_t, a}[-D(s_{t+1}, s_g)1[\tau = 0] + \max_a Q(s_{t+1}, a, s_g, \tau - 1)1[\tau \neq 0]]
+    \end{align}
+    \par 和传统强化学习对$G$的定义\eqref{eq:G}不同，TDM算法不采用折扣$\gamma$。$\tau$的引入也让TDM算法能够进行稀疏采样，每隔$K$个时间才对奖励$r$进行一次累积，从而加快训练速度。
+    \begin{align}
+    \begin{aligned}
+      & a_t = \argmax_{a_{t:K:t+T}, s_{t:K:t+T}} \sum_{i = t, t+K, ..., t+T} r(s_i, a_i)\\
+      \text{subject to } &Q(s_i, a_i, s_{i+K}, K-1) = 0 \text{,   } \forall i \in \{t, t+K, ..., t+T-K\} 
+      \label{eq:TDM_k}
+    \end{aligned}
+    \end{align}
+    \par $K$最终可以扩大到$T$，也就是，不再考虑过程中其余时刻的奖励函数值，直接用$T$时刻的奖励函数值作为总价值。这在一些路径规划问题中是非常有用的（例如，奖励函数非常稀疏，只有在最终到达目的地时才出现一个大的奖励）。
+    \par 注意到\eqref{eq:TDM_k}是一个有限制的优化问题，为了避免解这样一个问题，TDM的论文在实际操作中采用了一些构造$Q$函数形式的技巧，具体内容参加论文\cite{TDM}，不在此详细讨论。不过，TDM的一个限制是它只适用于结果导向的问题，例如一个任务的目标是到达一个地点，而收获的奖励和到达这个点过程中的路径细节无关。因为只有这样，才可以采用稀疏采样获取的奖励值作为总的奖励，来优化$a_t$的选择。
+  
+  \subsection{多任务分层强化学习}
+    多任务和分层强化学习
+    Automated vehicle overtaking based on a multiple-goal reinforcement learning framework
+    
+  \subsection{强化学习和模型预测控制的对比}
+  模型预测控制\cite{MPC}（MPC, model-predictive control）是一种最优控制的算法，主要利用模型对确定性离散时间系统进行控制。MPC和RL有许多相似之处。MPC和RL的主要区别在于，RL会``学习''一个模型或者不显式地利用模型，而MPC则利用模型进行预测，从而进行最优化\cite{MPC_VS_RL}。\par
+  MPC的方法如下：假设环境的模型为$s_{t+1} = f(s_t, a_t)$，每次规划后面$n$步的行动序列$a_t, a_{t+1}, ..., a_{t+n-1}$，选取最优策略序列的头一个行动$a_t^*$作为最优行动。
+  \begin{align}
+  \begin{aligned}
+        a_t^* = \argmax_{a_t, s_{t+1}, a_{t+1}, s_{t+2}, ... , a_{t+n-1}, s_{t+n}} G_{t:t+n-1}
+    \text{  subject to } s_{t+i+1} = f(s_{t+i}, a_{t+i})
+  \end{aligned}
+  \end{align}
+  \par 在RL的研究中，有不少利用/结合MPC的算法（在这里找一些！！我的论文中本来就有:TDM，pieter abbeel也有一些无人机的论文！！）。
+  
+  \subsection{强化学习在自动驾驶领域的应用}
+    目前对于自动驾驶在环岛环境下的路径规划这一特定问题，尚没有采用强化学习解决的方案。2018年，Zyner等人提出了利用RNN估计环岛车辆目的地的方法\cite{RNN_predict_driver_intention}。他们的工作采用了深度学习的算法，但是只是涉及预估，并没有涉及具体策略的制定。\par
+    2017年，Li等人提出了一种基于搜索树的自动驾驶决策算法\cite{explicit_decision_tree}。他们的算法和强化学习类似，不过是通过依次设定初始状态，之后采用搜索+剪枝的方法来完成对$Q(s, a)$的估计，并记录在表格里面。这种方法比较平凡，并且只能应对观测空间较小，并且动作空间离散的问题，因此实际应用能力比较有限。\par
+    2018年，Ran等人使用博弈论的方法对这个问题进行了探索\cite{game_theory}。他们采用的算法类似于强化学习，但也有所不同。在这篇文章中，决策过程利用了博弈论的方案。作者将车辆的驾驶人员分为保守和激进两种类型，在驾驶过程中，智能体自主车辆（ego vehicle）会不断依据对方司机的行为更新对对方车辆（opponent vehicle）分类的估计（通过神经网络完成）。完成这个估计以后，智能体会采取博弈的方法，每次采用某一行动，让对方采取它策略下的行动，由此预测对方在此后$n$步的行为。通过暴力搜索，可以得到最优的一个行动序列$A_t, A_{t+1}, ..., A_{t+n-1}$。通过大量的训练，作者拟合了一个神经网络去存储状态$S_t$到最优动作$A_t$的映射，从而在实际操作中避免了搜索（离线训练）。
+    \begin{figure}[H] % use float package if you want it here
+        \centering
+        \includegraphics[scale=1.5]{game_theory_structure}
+        \caption{论文\cite{game_theory}提出的基于博弈论的决策方案整体框架。}
+        \label{fig:game_theory_structure}
+    \end{figure}
+    \par 图片\ref{fig:game_theory_structure}展示了基于博弈论的算法的整体框架。其整体流程如下：首先，某一状态输入神经网络B，判断其是否属于``关键状态''（义为，这个状态下两辆车是否已经足够接近，开始相互影响），如果是，则进入下一步，通过神经网络C依据对方车辆的行为来判断对方车辆的类别是保守还是激进；判断结束后，将判断结果和当前状态一起输入神经网络A，从而获取当前状态下应采取的最优行动。这其中的神经网络都是依据上面提到的博弈论算法来进行预训练的。\par
+    这个算法本质上是一个有监督学习算法，通过大量的训练``记忆''每个场景下应该采取的策略。和强化学习的区别在于，此基于博弈论的算法没有对状态和行动的价值进行估计，同时，由于没有获取环境的实际反馈（例如在仿真环境中，训练实际是否成功，并没有作为神经网络训练的输入），而是先验地认为通过对对方车辆类型的分类+预测可以获取最优解，因此并不够准确。这个方法的另一个缺陷在于对方的策略未必是简单的极限保守和极限激进两种，因此这个预测是不准确的。这也是我们在今后实验设计中需要考虑的问题：我们的对弈方驾驶车辆是怎样进行驾驶的？应该采取怎样的策略？\par
+
+\section{课题内容及开展情况}
+  \subsection{第一阶段}
+  \subsubsection{综述}
+  目前已经完成如前所述的算法I的实现和实验。我们利用openAI的baseline算法库\cite{openAI_baselines}，采用DDPG\cite{DDPG}算法，结合LSTM\cite{DRQ}搭建网络，在我们的实验平台（SUMO+Webots）上实现了基线方案。\par
+  \subsubsection{建模方法}
+  简要对我们的我们对观察空间进行这样的建模：我们关注离智能体车辆最近的两辆其他车辆，$C_1$和$C_2$。观察空间定义为
+  $$[d^{C_1},\space v^{C_1},\space cos\theta^{C_1},\space sin\theta^{C_1},\space d^{C_2},\space v^{C_2},\space cos\theta^{C_2},\space sin\theta^{C_2},\space
+  x^{ego},\space y^{ego},\space v^{ego},\space a^{ego}
+  ]^T$$
+  其中$d$表示距离，$v$表示速度，$a$表示加速度。\par
+  为了避免高维度的动作空间，车辆只决定每一时刻的加速和减速值，介于$[-1, 1]$。车辆的方向由预先规定的路径点决定，由事先设计好的PID控制器直接进行调控，而不受强化学习算法的决策控制。
+  \subsubsection{奖励函数设计}
+  我们的奖励函数有如下机制：
+  \begin{itemize}
+    \item $0.95$的奖励，当智能体驶出环岛
+    \item $0.2$的奖励，每次足够接近一个预先确定的路径点时
+    \item $0.05 \dot (v-19)/30 $，表示速度越快得到的奖励越多
+    \item $-0.4$的奖励（惩罚），当智能体偏离道路
+    \item $-100$的奖励，当智能体发生碰撞时
+  \end{itemize}
+  \subsubsection{实验结果}
+  实验结果如图\ref{fig:experiment_phaseI}。我们可以看出，汽车在2000次训练后可以以75\%以上的成功率通过环岛。在测试中，我们采用经过500次训练后得到的智能体，在双车道四进口的环岛进行五次测试，环岛车流量分别为1辆/5s和1辆/20s。具体成功率统计数据呈现在表格\ref{table:experiment_phaseI}中。\par
+  \begin{figure}[H] % use float package if you want it here
+        \centering
+        \includegraphics[scale=1.0]{exp_result}
+        \caption{DDPG算法训练的实验结果。（a）为平均获得的奖励值（b）为汽车在仿真环境中的平均速度（c）为平均成功率。每个数据点均为五十次训练的平均值，横坐标为百次训练，每次训练以发生事故或通过环岛为终止条件。}
+        \label{fig:experiment_phaseI}
+  \end{figure}
+  
+  \begin{table}[h!]
+  \centering
+  \caption{实验成功率统计（百分比）}
+  \label{table:experiment_phaseI}
+  \begin{tabular}[c]{|c||c|c|c|c|c||c|}
+  \hline
+  \textbf{平均车流量$n$（1辆/$n$s）} & \textbf{1}& \textbf{2}& \textbf{3}& \textbf{4}& \textbf{5}& \textbf{平均成功率}\\
+  \hline
+  5 & 75.4 & 73.8 & 75.0 & 77.0 & 74.8 & 75.2 $\pm$ 1.0 \\ \hline
+  20 & 94.0 & 94.4 & 94.0 & 94.6 & 97.0 & 94.8 $\pm$ 1.1 \\ \hline
+  \end{tabular}
+  \end{table}
+  
+  \subsection{第二阶段}
+    第二阶段我们将着重开展结合无模型和有模型强化学习的算法研究。目前已经进行了文献调研，具体工作将在后续完成。
+
+\section{进度计划}
+  按时间划分，我们的进度计划如表\ref{table:plan}所示。
+  \begin{table}[h!]
+  \centering
+  \caption{进度计划}
+  \label{table:plan}
+  \begin{tabular}[c]{|c||p{10cm}|}
+  \hline
+  \textbf{周次} & \textbf{任务安排}\\
+  \hline
+  寒假+1   & 进一步的文献调研，熟悉现有系统架构SUMO+Webots \\ \hline
+  2，3   & 在实验平台复现前人工作(I2A\cite{I2A}) \\ \hline
+  4，5   & 阶段II:结合无模型和有模型的强化学习算法设计\\ \hline
+  6，7   & 实验验证+算法迭代\\ \hline
+  8     & 多任务强化学习框架和分层强化学习调研\\ \hline
+  9   & 中期报告\\ \hline
+  10，11   & 阶段III:多任务强化学习框架和分层强化学习算法设计\\ \hline
+  12，13   & 实验验证+算法迭代\\ \hline
+  14，15   & 论文撰写（会议论文+毕设论文）\\ \hline
+  16   & 结题+论文答辩\\
+  \hline
+  \end{tabular}
+  \end{table}
+
+
+%%% 其它部分
+\backmatter
+
+%% 本科生要这几个索引，研究生不要。选择性留下。
+% 插图索引
+%\listoffigures
+%% 表格索引
+%\listoftables
+%% 公式索引
+%\listofequations
+
+
+%% 参考文献
+% 注意：至少需要引用一篇参考文献，否则下面两行可能引起编译错误。
+% 如果不需要参考文献，请将下面两行删除或注释掉。
+% 数字式引用
+\bibliographystyle{thuthesis-numeric}
+% 作者-年份式引用
+% \bibliographystyle{thuthesis-author-year}
+\bibliography{ref/all_references}
+
+
+%% 致谢
+%\include{data/ack}
+
+%% 附录
+%\begin{appendix}
+%\input{data/appendix01}
+%\end{appendix}
+
+%% 个人简历
+%\include{data/resume}
+
+%% 本科生进行格式审查是需要下面这个表格，答辩可能不需要。选择性留下。
+% 综合论文训练记录表
+%\includepdf[pages=-]{scan-record.pdf}
+
+\end{document}
