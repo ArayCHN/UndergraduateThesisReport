@@ -24,7 +24,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{thuthesis}
-[2018/05/17 5.4.5 Tsinghua University Thesis Template]
+%[2018/05/17 5.4.5 Tsinghua University Thesis Template]
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
 \def\version{5.4.5}
@@ -324,8 +324,8 @@
     nameformat=\relax,
     numberformat=\relax,
     titleformat=\thu@chapter@titleformat,
-    lofskip=0pt,
-    lotskip=0pt,
+    %lofskip=0pt,
+    %lotskip=0pt,
   },
   section={
     afterindent=true,
@@ -535,6 +535,7 @@
     \vskip2cm
     {\sihao\thu@postdoctor@date@title\hskip1em\underline\thu@postdoctordate}
   \end{center}}
+  % 下面是封面的题目部分格式！
 \newcommand{\thu@first@titlepage@other}{
   \begin{center}
     \vspace*{-1.6cm}
@@ -709,6 +710,7 @@
   \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
   \begin{center}\erhao\heiti\thu@authtitle\end{center}
   \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
+  % 关于学位论文使用授权的说明
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
   \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
@@ -771,6 +773,7 @@
     \ifthu@bachelor\indent\else\noindent\hangindent\wd\thu@kw\hangafter1\fi%
     \box\thu@kw#2\par
   \endgroup}
+% below: abstract
 \newcommand{\thu@makeabstract}{%
   \ifthu@bachelor\clearpage\else\cleardoublepage\fi
   \thu@chapter*[]{\cabstractname} % no tocline
@@ -787,7 +790,9 @@
   \thu@eabstract
   \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
-    \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}}{\thu@ekeywords}}
+    \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}}{\thu@ekeywords}
+}
+% above: abstract
 \newenvironment{denotation}[1][2.5cm]{%
   \thu@chapter*[]{\thu@denotation@name} % no tocline
   \vskip-30bp\xiaosi[1.6]\begin{thu@denotation}[labelwidth=#1]
