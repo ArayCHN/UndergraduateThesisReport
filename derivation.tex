@@ -51,11 +51,20 @@
 
 在接下来的推导过程中，我们用上标或下标$h$和$l$来表示强化学习中的一系列参数，是针对上层策略（high）还是下层策略（low）。
 
-首先，我们证明，在下层策略不变的情况下，利用TRPO更新上层策略，可以保证整体策略的单调递增，即$V_h(s_0^h)$单调递增。这一步很简单，既然底层策略不变，那么可以认为底层策略是包含在环境中的，因此TRPO去优化上层策略，就相当于TRPO直接作用于一个单层的强化学习结构，对应的优化目标必然是越来越好的。注意到对于上层策略来说，它得到的$R$就是上下层策略作为一个整体得到的真实$R$。
+首先我们定义对整体策略好坏的度量方法。注意到，对于上层策略来说，底层策略相当于环境动力学（dynamics）。当底层策略发生了变化时，可以看做是环境动力学发生了变化。我们用$\mathcal{E}(\pi_l)$表示环境，并且环境与$\pi_l$有关。定义$\pi_h$带来的折扣奖励期望
+\begin{equation}
+\begin{aligned}
+  \eta(\pi_h) = V_h(s_0^h) = \mathbb{E}_{s_0^h, a_0^h, ...}\Bigg[\sum_{t = 0, k, 2k, ...} \gamma_h^{t/k} r_h(s_t^h, a_t^h)\Bigg] \text{ ,  where}   \\
+  s_0^h \sim \rho_0^h(s_0^h), a_t^h \sim \pi_h(s_t^h), s_{t+1} \sim P(s_{t+1}^h|s_t^h, a_t^h, \mathcal{E}(\pi_l))
+\end{aligned}
+\end{equation}
+这个期望值同时和$\pi_h$和$\pi_l$有关，也就是我们对整体策略的度量。
 
-接下来，我们推导，采用$ \frac{\gamma_h V_h(s_{t + k}^h) - V_h(s_{t}^h)}{k}$作为上层给下层的输入，可以使得整体策略变优。
+首先，我们说明，在下层策略不变的情况下，利用TRPO更新上层策略，可以保证整体策略的单调递增，即$\eta(\pi_h)$单调递增。这一步很简单，既然底层策略不变，那么可以认为底层策略是包含在环境中的，因此TRPO去优化上层策略，就相当于TRPO直接作用于一个单层的强化学习结构，对应的优化目标将是近似单调递增的。注意到对于上层策略来说，它得到的$R$就是上下层策略作为一个整体得到的真实$R$。
 
-我们的上下层优化算法采用的均是TRPO\cite{TRPO}。在TRPO当中，我们最终希望去优化的东西是$V_{\pi}(s_0)$。TRPO算法等价于在基于策略梯度定理给出的策略梯度优化中，增加了对步长的限制，从而确保策略更新的单调性。在策略梯度方法的论文\cite{policy_gradient_theorem}中，Sutton指出，对一个策略优化的目标函数$J$既可以采用$V_{\pi}(s_0)$的定义，也可以采用$R$的平均值的定义，它们可以分别推导得出策略梯度定理，而这个定理中的策略梯度，与TRPO试图优化的替代函数的梯度是相等的。因此，TRPO也可以理解成是在最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$。
+接下来，我们推导，采用$ \frac{\gamma_h V_h(s_{t + k}^h) - V_h(s_{t}^h)}{k}$作为上层给下层的输入，从而优化$\pi_l$，也可以使得整体策略变优。
+
+我们优化策略的算法采用的是TRPO\cite{TRPO}。在TRPO当中，我们最终希望去优化的东西是$V_{\pi}(s_0)$。TRPO算法等价于在基于策略梯度定理给出的策略梯度优化中，增加了对步长的限制，从而确保策略更新的单调性。在策略梯度方法的论文\cite{policy_gradient_theorem}中，Sutton指出，对一个策略优化的目标函数$J$既可以采用$V_{\pi}(s_0)$的定义，也可以采用$R$的平均值的定义，它们可以分别推导得出策略梯度定理，而这个定理中的策略梯度，与TRPO试图优化的替代函数的梯度是相等的。因此，TRPO也可以理解成是在最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$。
 
 如果把$R$的均值作为优化目标，我们有
 \begin{align}
@@ -102,22 +111,14 @@
   \label{eq:R_expectation_is_advantage}
 \end{align}
 
-接下来我们证明，通过优化这个期望值，就近似等效于优化了整体策略的表现。这里不能直接把TRPO的（13）搬过来用在上层policy上！TRPO是建立在环境动态不变的基础上的，但是我们的环境变了。必须follow TRPO论文的推导，看一下我们能不能推出一样的结果。下面做的就是这个事情。
-%我们已经知道，TRPO最大化的替代函数的梯度，与策略梯度定理指出的梯度成正比。因而这个梯度，对应的需要最大化的函数，可以和TRPO（应用于上层策略）给出的替代函数相同。接下来我们推导在下层策略可能发生改变的情况下，上层策略的目标函数（也就是整体策略的目标函数）如何变化。
-
-注意到，对于上层策略来说，底层策略相当于环境动力学（dynamics）。当底层策略发生了变化时，可以看做是环境动力学发生了变化。因此，即使上层策略不变，$S^h_t$的分布也可能发生改变。我们用$\mathcal{E}(\pi_l)$表示环境，并且环境与$\pi_l$有关。定义$\pi_h$带来的折扣奖励期望
-\begin{equation}
-\begin{aligned}
-  \eta(\pi_h) = \mathbb{E}_{s_0^h, a_0^h, ...}\Bigg[\sum_{t = 0, k, 2k, ...} \gamma_h^{t/k} r_h(s_t^h, a_t^h)\Bigg] \text{ ,  where}   \\
-  s_0^h \sim \rho_0^h(s_0^h), a_t^h \sim \pi_h(s_t^h), s_{t+1} \sim P(s_{t+1}^h|s_t^h, a_t^h, \mathcal{E}(\pi_l))
-\end{aligned}
-\end{equation}
+接下来我们证明，通过最大化这个期望值，就近似等效于优化了整体策略的表现。
 
 我们用$\tilde{\eta}(\pi_h)$来表示$\pi_l$发生变化（变为$\tilde{\pi_l}$）而$\pi_h$没有发生变化以后的折扣奖励值期望。将TRPO根据\cite{TRPO_pre}得到的引理1（\textbf{Lemma 1}）稍加变形，我们可以得到类似的结果：（具体推导参见附录中证明1）
 \begin{align}
   \tilde{\eta}(\pi_h) = \eta(\pi_h) + \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg].
   \label{eq:new_environment_advantage}
 \end{align}
+
 等式\eqref{eq:new_environment_advantage}右边第二项的含义就是，新的整体策略相对于旧的整体策略的优势。我们想要最大化的就是这个优势。
 
 接下来，我们定义折扣访问频率$\rho$为
@@ -131,24 +132,51 @@
   \sum_{s^h}\tilde{\rho}_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
   \label{eq:accurate_objective}
 \end{align}
-进一步，由于$s^h \sim \tilde{\rho}_{\pi_h}(s^h)$难以采样，我们采用$s^h \sim \rho_{\pi_h}(s^h)$近似，从而定义出一个需要最大化的函数，为
-\begin{align}
-  \sum_{s^h}\rho_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
-  \label{eq:surrogate_function_for_new_environment}
-\end{align}
-注意到在这里，我们采用$s^h \sim \rho_{\pi_h}(s^h)$来近似$s^h \sim \tilde{\rho}_{\pi_h}(s^h)$，与TRPO采用$s^h \sim \rho_{\pi_h}(s^h)$近似$s^h \sim \rho_{\tilde{\pi}_h}(s^h)$是不同的。是否可以证明\eqref{eq:surrogate_function_for_new_environment}与表达式\eqref{eq:accurate_objective}在$\pi_h$处的一阶泰勒展开相等？这里不会证！！如果这样，只要我们优化\eqref{eq:surrogate_function_for_new_environment}的步长足够小，就能够确保\eqref{eq:accurate_objective}也变大了。（此处还有一个问题：无法证明我们的step size可以保证单调性。因为底层的TRPO算法做的事情是让\eqref{eq:TRPO_high_level}单调变大，但是并没有限制它能变大多少。也就是说，并没有满足KL constraint。也就是说，底层的TRPO最大化的objective，不等效于上层的TRPO应该最大化的objective（少了一个constraint）。这就导致我们无法证明底层的TRPO能够让上层的结果也单调递增）。
 
-这个替代函数的形式与TRPO中提出的替代函数形式类似，只不过在这里我们是利用旧环境的采样来替代新环境的采样，而TRPO是利用旧策略的采样来替代新策略的采样。我们可以用与TRPO相同的方法把式\eqref{eq:surrogate_function_for_new_environment}变为期望的形式，注意到与$\mathcal{E}(\pi_{\theta_{old}^l})$相关其实就是与$\pi_{\theta_{old}^l}$相关，因此我们简化表达式，略去$\mathcal{E}$，同时我们引入$\pi(a|s)$的参数$\theta$，得到
+对于一个起点随机产生的，非周期、不可约的稳态马尔可夫问题，我们有
 \begin{align}
-  \mathbb{E}_{s^h \sim \rho_{\pi_h}, a^h \sim \pi_h }[\frac{\pi_\theta^h (a^h|s^h)}{\pi_{\theta_{old}}^h(a^h|s^h)}A_{\theta_{old}}^h(s^h, a^h)].
-  \label{eq:TRPO_high_level}
+  P(s_0^h = s^h) = P(s_1^h = s^h) = ... = P(s_i^h = s^h)
+%  \text{ referred to as P(s^h)}
+  \label{eq:P(s)}
 \end{align}
-在我们实际的算法中，状态$s$可以直接来自于采样。这是因为，当我们的训练样本足够大，并且选择随机起始时，可以认为$P(s_t = s)$对于不同的$t$是相同的值，因此，训练样本中的$s$也服从$\rho_{\pi_h}(s^h)$的分布。
+注意到这里$P(s_i^h = s^h)$也就是采样中状态的分布。
+
+将\eqref{eq:P(s)}带入\eqref{eq:accurate_objective}，可以得到
 \begin{align}
-  \mathbb{E}_{s^h, a^h \sim \pi_{\theta_{old}^h},\pi_{\theta_{old}^l}} [\frac{\pi_\theta^h (a^h|s^h)}{\pi_{\theta_{old}}^h(a^h|s^h)}A_{\theta_{old}}^h(s^h, a^h)].
-  \label{eq:TRPO_high_level}
+  \tilde{\rho}_{\pi_h}(s^h) = \frac{1}{1-\gamma_h}P(s_i^h = s^h)
+  \label{eq:rho_constant}
 \end{align}
-注意到，由式\eqref{eq:R_expectation_is_advantage}，在$\pi_h$不变的条件下，我们针对底层策略$\pi^l$的更新，增大了$\mathbb{E}_{s^h, a^h \sim \pi_l, \pi_h}[A^h(s_t^h, a_t^h)]$，却没有影响$\frac{\pi_\theta^h (a^h|s^h)}{\pi_{\theta_{old}}^h(a^h|s^h)}$这一项（由于$\theta^h = \theta_{old}^h$，因此该项等于1）。这样，针对底层的更新确实使得表达式\eqref{eq:TRPO_high_level}变大了。但是这个表达式并不等于加了KL-constraint的替代函数，因此它的变大，并不能保证单调性。但在实际中，我们可以忽略掉这个限制。因此认为，底层策略的优化，就优化了整体策略度量$\eta(\pi_h)$的替代函数，从而优化了整体策略。
+
+从而，我们可以把\eqref{eq:new_environment_advantage}写成期望的形式：
+\begin{align}
+  \tilde{\eta}(\pi_h) = \eta(\pi_h) + \frac{1}{1-\gamma_h}\mathbb{E}_{s^h, a^h \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\bigg[A_{\pi_h}(s^h, a^h)\bigg].
+  \label{eq:accurate_objective_expectation_form}
+\end{align}
+
+我们发现最大化\eqref{eq:R_expectation_is_advantage}恰好也就最大化了\eqref{eq:accurate_objective_expectation_form}。由此我们证明了，只要利用TRPO对下层策略进行了更新，$\eta(\pi_h)$，也就是整体策略的表现度量，也将是近似单调递增的（因为TRPO是近似单调递增的）。
+
+%进一步，由于$s^h \sim \tilde{\rho}_{\pi_h}(s^h)$难以采样，我们采用$s^h \sim \rho_{\pi_h}(s^h)$近似，从而定义出一个需要最大化的函数，为
+%\begin{align}
+%  \sum_{s^h}\rho_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
+%  \label{eq:surrogate_function_for_new_environment}
+%\end{align}
+%注意到在这里，我们采用$s^h \sim \rho_{\pi_h}(s^h)$来近似$s^h \sim \tilde{\rho}_{\pi_h}(s^h)$，与TRPO采用$s^h \sim \rho_{\pi_h}(s^h)$近似$s^h \sim \rho_{\tilde{\pi}_h}(s^h)$是不同的。是否可以证明\eqref{eq:surrogate_function_for_new_environment}与表达式\eqref{eq:accurate_objective}在$\pi_h$处的一阶泰勒展开相等？这里不会证！！如果这样，只要我们优化\eqref{eq:surrogate_function_for_new_environment}的步长足够小，就能够确保\eqref{eq:accurate_objective}也变大了。（此处还有一个问题：无法证明我们的step size可以保证单调性。因为底层的TRPO算法做的事情是让\eqref{eq:TRPO_high_level}单调变大，但是并没有限制它能变大多少。也就是说，并没有满足KL constraint。也就是说，底层的TRPO最大化的objective，不等效于上层的TRPO应该最大化的objective（少了一个constraint）。这就导致我们无法证明底层的TRPO能够让上层的结果也单调递增）。
+
+%这个替代函数的形式与TRPO中提出的替代函数形式类似，只不过在这里我们是利用旧环境的采样来替代新环境的采样，而TRPO是利用旧策略的采样来替代新策略的采样。我们可以用与TRPO相同的方法把式\eqref{eq:surrogate_function_for_new_environment}变为期望的形式，注意到与$\mathcal{E}(\pi_{\theta_{old}^l})$相关其实就是与$\pi_{\theta_{old}^l}$相关，因此我们简化表达式，略去$\mathcal{E}$，同时我们引入$\pi(a|s)$的参数$\theta$，得到
+%\begin{align}
+%  \mathbb{E}_{s^h \sim \rho_{\pi_h}, a^h \sim \pi_h }[\frac{\pi_\theta^h (a^h|s^h)}{\pi_{\theta_{old}}^h(a^h|s^h)}A_{\theta_{old}}^h(s^h, a^h)].
+%  \label{eq:TRPO_high_level}
+%\end{align}
+%在我们实际的算法中，状态$s$可以直接来自于采样。这是因为，当我们的训练样本足够大，并且选择随机起始时，可以认为$P(s_t = s)$对于不同的$t$是相同的值，因此，训练样本中的$s$也服从$\rho_{\pi_h}(s^h)$的分布。
+%\begin{align}
+%  \mathbb{E}_{s^h, a^h \sim \pi_{\theta_{old}^h},\pi_{\theta_{old}^l}} [\frac{\pi_\theta^h (a^h|s^h)}{\pi_{\theta_{old}}^h(a^h|s^h)}A_{\theta_{old}}^h(s^h, a^h)].
+%  \label{eq:TRPO_high_level}
+%\end{align}
+%注意到，由式\eqref{eq:R_expectation_is_advantage}，在$\pi_h$不变的条件下，我们针对底层策略$\pi^l$的更新，增大了$\mathbb{E}_{s^h, a^h \sim \pi_l, \pi_h}[A^h(s_t^h, a_t^h)]$，却没有影响$\frac{\pi_\theta^h (a^h|s^h)}{\pi_{\theta_{old}}^h(a^h|s^h)}$这一项（由于$\theta^h = \theta_{old}^h$，因此该项等于1）。这样，针对底层的更新确实使得表达式\eqref{eq:TRPO_high_level}变大了。但是这个表达式并不等于加了KL-constraint的替代函数，因此它的变大，并不能保证单调性。但在实际中，我们可以忽略掉这个限制。因此认为，底层策略的优化，就优化了整体策略度量$\eta(\pi_h)$的替代函数，从而优化了整体策略。
+
+综上所述，如果我们单次更新，分别固定$\pi_h$更新$\pi_l$或者是固定$\pi_l$更新$\pi_h$，都将使得整体策略的价值$\eta(\pi_h)$单调递增。
+
+在实际操作中，为了提高采样效率，我们每次采样之后，都既优化$\pi_h$又优化$\pi_l$。实验结果表面，同时优化上下层策略虽然在理论上无法保证整体策略$\eta(\pi_h)$的单调增特性，却能够将采样效率提高为交替优化单层策略的两倍。也就是说，在每次更新$\pi_l$和$\pi_h$变化都较小的情况下，同时优化两者并不会导致整体策略效果变差。
 
 %%% 其它部分
 \backmatter
@@ -197,7 +225,6 @@
       \Bigg]\\
   &= -\eta(\pi_h) + \tilde{\eta}(\pi_h)
 \end{align}
-存疑！这里的推导，前提条件是t一直走到无穷。对于我们这种episode会结束，并且sparse reward的情况，能否这么写？？
 
 \textbf{证明2：}
 \begin{align}
