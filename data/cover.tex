@@ -89,6 +89,8 @@
 \end{cabstract}
 
 \begin{eabstract}
+One of the key challenges in reinforcement learning is related to sparse reward signals from the environment. Hierarchical reinforcement learning(HRL) is often utilized to fertilize the backup of sparse rewards obtained at the end of an episode towards the early steps taken by the agent. To achieve this, auxiliary reward passed from high-level or the environment to low-level is required. In this paper, we propose an HRL framework that is capable of joint optimizing both the upper-level and lower-level policies monotonically through the design of an advantage-function based auxiliary reward. Most state-of-the-art HRL algorithms are sensitive to state representations, or require careful design of the auxiliary reward functions for low-level training. In an effort to achieve more generic and applicable HRL for robotic tasks, we design an auxiliary reward for low-level policy update that is dependent only on the advantage function value of the high-level policy, therefore invariant of the form of state representations. We also prove that monotonic improvement is guaranteed for this policy updating method. Experiments show that our algorithm performs well across many robotic tasks in the simulation environment.
+
 \end{eabstract}
 
 % 如果习惯关键字跟在摘要文字后面，可以用直接命令来设置，如下：

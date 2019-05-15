@@ -12,6 +12,8 @@
 
 % 下面的包让argmax之类的，_{}的东西显示在argmax正下方
 \usepackage{amsmath}
+\usepackage{algorithmic}
+\usepackage{algorithm}
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
 
@@ -44,11 +46,7 @@
 \mainmatter
 %\include{data/chap01}
 %\include{data/chap02}
-\chapter{介绍}
-\section{强化学习预备知识}
-\section{分层强化学习问题构建}
-\section{分层强化学习研究现状}
-\section{论文结构}
+\include{chp1_introduction}
 
 \include{derivation}
 %\renewcommand\thesection{\arabic {section}} % use this command to disable chapter numbering
