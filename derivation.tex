@@ -1,0 +1,352 @@
+%\documentclass[degree=bachelor, tocarialchapter, pifootnote]{thuthesis}
+%% 选项
+%%   degree=[bachelor|master|doctor|postdoctor], % 必选，学位类型
+%%   secret,                % 可选（默认：关闭），是否有密级
+%%   tocarialchapter,       % 可选（默认：关闭），章目录中使用黑体（这项表示同时打开下面两项）
+%%   tocarialchapterentry,  % 可选（默认：关闭），单独控制章标题在目录中使用黑体
+%%   tocarialchapterpage,   % 可选（默认：关闭），单独控制章页码在目录中使用黑体
+%%   pifootnote,            % 可选（默认：关闭），页脚编号采用 pifont 字体符号，建议打开
+%
+%% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
+%\usepackage{thuthesis}
+%
+%% 下面的包让argmax之类的，_{}的东西显示在argmax正下方
+%\usepackage{amsmath}
+%\DeclareMathOperator*{\argmax}{argmax}
+%\DeclareMathOperator*{\argmin}{argmin}
+%
+%% 定义所有的图片文件在 figures 子目录下
+%\graphicspath{{figures/}}
+%
+%% 可以在这里修改配置文件中的定义。导言区可以使用中文。
+%\def\myname{王芮}
+%
+%\begin{document}
+%
+%%%% 封面部分å
+%%\frontmatter
+%
+%%\input{data/cover}
+%% 如果使用授权说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
+%% \makecover[scan-auth.pdf]
+%%\makecover
+%%% 目录
+%% 设置目录层级，三级小标题全部显示
+%%\setcounter{secnumdepth}{5}
+%%\setcounter{tocdepth}{5}
+%%\tableofcontents
+%
+%%% 符号对照表
+%%\input{data/denotation}
+%
+%
+%%%% 正文部分
+%\mainmatter
+%\include{data/chap01}
+%\include{data/chap02}
+%\renewcommand\thesection{\arabic {section}} % use this command to disable chapter numbering
+
+\chapter{辅助奖励强化学习算法}
+
+\section{本章简介}
+我们的算法如示意图\ref{fig:algorithm_scheme}所示。我们采用HRL结构，因此可以把整体框架分解为上层策略，下层策略和环境三层。每一大步是上层策略走一步，上层策略产生一步动作，在我们的例子中也就是隐编码$z$。这同一个个隐式编码（latent code）被输入给了$k$小步的下层策略，同时下层策略还会观察环境获得$S_i^l$，这两个向量合并后成为下层策略的``观察量''。由此下层策略输出一系列下层动作$a_1, ..., a_k$，直接作用于环境。上层策略获取环境反馈直接作为它的奖励函数，而下层策略的奖励函数则根据上层策略来获取，并且同一大步内的每一小步获得相同的奖励值。
+
+\begin{figure}[H] % use float package if you want it here
+  \centering
+  \includegraphics[scale=0.5]{algorithm_scheme}
+  \caption{HAAR算法的基本架构示意图。每一大步，上层策略产生一步动作$a^h$，在我们的例子中也就是隐编码$z$。这个隐式编码被输入给了$k$小步的下层策略，同时下层策略还会观察环境获得$S_i^l$，由此输出一系列下层动作$a_1, ..., a_k$。上层策略获取环境反馈直接作为它的奖励函数，而下层策略的奖励函数则根据上层策略来获取，并且同一大步内的每一小步获得相同的奖励值。}
+  \label{fig:algorithm_scheme}
+\end{figure}
+
+
+\section{底层策略预训练}
+和原来的专利文件类似。具体地，我们是采用SNN4hrl这篇论文的方法预训练，底层策略共享神经网络结构。训练的时候每次会额外输入一个1-hot vector（latent code, 一堆0中间只有一个1，表示挑一个底层策略出来），训好之后上层策略就会把这个1-hot vector输入下层网络，表示使用哪个下层策略。
+
+\section{辅助奖励函数定义}
+\subsection{定义方法一：基于优势函数}
+算法的关键在于下层策略奖励函数的设计。我们通过一个简单的定义将奖励函数和优势函数联系在一起。上层策略优势函数的定义是
+	\begin{align}
+	A_{\pi_h}(s_t^h, a_t^h)&=\mathbb{E}_{s_{t+k}^h}[Q_{\pi_h}(s_t^h, a_t^h)-V_{\pi_h}(s_t^h)]\\
+	&= \mathbb{E}_{s_{t+k}^h}[r_t^h+\gamma V_{\pi_h}(s_{t+k}^h)-V_{\pi_h}(s_t^h)].
+	\end{align}
+	
+我们将上层策略当前的优势函数估计值平均分配到这一步上层策略下的每一步下层步，作为下层策略的辅助奖励函数。
+	\begin{align}
+	R_l(s_t^l..s_{t+k-1}^l)=A_{\pi_h}(s_t^h,a_t^h),
+	\end{align}
+其中，$R_l(s_t^l..s_{t+k-1}^l)$表示$k$步辅助奖励值之和。由于上层策略产生的同一隐编码连续输入给下层策略了$k$次，因此我们认为这个奖励值应该平均分配到每一步的下层策略。因此我们定义
+	\begin{align}
+	\underset{t\leq  i < t+k}{R_l(s_i^l)}=&\frac{1}{k} A_{\pi_h}(s_t^h,a_t^h)
+	\end{align}
+
+根据经验估计奖励函数$A_{\pi_h}(s_t^h, a_t^h)$的真实值有许多不同的方法\cite{GAE}。在这里，我们采用简单的单步估算方法
+	\begin{align}
+	A_{\pi_h}(s_t^h, a_t^h)=&r_t^h+\gamma V_{\pi_h}(s_{t+k}^h)-V_{\pi_h}(s_t^h)
+	\label{eq:Advantage_calculation}
+	\\
+	\underset{t\leq  i < t+k}{R_l(s_i^l)}=&\frac{r_t^h+\gamma V_{\pi_h}(s_{t+k}^h)-V_{\pi_h}(s_t^h)}{k}
+	\label{eq:Reward_calculation}
+	\end{align}
+
+在实际实现当中，由于$\gamma$的值非常接近$1$，我们可以忽略式\eqref{eq:Advantage_calculation}\eqref{eq:Reward_calculation}当中的$\gamma$这个系数。经验表明，略去这个系数可以使得训练的方差减小，但对于训练结果没有显著影响。这在直观上也是易于理解的：如果去除$\gamma$，又因为我们是一个稀疏奖励问题，$r_t^h = 0$，优势函数将会退化为上层策略的价值函数估计值$V_h$之差。注意到上层策略得到的奖励完全来自于环境，因此它的价值函数表达的意思就等效于整体策略的价值函数。假设上层策略的$V$估计是接近真实值的，那么对于下层策略来说，它使得$V_h$之差越大，就越说明它在鼓励智能体朝向整体价值高的地方走，而价值高就对应着策略越好。上层策略越优，这个价值之差与真实价值之差就越接近，这个奖励函数就越合理。
+
+在后文中，我们将从数学上证明\eqref{eq:Reward_calculation}这个奖励函数的设计能够确保整体策略的单调提升。
+
+\subsection{定义方法二：基于速度方向}
+方法一是我们最终确定采用和研究的主要方法。在方法二当中，我们则采用了另一种辅助奖励的方法，``引导速度''。在有监督的强化学习当中，人们会手动给智能体设计一个速度流，但这种方法显然是不够泛化的。我们希望能够设计出一种根据稀疏的奖励，自动生成速度流的方法。这种思想在FeUdal论文\cite{feudal}当中也有所体现，不过与我们采用的引导速度有所差异。
+
+和方法一去除$\gamma$以后的直观解释一样，我们先假设上层策略的价值函数估计$V_h$已经比较优。接下来，我们希望底层策略能鼓励智能体朝向上层策略的价值函数$V_h$增大的地方运动。价值函数$V_h$是状态变量$S$的函数。由于$V_h(S)$在空间每个点都有定义，因此也可以看作是一个关于$(x, y)$的函数$V(S(x, y))$。在实际训练中，取决于状态空间的不同表达方式，$V_h(S)$可能可以，也可能不可以关于$(x, y)$求导（梯度）。为了一般试验下能够表示，我们不直接求导，而是通过``虚拟步''的方法来估算这个导数。假设智能体此刻位于$(x_0, y_0)$。我们让智能体朝八个预定义的方向$(dx_i, dy_i), i = 1,2,...,8$各进行一小步的探索，采集采取这一步以后的$V_h$值，其中最大的$V_h(S(x_0 + dx_m, y_0 + dy_m))$就对应了梯度方向，简记为
+\begin{align}
+  \bigtriangledown V_h(x, y) = [dx_m, dy_m]^T
+\end{align}
+
+我们由此定义下层策略获得的奖励函数为梯度和速度的点积
+\begin{align}
+  	\underset{t\leq  i < t+k}{R_l(s_i^l)} = \bigtriangledown V_h(x, y) \cdot [dx^l, dy^l]^T
+	\label{eq:Reward_calculation2}
+\end{align}
+其中，$(dx^l, dy^l)$表示实际下层步骤得到的位移，由于单步时间差是固定的，也可以认为就是速度。
+
+方法二的缺陷在于需要根据应用场景分析什么是``速度''，什么是``方向''，也意味着它的泛化能力不如方法一。另外，假如通过智能体走一小步``虚拟步''的方法来估算$V_h$关于位移的导数，我们在仿真环境训练的时候需要花费9倍的时间，效率上是不划算的。同时，在现实世界中，条件可能不允许进行这样的``虚拟步''。尽管可以通过对环境模型的拟合来替代这个``虚拟步''的效果，但这样也增加了这个问题的复杂性，可以作为后续研究的方向，在这里不作讨论。因此在最终的实验论证中，我们采用了方法一。
+
+\section{算法细节改进}
+\section{HAAR算法流程}
+为表达清晰，下面的框图展示了我们完整的实际算法流程。
+\begin{algorithm}[htbp]
+  \caption{HAAR algorithm} \label{alg1}
+	\begin{algorithmic}[1]
+	 \STATE{Initialize high-level and low-level policy $\pi_h(a^h_t|s^h_t)$, $\pi_l(a^l_t|s^l_t)$.}
+	 \FOR{iteration $\in\{1,...,N\}$}
+	    \STATE{Anneal low-level step length $k$.}
+	    \STATE{Collect experiences with $M$ paths under current policy, put in set $\mathcal{S}$.}
+	    \FOR{each path $\in \mathcal{S}$ }
+	     \FOR{each high-step $(S^h_{t_i}, S^h_{t_i + k - 1}; S^l_t, S^l_{t+1},..., S^l_{t_i+k-1} )$ $\in$ each path }
+	       \STATE{Process sampled experience: $ R^l_t|_{t=t_i, ... ,t_i + k - 1} \leftarrow \frac{\gamma V_{\pi_h}(s_{t_i+k}^h)-V_{\pi_h}(s_{t_i}^h)}{k}$.}
+	     \ENDFOR
+	    \ENDFOR
+	    \STATE{Concatenate all high-level experiences.}
+	    \STATE{Optimize $\pi_h$ with TRPO, update $V_h$}
+	    \STATE{Concatenate all processed low-level experiences.}
+	    \STATE{Optimize $\pi_l$ with TRPO}
+	 \ENDFOR
+	 \STATE {\bfseries return } $\pi_h, \pi_l$.
+\end{algorithmic}
+\end{algorithm}
+
+\section{单调递增性结论}
+我们的算法是分别对上下层策略进行更新，接下来我们证明，单独更新上层策略和单独更新下层策略都可以使得整体策略变优。
+
+在接下来的推导过程中，我们用上标或下标$h$和$l$来表示强化学习中的一系列参数，是针对上层策略（high）还是下层策略（low）。
+
+\subsection{整体策略的度量方法}
+首先我们定义对整体策略好坏的度量方法。注意到，对于上层策略来说，底层策略相当于环境动力学（dynamics）。当底层策略发生了变化时，可以看做是环境动力学发生了变化。我们用$\mathcal{E}(\pi_l)$表示环境，并且环境与$\pi_l$有关。定义$\pi_h$带来的折扣奖励期望
+\begin{equation}
+\begin{aligned}
+  \eta(\pi_h) = V_h(s_0^h) = \mathbb{E}_{s_0^h, a_0^h, ...}\Bigg[\sum_{t = 0, k, 2k, ...} \gamma_h^{t/k} r_h(s_t^h, a_t^h)\Bigg] \text{ ,  where}   \\
+  s_0^h \sim \rho_0^h(s_0^h), a_t^h \sim \pi_h(s_t^h), s_{t+1} \sim P(s_{t+1}^h|s_t^h, a_t^h, \mathcal{E}(\pi_l))
+\end{aligned}
+\end{equation}
+这个期望值同时和$\pi_h$和$\pi_l$有关，也就是我们对整体策略的度量。
+
+\subsection{上层策略单调递增性}
+首先，我们说明，在下层策略不变的情况下，利用TRPO更新上层策略，可以保证整体策略的单调递增，即$\eta(\pi_h)$单调递增。这一步很简单，既然底层策略不变，那么可以认为底层策略是包含在环境中的，因此TRPO去优化上层策略，就相当于TRPO直接作用于一个单层的强化学习结构，对应的优化目标将是近似单调递增的。注意到对于上层策略来说，它得到的$R$就是上下层策略作为一个整体得到的真实$R$。
+
+\subsection{下次策略单调递增性}
+接下来，我们推导，采用$ \frac{\gamma_h V_h(s_{t + k}^h) - V_h(s_{t}^h)}{k}$作为上层给下层的输入，从而优化$\pi_l$，也可以使得整体策略单调变优。
+
+我们优化策略的算法采用的是TRPO\cite{TRPO}。在TRPO当中，我们最终希望去优化的东西是$V_{\pi}(s_0)$。TRPO算法等价于在基于策略梯度定理给出的策略梯度优化中，增加了对步长的限制，从而确保策略更新的单调性。在策略梯度方法的论文\cite{policy_gradient_theorem}中，Sutton指出，对一个策略优化的目标函数$J$既可以采用$V_{\pi}(s_0)$的定义，也可以采用$R$的平均值的定义，它们可以分别推导得出策略梯度定理，而这个定理中的策略梯度，与TRPO试图优化的替代函数的梯度是相等的。因此，TRPO也可以理解成是在最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$。要注意，这里要求马尔可夫过程必须是满足稳态分布的，也就是$P(s_t = s)$存在。在\ref{sec:additional_proof}的结论\ref{conclusion:3}里，我们证明了满足这些条件的情况下，最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$与最大化$V_{s_0 \sim \rho(s_0)}(s_0)$等价。
+
+如果把$R$的均值作为优化目标，我们有
+\begin{align}
+  \bigtriangledown J(\theta) = \bigtriangledown \mathbb{E}_{s\sim\pi}[\sum_{a} \pi(s, a) R(s, a)]
+  &= \bigtriangledown \mathbb{E}_{s, a\sim\pi}[R(s, a)].
+  \label{eq:policy_gradient}
+\end{align}
+
+我们定义了
+\begin{align}
+  R_l(s_{t + i}^l, a_{t + i}^l)|_{i = 0,1,...,k-1} = \frac{V_h(s_{t + k}^h) - V_h(s_{t}^h)}{k}.
+  \label{eq:R_low}
+\end{align}
+
+前面我们提到，TRPO完成的任务是最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$，因此我们在利用TRPO针对底层策略进行优化的时候，相当于最大化$\mathbb{E}_{s, a \sim \pi_l, \pi_h}[R_l(s_l, a_l)]$。注意这里，我们把$\pi_h$看做是一个固定的概率分布函数，而不对它进行优化。$\pi_h$可以看做是环境的一部分，而它输出的隐式编码（latent code）则是我们观察（observation）的一部分。
+
+根据\eqref{eq:R_low}中的结果，我们两边取期望，可以得到
+\begin{align}
+  \mathbb{E}_{s^l, a^l \sim \pi_l, \pi_h}[R_l(s^l, a^l)] = \frac{1}{k} \mathbb{E}_{s^h, a^h \sim \pi_l, \pi_h}[\gamma_h V_h(s_{t + k}^h) - V_h(s_{t}^h)].
+  \label{eq:R_expectation}
+\end{align}
+
+回忆在强化学习中，我们关于优势函数$A(s, a)$的定义，为
+\begin{align}
+  A(S_t, A_t) = Q(S_t, A_t) - V(S_t) = R(S_t, A_t) + \gamma V(S_{t + 1}) - V(s).
+  \label{eq:advantage}
+\end{align}
+
+由于在稀疏强化学习问题中有稀疏奖励条件：
+\begin{align}
+  R(S_t, A_t) = 0, \forall t \neq t_{end}.
+  \label{eq:sparse_reward_condition}
+\end{align}
+
+因此，\eqref{eq:advantage}变为
+\begin{align}
+  A(S_t, A_t) = \gamma V(S_{t + 1}) - V(s).
+  \label{eq:sparse_advantage}
+\end{align}
+
+由\eqref{eq:R_expectation}和\eqref{eq:sparse_advantage}可知，TRPO优化下层策略的结果，等效于优化了上层的优势函数，也就是
+\begin{align}
+  \mathbb{E}_{s^l, a^l \sim \pi_l, \pi_h}[R_l(s^l, a^l)] = \frac{1}{k} \mathbb{E}_{s^h, a^h \sim \pi_l, \pi_h}[A^h(s_t^h, a_t^h)].
+  \label{eq:R_expectation_is_advantage}
+\end{align}
+
+接下来我们证明，通过最大化这个期望值，就近似等效于优化了整体策略的表现。
+
+我们用$\tilde{\eta}(\pi_h)$来表示$\pi_l$发生变化（变为$\tilde{\pi_l}$）而$\pi_h$没有发生变化以后的折扣奖励值期望。将TRPO根据\cite{TRPO_pre}得到的引理1（\textbf{Lemma 1}）稍加变形，我们可以得到类似的结果：（具体推导参见\ref{sec:additional_proof}中的结论\ref{conclusion:1}）
+\begin{align}
+  \tilde{\eta}(\pi_h) = \eta(\pi_h) + \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg].
+  \label{eq:new_environment_advantage}
+\end{align}
+
+等式\eqref{eq:new_environment_advantage}右边第二项的含义就是，新的整体策略相对于旧的整体策略的优势。我们想要最大化的就是这个优势。
+
+我们定义折扣访问频率$\rho$为
+\begin{align}
+  \rho_{\pi_h}(s^h) = \sum_{t = 0, k, 2k, ...}\gamma_h^{t/k}P(s_t^h = s|\mathcal{E}(\pi_l))
+\end{align}
+当底层策略发生改变而上层策略不变的时候，$\rho_{\pi_h}$相应地变为$\tilde{\rho}_{\pi_h}$。
+
+表达式\eqref{eq:new_environment_advantage}中，等式右侧第二项可以变形为（参见TRPO论文中的等式（2）推导，写在\ref{sec:additional_proof}中结论\ref{conclusion:2}）
+\begin{align}
+  \sum_{s^h}\tilde{\rho}_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
+  \label{eq:accurate_objective}
+\end{align}
+
+对于一个起点随机产生的，非周期、不可约的稳态马尔可夫问题，我们有
+\begin{align}
+  P(s_0^h = s^h) = P(s_1^h = s^h) = ... = P(s_i^h = s^h)
+%  \text{ referred to as P(s^h)}
+  \label{eq:P(s)}
+\end{align}
+注意到这里$P(s_i^h = s^h)$也就是采样中状态的分布。
+
+将\eqref{eq:P(s)}带入\eqref{eq:accurate_objective}，可以得到
+\begin{align}
+  \tilde{\rho}_{\pi_h}(s^h) = \frac{1}{1-\gamma_h}P(s_i^h = s^h)
+  \label{eq:rho_constant}
+\end{align}
+
+从而，我们可以把\eqref{eq:new_environment_advantage}写成期望的形式：
+\begin{align}
+  \tilde{\eta}(\pi_h) = \eta(\pi_h) + \frac{1}{1-\gamma_h}\mathbb{E}_{s^h, a^h \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\bigg[A_{\pi_h}(s^h, a^h)\bigg].
+  \label{eq:accurate_objective_expectation_form}
+\end{align}
+
+我们发现最大化\eqref{eq:R_expectation_is_advantage}恰好也就最大化了\eqref{eq:accurate_objective_expectation_form}。由此我们证明了，只要利用TRPO对下层策略进行了更新，$\eta(\pi_h)$，也就是整体策略的表现度量，也将是近似单调递增的（因为TRPO是近似单调递增的）。
+
+\subsection{上下层策略联合优化方法}
+综上所述，如果我们单次更新，分别固定$\pi_h$更新$\pi_l$或者是固定$\pi_l$更新$\pi_h$，都将使得整体策略的价值$\eta(\pi_h)$单调递增。
+
+在实际操作中，为了提高采样效率，我们每次采样之后，都既优化$\pi_h$又优化$\pi_l$。实验结果表面，同时优化上下层策略虽然在理论上无法保证整体策略$\eta(\pi_h)$的单调增特性，却能够将采样效率提高为交替优化单层策略的两倍。也就是说，在每次更新$\pi_l$和$\pi_h$变化都较小的情况下，同时优化两者并不会导致整体策略效果变差。
+
+%%% 其它部分
+%\backmatter
+
+%%% 本科生要这几个索引，研究生不要。选择性留下。
+%% 插图索引
+%%\listoffigures
+%%% 表格索引
+%%\listoftables
+%%% 公式索引
+%%\listofequations
+%
+%
+%%% 参考文献
+%% 注意：至少需要引用一篇参考文献，否则下面两行可能引起编译错误。
+%% 如果不需要参考文献，请将下面两行删除或注释掉。
+%% 数字式引用
+%\bibliographystyle{thuthesis-numeric}
+%% 作者-年份式引用
+%% \bibliographystyle{thuthesis-author-year}
+%\bibliography{../../references/bibtex/all_references}
+%
+%
+%%% 致谢
+%%\include{data/ack}
+%
+%%% 附录
+%%\begin{appendix}
+\subsection{辅助结论的证明}
+\label{sec:additional_proof}
+结论\ref{conclusion:1}源自TRPO论文的引理1\cite{TRPO}，结论\ref{conclusion:2}也源自该论文，在表达式上有区别，但是思路相同。
+\newtheorem{conclusion}{结论} % 定义一个定理格式叫做“结论”
+
+\begin{conclusion}
+\label{conclusion:1}
+\begin{align}
+  \tilde{\eta}(\pi_h) = \eta(\pi_h) + \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg].
+\end{align}
+\end{conclusion}
+
+\begin{proof}
+\begin{align}
+  &\mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg]\\
+  &= \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[
+      \sum_{t = 0, k, 2k, ...}\gamma_h^{t/k}(r_h(s_t^h)+\gamma_h V_{\pi_h}(s_{t+k}^h) - V_{\pi_h}(s_t^h))
+      \Bigg]\\
+  &= \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[
+      -V_{\pi_h}(s_0^h) + \sum_{t=0,k,2k,...} \gamma_h^{t/k} r_h(s_t^h)
+      \Bigg]\\
+  &= -\eta(\pi_h) + \tilde{\eta}(\pi_h)
+\end{align}
+\end{proof}
+
+\begin{conclusion}
+\label{conclusion:2}
+\begin{align}
+    \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg] = \sum_{s^h}\tilde{\rho}_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
+\end{align}
+\end{conclusion}
+
+\begin{proof}
+\label{conclusion:3}
+\begin{align}
+  &\mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg]\\
+  &= \sum_{t = 0,k,2k,...} \sum_{s^h} P(s_t^h = s^h| \pi_h, \mathcal{E}(\pi_l)) \sum_{a^h} \pi_h(a^h|s^h) \gamma_h^{t/k} A_{\pi_h}(s^h, a^h)\\
+  &= \sum_{s^h} \sum_{t = 0,k,2k,...} \gamma_h^{t/k} P(s_t^h = s^h|\pi_h, \mathcal{E}(\pi_l)) \sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h)\\
+  &= \sum_{s^h}\tilde{\rho}_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
+\end{align}
+\end{proof}
+
+\begin{conclusion}
+\begin{align}
+  \mathbb{E}_{s, a \sim \pi}[R(s, a)] = V_{s_0 \sim \rho(s_0)}(s_0)
+\end{align}
+\end{conclusion}
+
+\begin{proof}
+\begin{align}
+  V_{s_0 \sim \rho(s_0)}(s_0)
+  &= \mathbb{E}_{s_t, a_t \sim \pi}[\sum_{t = 0}^{\infty}\gamma^t R(s_t, a_t)]
+  \\
+  &= \sum_{t = 0}^{\infty} \sum_{s}P(s_t = s | \pi) \sum_{a}\pi(a|s)\gamma^t R(s, a)\\
+  &= \sum_{s} \sum_{t=0}^{\infty} P(s_t = s | \pi)\gamma^t \sum_{a}\pi(a|s) R(s, a)\\
+  &= \sum_{s} \rho(s|\pi) \sum_{a}\pi(a|s) R(s, a)\\
+  &= \mathbb{E}_{s\sim \rho_{\pi}, a \sim \pi}[R(s, a)].
+\end{align}
+\end{proof}
+%%\input{data/appendix01}
+%%\include{proposal/main_for_proposal}
+%%\includepdf[pages=-]{proposal/main_for_proposal.pdf}
+%
+%\end{appendix}
+%
+%%% 个人简历
+%%\include{data/resume}
+%
+%%% 本科生进行格式审查是需要下面这个表格，答辩可能不需要。选择性留下。
+%% 综合论文训练记录表
+%%\includepdf[pages=-]{scan-record.pdf}
+%
+%\end{document}

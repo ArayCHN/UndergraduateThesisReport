@@ -1,0 +1,184 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\FN@pp@footnotehinttrue 
+\@writefile{toc}{\contentsline {chapter}{\numberline {第2章\hspace  {0.3em}}辅助奖励强化学习算法}{17}{chapter.2}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}本章简介}{17}{section.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces HAAR算法的基本架构示意图。每一大步，上层策略产生一步动作$a^h$，在我们的例子中也就是隐编码$z$。这个隐式编码被输入给了$k$小步的下层策略，同时下层策略还会观察环境获得$S_i^l$，由此输出一系列下层动作$a_1, ..., a_k$。上层策略获取环境反馈直接作为它的奖励函数，而下层策略的奖励函数则根据上层策略来获取，并且同一大步内的每一小步获得相同的奖励值。\relax }}{17}{figure.caption.13}}
+\newlabel{fig:algorithm_scheme}{{2.1}{17}{HAAR算法的基本架构示意图。每一大步，上层策略产生一步动作$a^h$，在我们的例子中也就是隐编码$z$。这个隐式编码被输入给了$k$小步的下层策略，同时下层策略还会观察环境获得$S_i^l$，由此输出一系列下层动作$a_1, ..., a_k$。上层策略获取环境反馈直接作为它的奖励函数，而下层策略的奖励函数则根据上层策略来获取，并且同一大步内的每一小步获得相同的奖励值。\relax }{figure.caption.13}{}}
+\citation{GAE}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}底层策略预训练}{18}{section.2.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}辅助奖励函数定义}{18}{section.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}定义方法一：基于优势函数}{18}{subsection.2.3.1}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-1}}{18}{equation.2.3.1}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-2}}{18}{equation.2.3.2}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-3}}{18}{equation.2.3.3}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-4}}{18}{equation.2.3.4}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-5}}{18}{equation.2.3.5}}
+\newlabel{eq:Advantage_calculation}{{2-5}{18}{定义方法一：基于优势函数}{equation.2.3.5}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-6}}{18}{equation.2.3.6}}
+\newlabel{eq:Reward_calculation}{{2-6}{18}{定义方法一：基于优势函数}{equation.2.3.6}{}}
+\citation{feudal}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}定义方法二：基于速度方向}{19}{subsection.2.3.2}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-7}}{19}{equation.2.3.7}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-8}}{19}{equation.2.3.8}}
+\newlabel{eq:Reward_calculation2}{{2-8}{19}{定义方法二：基于速度方向}{equation.2.3.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}算法细节改进}{20}{section.2.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}HAAR算法流程}{20}{section.2.5}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces HAAR algorithm\relax }}{20}{algorithm.1}}
+\newlabel{alg1}{{1}{20}{HAAR algorithm\relax }{algorithm.1}{}}
+\citation{TRPO}
+\citation{policy_gradient_theorem}
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}单调递增性结论}{21}{section.2.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.1}整体策略的度量方法}{21}{subsection.2.6.1}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-9}}{21}{equation.2.6.9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.2}上层策略单调递增性}{21}{subsection.2.6.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.3}下次策略单调递增性}{21}{subsection.2.6.3}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-10}}{22}{equation.2.6.10}}
+\newlabel{eq:policy_gradient}{{2-10}{22}{下次策略单调递增性}{equation.2.6.10}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-11}}{22}{equation.2.6.11}}
+\newlabel{eq:R_low}{{2-11}{22}{下次策略单调递增性}{equation.2.6.11}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-12}}{22}{equation.2.6.12}}
+\newlabel{eq:R_expectation}{{2-12}{22}{下次策略单调递增性}{equation.2.6.12}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-13}}{22}{equation.2.6.13}}
+\newlabel{eq:advantage}{{2-13}{22}{下次策略单调递增性}{equation.2.6.13}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-14}}{22}{equation.2.6.14}}
+\newlabel{eq:sparse_reward_condition}{{2-14}{22}{下次策略单调递增性}{equation.2.6.14}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-15}}{22}{equation.2.6.15}}
+\newlabel{eq:sparse_advantage}{{2-15}{22}{下次策略单调递增性}{equation.2.6.15}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-16}}{22}{equation.2.6.16}}
+\newlabel{eq:R_expectation_is_advantage}{{2-16}{22}{下次策略单调递增性}{equation.2.6.16}{}}
+\citation{TRPO_pre}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-17}}{23}{equation.2.6.17}}
+\newlabel{eq:new_environment_advantage}{{2-17}{23}{下次策略单调递增性}{equation.2.6.17}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-18}}{23}{equation.2.6.18}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-19}}{23}{equation.2.6.19}}
+\newlabel{eq:accurate_objective}{{2-19}{23}{下次策略单调递增性}{equation.2.6.19}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-20}}{23}{equation.2.6.20}}
+\newlabel{eq:P(s)}{{2-20}{23}{下次策略单调递增性}{equation.2.6.20}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-21}}{23}{equation.2.6.21}}
+\newlabel{eq:rho_constant}{{2-21}{23}{下次策略单调递增性}{equation.2.6.21}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-22}}{23}{equation.2.6.22}}
+\newlabel{eq:accurate_objective_expectation_form}{{2-22}{23}{下次策略单调递增性}{equation.2.6.22}{}}
+\citation{TRPO}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.4}上下层策略联合优化方法}{24}{subsection.2.6.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.5}辅助结论的证明}{24}{subsection.2.6.5}}
+\newlabel{sec:additional_proof}{{2.6.5}{24}{辅助结论的证明}{subsection.2.6.5}{}}
+\@writefile{thm}{\contentsline {conclusion}{{结论}{1}{}}{24}{conclusion.1}}
+\newlabel{conclusion:1}{{1}{24}{辅助结论的证明}{conclusion.1}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-23}}{24}{equation.2.6.23}}
+\@writefile{thm}{\contentsline {proof}{{证明}{1}{}}{24}{proof.1}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-24}}{24}{equation.2.6.24}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-25}}{24}{equation.2.6.25}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-26}}{24}{equation.2.6.26}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-27}}{24}{equation.2.6.27}}
+\global\def\markiproofi{\ensuremath {\square }}
+\@writefile{thm}{\contentsline {conclusion}{{结论}{2}{}}{24}{conclusion.2}}
+\newlabel{conclusion:2}{{2}{24}{辅助结论的证明}{conclusion.2}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-28}}{24}{equation.2.6.28}}
+\@writefile{thm}{\contentsline {proof}{{证明}{2}{}}{24}{proof.2}}
+\newlabel{conclusion:3}{{2}{24}{辅助结论的证明}{proof.2}{}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-29}}{24}{equation.2.6.29}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-30}}{25}{equation.2.6.30}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-31}}{25}{equation.2.6.31}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-32}}{25}{equation.2.6.32}}
+\global\def\markiiproofi{\ensuremath {\square }}
+\@writefile{thm}{\contentsline {conclusion}{{结论}{3}{}}{25}{conclusion.3}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-33}}{25}{equation.2.6.33}}
+\@writefile{thm}{\contentsline {proof}{{证明}{3}{}}{25}{proof.3}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-34}}{25}{equation.2.6.34}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-35}}{25}{equation.2.6.35}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-36}}{25}{equation.2.6.36}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-37}}{25}{equation.2.6.37}}
+\@writefile{loe}{\contentsline {equation}{\numberline {2-38}}{25}{equation.2.6.38}}
+\global\def\markiiiproofi{\ensuremath {\square }}
+\FN@pp@footnotehinttrue 
+\@setckpt{derivation}{
+\setcounter{page}{26}
+\setcounter{equation}{38}
+\setcounter{enumi}{3}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{2}
+\setcounter{section}{6}
+\setcounter{subsection}{5}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{1}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{ContinuedFloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{AM@survey}{0}
+\setcounter{pp@next@reset}{1}
+\setcounter{@fnserial}{0}
+\setcounter{endNonectr}{45}
+\setcounter{currNonectr}{0}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{NAT@ctr}{0}
+\setcounter{Item}{9}
+\setcounter{Hfootnote}{0}
+\setcounter{Hy@AnnotLevel}{0}
+\setcounter{bookmark@seq@number}{34}
+\setcounter{thu@bookmark}{4}
+\setcounter{translationbibi}{0}
+\setcounter{publicationsi}{0}
+\setcounter{achievementsi}{0}
+\setcounter{currproofctr}{3}
+\setcounter{endproofctr}{1}
+\setcounter{proof}{3}
+\setcounter{currassumptionctr}{0}
+\setcounter{endassumptionctr}{0}
+\setcounter{assumption}{0}
+\setcounter{currdefinitionctr}{0}
+\setcounter{enddefinitionctr}{0}
+\setcounter{definition}{0}
+\setcounter{currpropositionctr}{0}
+\setcounter{endpropositionctr}{0}
+\setcounter{proposition}{0}
+\setcounter{currlemmactr}{0}
+\setcounter{endlemmactr}{0}
+\setcounter{lemma}{0}
+\setcounter{currtheoremctr}{0}
+\setcounter{endtheoremctr}{0}
+\setcounter{theorem}{0}
+\setcounter{curraxiomctr}{0}
+\setcounter{endaxiomctr}{0}
+\setcounter{axiom}{0}
+\setcounter{currcorollaryctr}{0}
+\setcounter{endcorollaryctr}{0}
+\setcounter{corollary}{0}
+\setcounter{currexercisectr}{0}
+\setcounter{endexercisectr}{0}
+\setcounter{exercise}{0}
+\setcounter{currexamplectr}{0}
+\setcounter{endexamplectr}{0}
+\setcounter{example}{0}
+\setcounter{currremarkctr}{0}
+\setcounter{endremarkctr}{0}
+\setcounter{remark}{0}
+\setcounter{currproblemctr}{0}
+\setcounter{endproblemctr}{0}
+\setcounter{problem}{0}
+\setcounter{currconjecturectr}{0}
+\setcounter{endconjecturectr}{0}
+\setcounter{conjecture}{0}
+\setcounter{float@type}{8}
+\setcounter{ALC@unique}{15}
+\setcounter{ALC@line}{15}
+\setcounter{ALC@rem}{0}
+\setcounter{ALC@depth}{0}
+\setcounter{algorithm}{1}
+\setcounter{section@level}{2}
+\setcounter{currconclusionctr}{3}
+\setcounter{endconclusionctr}{1}
+\setcounter{conclusion}{3}
+}

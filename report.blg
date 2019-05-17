@@ -1,0 +1,203 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: /Users/WangRui/Aray_THU/Thesis_undergrad/thesis/thesis_report/report.aux
+A level-1 auxiliary file: chp1_introduction.aux
+A level-1 auxiliary file: derivation.aux
+The style file: thuthesis-numeric.bst
+A level-1 auxiliary file: data/ack.aux
+Database file #1: ../../references/bibtex/all_references.bib
+You're missing a field name---line 7 of file ../../references/bibtex/all_references.bib
+ :   
+ :   % url = {http://incompleteideas.net/book/the-book-2nd.html},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 22 of file ../../references/bibtex/all_references.bib
+ : 
+ : % doi="10.1007/BF00115009",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 36 of file ../../references/bibtex/all_references.bib
+ :    
+ :    %   coden = "IUMJAB",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 46 of file ../../references/bibtex/all_references.bib
+ :  
+ :  % address = {New York, NY, USA},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 61 of file ../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2016arXiv160805151V},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 69 of file ../../references/bibtex/all_references.bib
+ : 
+ : % parent_itemid = "infobike://ist/ei",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 97 of file ../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2017arXiv170107274L},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 138 of file ../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2015arXiv150902971L},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 155 of file ../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2017arXiv170805144W},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 186 of file ../../references/bibtex/all_references.bib
+ : 
+ : % issn="1573-0565",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 201 of file ../../references/bibtex/all_references.bib
+ : 
+ : % url={https://doi.org/10.1038/nature14236}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 212 of file ../../references/bibtex/all_references.bib
+ : 
+ : % doi = {10.1145/3065386}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 227 of file ../../references/bibtex/all_references.bib
+ :   
+ :   % pdf =    {http://proceedings.mlr.press/v48/mniha16.pdf},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 251 of file ../../references/bibtex/all_references.bib
+ :       
+ :       %  adsurl = {https://ui.adsabs.harvard.edu/\#abs/2016arXiv160904747R},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 267 of file ../../references/bibtex/all_references.bib
+ :  
+ :  % url = {http://dx.doi.org/10.1016/S0893-6080(98)00116-6},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 280 of file ../../references/bibtex/all_references.bib
+ :  
+ :  % location = {Beijing, China},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 306 of file ../../references/bibtex/all_references.bib
+ :  
+ :  % url = {http://dx.doi.org/10.1177/0278364913495721},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 337 of file ../../references/bibtex/all_references.bib
+ :     
+ :     % issn = {0036-8075},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 359 of file ../../references/bibtex/all_references.bib
+ : 
+ : % editor = {I. Guyon and U. V. Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 370 of file ../../references/bibtex/all_references.bib
+ : 
+ : % editor = {C. Cortes and N. D. Lawrence and D. D. Lee and M. Sugiyama and R. Garnett},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 389 of file ../../references/bibtex/all_references.bib
+ : 
+ : % doi="10.1007/s10846-017-0468-y",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 552 of file ../../references/bibtex/all_references.bib
+ : 
+ : %editor = {F. Pereira and C. J. C. Burges and L. Bottou and K. Q. Weinberger},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 566 of file ../../references/bibtex/all_references.bib
+ : 
+ : %url = {http://papers.nips.cc/paper/5796-learning-continuous-control-policies-by-stochastic-value-gradients.pdf}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 577 of file ../../references/bibtex/all_references.bib
+ : 
+ : %url = {http://papers.nips.cc/paper/1713-policy-gradient-methods-for-reinforcement-learning-with-function-approximation.pdf}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 613 of file ../../references/bibtex/all_references.bib
+ : 
+ : % publisher = {Curran Associates, Inc.},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 645 of file ../../references/bibtex/all_references.bib
+ :     
+ :     % primaryClass={cs.LG}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 671 of file ../../references/bibtex/all_references.bib
+ : 
+ : %url={https://openreview.net/forum?id=SyX0IeWAW},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "thuthesis"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty year in Sutton_book
+Warning--empty year in DRL_for_driving
+Warning--empty year in action-conditional_prediction
+Warning--empty year in I2A
+Warning--empty year in Sutton_book
+Warning--empty year in Sutton_book
+Warning--empty author in DRL_for_driving
+Warning--empty year in DRL_for_driving
+Warning--empty year in action-conditional_prediction
+Warning--empty year in action-conditional_prediction
+Warning--empty year in I2A
+Warning--empty year in I2A
+Name 2 in "Precup, Doina and Sutton, Richard S., and Singh, Satinder" has a comma at the end for entry Sutton:1998_options
+while executing---line 1611 of file thuthesis-numeric.bst
+Name 2 in "Precup, Doina and Sutton, Richard S., and Singh, Satinder" has a comma at the end for entry Sutton:1998_options
+while executing---line 1611 of file thuthesis-numeric.bst
+You've used 49 entries,
+            3363 wiz_defined-function locations,
+            1058 strings with 16121 characters,
+and the built_in function-call counts, 427866 in all, are:
+= -- 44661
+> -- 44886
+< -- 44555
++ -- 14315
+- -- 462
+* -- 1750
+:= -- 46304
+add.period$ -- 141
+call.type$ -- 49
+change.case$ -- 99
+chr.to.int$ -- 13085
+cite$ -- 62
+duplicate$ -- 1030
+empty$ -- 3053
+format.name$ -- 843
+if$ -- 123912
+int.to.chr$ -- 1
+int.to.str$ -- 50
+missing$ -- 0
+newline$ -- 259
+num.names$ -- 149
+pop$ -- 19244
+preamble$ -- 1
+purify$ -- 49
+quote$ -- 0
+skip$ -- 51880
+stack$ -- 0
+substring$ -- 14296
+swap$ -- 159
+text.length$ -- 534
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 636
+warning$ -- 12
+while$ -- 675
+width$ -- 0
+write$ -- 714
+(There were 29 error messages)

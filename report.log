@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.11.19)  15 MAY 2019 22:04
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.11.19)  17 MAY 2019 22:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2005,34 +2005,8 @@ LaTeX Info: Redefining \nameref on input line 26.
 . Redefining command \Pifont with sig. 'm' on line 26.
 .................................................
 (./data/cover.tex)
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern -2.00792pt
-(hyperref)                removed on input line 33.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lower' on input line 33.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 33.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern -1.50562pt
-(hyperref)                removed on input line 33.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\spacefactor' on input line 33.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@m' on input line 33.
-
 File: tsinghua.pdf Graphic file (type QTm)
-<use  "tsinghua.pdf" >
+ <use  "tsinghua.pdf" >
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 36.135pt on input line 34.
 
@@ -2195,8 +2169,6 @@ LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 13.55052pt on input line 34.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 34.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.03374pt on input line 34.
  [1
 
@@ -2220,6 +2192,8 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 
  (./chp1_introduction.tex
 第1章
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.0pt on input line 2.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 12.64714pt on input line 6.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
@@ -2271,40 +2245,61 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 8.06006pt on input line 124.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 6.07271pt on input line 124.
- [9] [10] [11]) [12]
+ [9]
+File: figures/HRL_scheme.pdf Graphic file (type QTm)
+ <use  "figures/HRL_scheme.pdf" >
+Overfull \hbox (66.38857pt too wide) in paragraph at lines 140--141
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10] [11] [12] [13]
+File: figures/hrl_is_sensitive_to_state_design.pdf Graphic file (type QTm)
+ <use  "figures/hrl_is_sensitive_to_state_design.pdf" >
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.06006pt on input line 181.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14] [15]) [16]
 \openout2 = `derivation.aux'.
 
  (./derivation.tex
 第2章
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 59.
-[13
+File: figures/algorithm_scheme.pdf Graphic file (type QTm)
+<use  "figures/algorithm_scheme.pdf" > [17
 
 
 
-] [14] [15] [16]
+] [18] [19]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 116.
+ [20] [21] [22] [23]
 \c@currconclusionctr=\count327
 \c@endconclusionctr=\count328
 \c@conclusion=\count329
-Package hyperref Info: bookmark level for unknown conclusion defaults to 0 on input line 248.
-Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 255.
- [17]) [18]
+Package hyperref Info: bookmark level for unknown conclusion defaults to 0 on input line 286.
+Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 293.
+ [24]) [25]
 第3章
-[19
+[26
 
 
 ]
 第4章
-[20
+[27
 
 ]
 第5章
-[21
+[28
 
 ] (./report.lof)
 \tf@lof=\write5
 \openout5 = `report.lof'.
 
- [22
+ [29
 
 
 
@@ -2312,17 +2307,17 @@ Package hyperref Info: bookmark level for unknown proof defaults to 0 on input l
 \tf@lot=\write6
 \openout6 = `report.lot'.
 
- [23
+ [30
 
 
-] (./report.loe [24
+] (./report.loe [31
 
 
 ])
 \tf@loe=\write7
 \openout7 = `report.loe'.
 
- (./report.bbl [25]
+ (./report.bbl [32]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.53937pt on input line 1.
 
@@ -2330,10 +2325,10 @@ Underfull \hbox (badness 1546) in paragraph at lines 55--58
 []\T1/ntxtlf/m/n/10.53937 Li Y.  Deep Re-in-force-ment Learn-ing: An Overview[J].  arXiv e-prints, 2017:
  []
 
-[26
+[33
 
 
-] [27]) [28]
+] [34]) [35]
 \openout2 = `data/ack.aux'.
 
  (./data/ack.tex
@@ -2345,13 +2340,13 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 8.0pt on input line 11.
 
 
-Package natbib Warning: Citation `thuthesis' on page 29 undefined on input line 11.
+Package natbib Warning: Citation `thuthesis' on page 36 undefined on input line 11.
 
-[29
+[36
 
 
 
-]) [30
+]) [37
 
 
 ]
@@ -2368,7 +2363,7 @@ File: proposal/main_for_proposal.pdf Graphic file (type QTm)
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page1>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page1> [31
+ <use  "proposal/main_for_proposal.pdf"  page1> [38
 
 ]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
@@ -2376,140 +2371,161 @@ File: proposal/main_for_proposal.pdf Graphic file (type QTm)
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page2>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page2> [32]
+ <use  "proposal/main_for_proposal.pdf"  page2> [39]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page3>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page3>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page3> [33]
+ <use  "proposal/main_for_proposal.pdf"  page3> [40]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page4>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page4>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page4> [34]
+ <use  "proposal/main_for_proposal.pdf"  page4> [41]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page5>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page5>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page5> [35]
+ <use  "proposal/main_for_proposal.pdf"  page5> [42]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page6>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page6>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page6> [36]
+ <use  "proposal/main_for_proposal.pdf"  page6> [43]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page7>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page7>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page7> [37]
+ <use  "proposal/main_for_proposal.pdf"  page7> [44]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page8>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page8>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page8> [38]
+ <use  "proposal/main_for_proposal.pdf"  page8> [45]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page9>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page9>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page9> [39]
+ <use  "proposal/main_for_proposal.pdf"  page9> [46]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page10>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page10>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page10> [40]
+ <use  "proposal/main_for_proposal.pdf"  page10> [47]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page11>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page11>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page11> [41]
+ <use  "proposal/main_for_proposal.pdf"  page11> [48]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page12>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page12>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page12> [42]
+ <use  "proposal/main_for_proposal.pdf"  page12> [49]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page13>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page13>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
 
-<use  "proposal/main_for_proposal.pdf"  page13> [43]
+<use  "proposal/main_for_proposal.pdf"  page13> [50]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page14>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page14>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page14> [44]
+ <use  "proposal/main_for_proposal.pdf"  page14> [51]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page15>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page15>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page15> [45]
+ <use  "proposal/main_for_proposal.pdf"  page15> [52]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page16>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page16>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page16> [46]
+ <use  "proposal/main_for_proposal.pdf"  page16> [53]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page17>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page17>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page17> [47]
+ <use  "proposal/main_for_proposal.pdf"  page17> [54]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page18>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page18>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page18> [48]
+ <use  "proposal/main_for_proposal.pdf"  page18> [55]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page19>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page19>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page19> [49]
+ <use  "proposal/main_for_proposal.pdf"  page19> [56]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page20>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page20>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page20> [50]
+ <use  "proposal/main_for_proposal.pdf"  page20> [57]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page21>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page21>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page21> [51]
+ <use  "proposal/main_for_proposal.pdf"  page21> [58]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page22>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page22>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page22> [52]
+ <use  "proposal/main_for_proposal.pdf"  page22> [59]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page23>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page23>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page23> [53]
+ <use  "proposal/main_for_proposal.pdf"  page23> [60]
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page24>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
  <use  "proposal/main_for_proposal.pdf"  page24>
 File: proposal/main_for_proposal.pdf Graphic file (type QTm)
- <use  "proposal/main_for_proposal.pdf"  page24> [54]
+ <use  "proposal/main_for_proposal.pdf"  page24> [61]
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf" >
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf" >
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf"  page1>
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf"  page1>
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf"  page1>
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf"  page1>
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf"  page1> [62]
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf"  page2>
+File: figures/scan-record.pdf Graphic file (type QTm)
+ <use  "figures/scan-record.pdf"  page2>
+File: figures/scan-record.pdf Graphic file (type QTm)
+
+<use  "figures/scan-record.pdf"  page2> [63]
 \tf@thm=\write8
 \openout8 = `report.thm'.
 
@@ -2524,12 +2540,12 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 116.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
- 35261 strings out of 493591
- 652891 string characters out of 6143545
- 668161 words of memory out of 5000000
- 38118 multiletter control sequences out of 15000+600000
- 101068 words of font info for 145 fonts, out of 8000000 for 9000
+ 35390 strings out of 493591
+ 658608 string characters out of 6143545
+ 671668 words of memory out of 5000000
+ 38241 multiletter control sequences out of 15000+600000
+ 103884 words of font info for 147 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  70i,18n,96p,10438b,928s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (62 pages).
+Output written on report.pdf (71 pages).
