@@ -2,3 +2,12 @@
 .texpadtmp
 .texpadtmp/*
 *.pdf
+*.aux
+*.bbl
+*.blg
+*.loe
+*.lot
+*.synctex.gz
+*.toc
+*.thm
+
