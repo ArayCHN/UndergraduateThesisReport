@@ -214,6 +214,7 @@
 我们定义折扣访问频率$\rho$为
 \begin{align}
   \rho_{\pi_h}(s^h) = \sum_{t = 0, k, 2k, ...}\gamma_h^{t/k}P(s_t^h = s|\mathcal{E}(\pi_l))
+  \label{eq:discounted_visitation_freq}
 \end{align}
 当底层策略发生改变而上层策略不变的时候，$\rho_{\pi_h}$相应地变为$\tilde{\rho}_{\pi_h}$。
 
@@ -231,7 +232,7 @@
 \end{align}
 注意到这里$P(s_i^h = s^h)$也就是采样中状态的分布。
 
-将\eqref{eq:P(s)}带入\eqref{eq:accurate_objective}，可以得到
+将\eqref{eq:P(s)}带入\eqref{eq:discounted_visitation_freq}，可以得到
 \begin{align}
   \tilde{\rho}_{\pi_h}(s^h) = \frac{1}{1-\gamma_h}P(s_i^h = s^h)
   \label{eq:rho_constant}
