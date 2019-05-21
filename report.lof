@@ -1,7 +1,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces I2A的基本结构：a) 一个预先训练好的神经网络，可以预测在策略$\mathaccentV {hat}05E{\pi }$下，状态$s$的一系列时序变化；b) 一个子网络，用于``理解''a)的输出结果；c) 整体架构\relax }}{9}{figure.caption.10}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces 分层强化学习的一般架构。可以分为上层策略，下层策略（或者多层策略，此处仅展示两层），和环境三部分。上层策略的输入是环境观测$S^h$，输出的行动$a^h$是下层策略的输入，下层策略的另一输入为环境观测$S^l$，输出为智能体的实际行为，和环境进行交互。环境返回给智能体的奖励$R$作为对上层策略的奖励，而下层策略的奖励则是算法设计者自定义的部分，往往与环境、智能体状态、上层行为、价值函数等等有关。HRL的关键问题其实就在于如何定义上层动作，和如何定义下层获得的奖励。\relax }}{11}{figure.caption.11}
-\contentsline {figure}{\numberline {1.3}{\ignorespaces 几个典型HRL算法在状态空间进行一定变化以后的训练结果变化图\cite {sensitive_to_goal_space}。这个示意图表明，环境的状态表示发生变化时，HRL算法如HAC和HER会受到极大地影响。具体的实验描述可以参见原文。\relax }}{15}{figure.caption.12}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces 几个典型HRL算法在状态空间进行一定变化以后的训练结果变化图\cite {sensitive_to_goal_space}。这个示意图表明，环境的状态表示发生变化时，HRL算法如HAC和HER会受到极大地影响。具体的实验描述可以参见原文。\relax }}{16}{figure.caption.12}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces HAAR算法的基本架构示意图。每一大步，上层策略产生一步动作$a^h$，在我们的例子中也就是隐编码$z$。这个隐式编码被输入给了$k$小步的下层策略，同时下层策略还会观察环境获得$S_i^l$，由此输出一系列下层动作$a_1, ..., a_k$。上层策略获取环境反馈直接作为它的奖励函数，而下层策略的奖励函数则根据上层策略来获取，并且同一大步内的每一小步获得相同的奖励值。\relax }}{17}{figure.caption.13}
 \addvspace {10\p@ }

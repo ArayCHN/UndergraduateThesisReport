@@ -322,13 +322,13 @@
 
 \begin{conclusion}
 \begin{align}
-  \mathbb{E}_{s, a \sim \pi}[R(s, a)] = V_{s_0 \sim \rho(s_0)}(s_0)
+  \mathbb{E}_{s\sim \rho_{\pi}, a \sim \pi}[R(s, a)] = \mathbb{E}[V_{s_0 \sim \rho(s_0)}(s_0)]
 \end{align}
 \end{conclusion}
 
 \begin{proof}
 \begin{align}
-  V_{s_0 \sim \rho(s_0)}(s_0)
+  \mathbb{E}[V_{s_0 \sim \rho(s_0)}(s_0)]
   &= \mathbb{E}_{s_t, a_t \sim \pi}[\sum_{t = 0}^{\infty}\gamma^t R(s_t, a_t)]
   \\
   &= \sum_{t = 0}^{\infty} \sum_{s}P(s_t = s | \pi) \sum_{a}\pi(a|s)\gamma^t R(s, a)\\
