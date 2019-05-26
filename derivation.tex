@@ -109,13 +109,47 @@
 
 方法二的缺陷在于需要根据应用场景分析什么是``速度''，什么是``方向''，也意味着它的泛化能力不如方法一。另外，假如通过智能体走一小步``虚拟步''的方法来估算$V_h$关于位移的导数，我们在仿真环境训练的时候需要花费9倍的时间，效率上是不划算的。同时，在现实世界中，条件可能不允许进行这样的``虚拟步''。尽管可以通过对环境模型的拟合来替代这个``虚拟步''的效果，但这样也增加了这个问题的复杂性，可以作为后续研究的方向，在这里不作讨论。因此在最终的实验论证中，我们采用了方法一。
 
-\section{算法细节改进}
+最终的方法详细展开也可以画成图\ref{fig:algorithm_scheme2}展示的形式。
+      \begin{figure}[h] % use float package if you want it here
+        \centering
+        \includegraphics[scale=0.7]{algorithm_scheme2}
+        \caption{和图\ref{fig:algorithm_scheme}类似，不过这里具体展现了上层采取一大步时，下层具体展开走$k$小步的一个周期。}
+        \label{fig:algorithm_scheme2}
+      \end{figure}
+
+\section{算法细节讨论}
+\subsection{底层技能长度退火算法}
+在以往的``选择者''模式分层强化学习工作当中，底层策略终止有两个方式。第一个方式是基于option框架的工作，是否终止是学习出来的一个函数。如文献综述中提到的，在其他一些方法当中\cite{SNN4hrl, MLSH,HAC}，底层技能长度$k$是固定的。当$k$太小的时候，在最开始训练的探索阶段，底层技能的应用并不能有效缩短上层策略面临问题的时间域长度（horizon）。当$k$过大时，上层策略变得不够灵活，因为在$S_t^h$状态下采取的行动$s_t^h$会一直延续到$S_{t+k-1}$，也就是上层策略不会进行及时的调整。这意味着，$k$很大时，层次策略将不是最优的。为了在训练初期的探索性和训练末期的最优性之间找到一个平衡，我们开发了一种模拟退火应用于$k$的方法。$k_i$将随着训练当前迭代次数$i$发生这样的改变：
+    $$k_i=k_1 e^{-\tau i}$$
+	其中，$k_1$是最一开始训练时的底层技能执行长度，$\tau$是退火温度，反映了底层技能长度的衰减速度快慢。我们定义一个最短技能执行长度$k_s$，当$k_i < k_s$是，我们令$k_i$等于$k_s$。这样可以防止层次策略退化为一个单步策略。
+	
+	在图\ref{fig:anneal}中，我们直观地展示了底层技能步长退火算法。步长一开始很大，之后逐渐变小，并且变小的速度减慢。当$k$减小到$k_s$时，退火过程结束，分层算法将固定在这一结构进行不断地优化。我们认为，这样一种模式可以加速智能体初阶段的探索学习能力，从而提高采样效率。在后续的实验当中，我们也会通过控制变量的方法来探索这个问题，也就是
+	\begin{itemize}
+	  \item 退火算法是否依然能够保证获得奖励的增长，并且在最后依然收敛到最优？
+	  \item 和非退火算法相比，退火算法能否真的加快学习速度？
+	\end{itemize}
+	这将在后文有进一步的讨论。
+	
+	\begin{figure}[h] % use float package if you want it here
+        \centering
+        \includegraphics[scale=0.8]{anneal}
+        \caption{左右两图分别是在后续实验Ant环境和Swimmer环境当中采取的底层步长退火算法。步长一开始很大，之后逐渐变小，并且变小的速度减慢。当$k$减小到$k_s$时，退火过程结束，分层算法将固定在这一结构进行不断地优化。我们认为，这样一种模式可以加速智能体初阶段的探索学习能力，从而提高采样效率。}
+        \label{fig:anneal}
+    \end{figure}
+	
+\subsection{底层技能预训练的影响}
+我们认为，底层技能的预训练对我们算法的表现是有非常显著的影响的。这是因为，直观上讲，假如上层策略的优势函数能够给下层策略提供正确的指导，那么需要上层策略的优势函数学习得相对较优。假如底层策略不好，导致智能体一直无法成功探索到达目的地，就意味着上层策略很难获得非0反馈，那么优势函数的值将一直为0，无法给下层训练提供指导。
+
+为了解决这个问题，我们提出将底层策略进行预训练的方法。我们采用任意一种现有的技能发现（skill discovery）算法来进行预训练，获取一个具备\textit{多样性}和\textit{优秀性}的底层技能集。底层策略相对较好的时候，上层策略能够有效地获取环境反馈，从而为下层提供指导。
+
+
 \section{HAAR算法流程}
 为表达清晰，下面的框图展示了我们完整的实际算法流程。
 \begin{algorithm}[htbp]
   \caption{HAAR algorithm} \label{alg1}
 	\begin{algorithmic}[1]
-	 \STATE{Initialize high-level and low-level policy $\pi_h(a^h_t|s^h_t)$, $\pi_l(a^l_t|s^l_t)$.}
+	 \STATE{Pre-train low-level policy $\pi_l(a^l_t|s^l_t)$.}
+	 \STATE{Randomly initialize high-level policy $\pi_h(a^h_t|s^h_t)$.}
 	 \FOR{iteration $\in\{1,...,N\}$}
 	    \STATE{Anneal low-level step length $k$.}
 	    \STATE{Collect experiences with $M$ paths under current policy, put in set $\mathcal{S}$.}
@@ -151,10 +185,10 @@
 \subsection{上层策略单调递增性}
 首先，我们说明，在下层策略不变的情况下，利用TRPO更新上层策略，可以保证整体策略的单调递增，即$\eta(\pi_h)$单调递增。这一步很简单，既然底层策略不变，那么可以认为底层策略是包含在环境中的，因此TRPO去优化上层策略，就相当于TRPO直接作用于一个单层的强化学习结构，对应的优化目标将是近似单调递增的。注意到对于上层策略来说，它得到的$R$就是上下层策略作为一个整体得到的真实$R$。
 
-\subsection{下次策略单调递增性}
+\subsection{下次策略单调递增性：连续情况}
 接下来，我们推导，采用$ \frac{\gamma_h V_h(s_{t + k}^h) - V_h(s_{t}^h)}{k}$作为上层给下层的输入，从而优化$\pi_l$，也可以使得整体策略单调变优。
 
-我们优化策略的算法采用的是TRPO\cite{TRPO}。在TRPO当中，我们最终希望去优化的东西是$V_{\pi}(s_0)$。TRPO算法等价于在基于策略梯度定理给出的策略梯度优化中，增加了对步长的限制，从而确保策略更新的单调性。在策略梯度方法的论文\cite{policy_gradient_theorem}中，Sutton指出，对一个策略优化的目标函数$J$既可以采用$V_{\pi}(s_0)$的定义，也可以采用$R$的平均值的定义，它们可以分别推导得出策略梯度定理，而这个定理中的策略梯度，与TRPO试图优化的替代函数的梯度是相等的。因此，TRPO也可以理解成是在最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$。要注意，这里要求马尔可夫过程必须是满足稳态分布的，也就是$P(s_t = s)$存在。在\ref{sec:additional_proof}的结论\ref{conclusion:3}里，我们证明了满足这些条件的情况下，最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$与最大化$V_{s_0 \sim \rho(s_0)}(s_0)$等价。
+我们优化策略的算法采用的是TRPO\cite{TRPO}。在TRPO当中，我们最终希望去优化的东西是$V_{\pi}(s_0)$。TRPO算法等价于在基于策略梯度定理给出的策略梯度优化中，增加了对步长的限制，从而确保策略更新的单调性。在策略梯度方法的论文\cite{policy_gradient_theorem}中，Sutton指出，对一个策略优化的目标函数$J$既可以采用$V_{\pi}(s_0)$的定义，也可以采用$R$的平均值的定义，它们可以分别推导得出策略梯度定理，而这个定理中的策略梯度，与TRPO试图优化的替代函数的梯度是相等的。因此，TRPO也可以理解成是在最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$。要注意，这里要求马尔可夫过程必须是满足稳态分布的，也就是$P(s_t = s)$存在。在\ref{sec:additional_proof}的引理\ref{lemma:ER=EV}里，我们证明了满足这些条件的情况下，最大化$\mathbb{E}_{s, a \sim \pi}[R(s, a)]$与最大化$V_{s_0 \sim \rho(s_0)}(s_0)$等价。
 
 如果把$R$的均值作为优化目标，我们有
 \begin{align}
@@ -218,7 +252,7 @@
 \end{align}
 当底层策略发生改变而上层策略不变的时候，$\rho_{\pi_h}$相应地变为$\tilde{\rho}_{\pi_h}$。
 
-表达式\eqref{eq:new_environment_advantage}中，等式右侧第二项可以变形为（参见TRPO论文中的等式（2）推导，写在\ref{sec:additional_proof}中结论\ref{conclusion:2}）
+表达式\eqref{eq:new_environment_advantage}中，等式右侧第二项可以变形为（参见TRPO论文中的等式(2)推导，写在\ref{sec:additional_proof}中引理\ref{conclusion:2}）
 \begin{align}
   \sum_{s^h}\tilde{\rho}_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
   \label{eq:accurate_objective}
@@ -246,49 +280,61 @@
 
 我们发现最大化\eqref{eq:R_expectation_is_advantage}恰好也就最大化了\eqref{eq:accurate_objective_expectation_form}。由此我们证明了，只要利用TRPO对下层策略进行了更新，$\eta(\pi_h)$，也就是整体策略的表现度量，也将是近似单调递增的（因为TRPO是近似单调递增的）。
 
+\subsection{下层策略单调递增性：按集划分情况}
+实际上对于多数强化学习问题，我们应该采用按集划分的方法（episodic case）。每一集就是采集经验样本时的从头到尾的过程。也就是说，对于一个MDP，初始状态$s_0$是服从一个固定的分布$\rho_0$的，并且每次采样会有一个固定的终止条件。事实上，这样的问题建模更为常见。例如，智能体走迷宫问题，一集就是从起点出发，走到出口采样即终止，而不会无限制地走下去。和连续的情况相比，按集划分的情况要得到同样的结论，用到了一个近似，$\gamma_h$和$\gamma_l$都应该接近1并且$k$不能太大。接下来，我们进行证明。
+
+对于一个更新后的底层策略，我们可以把新的联合策略$\tilde\pi$的优化目标函数写成是相对于$\pi$目标函数的优势如下（在 \ref{sec:additional_proof}节的引理\ref{conclusion:1}中有详细证明过程）：
+    \begin{equation}
+        \begin{aligned}
+        \eta(\tilde\pi) =  \eta(\pi)+ \mathbb{E}_{(s_t^h,a_t^h)\sim \tilde\pi}
+        \Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_h(s_t^h, a_t^h)\Bigg].
+        \end{aligned}
+    \end{equation}
+    由于$\eta(\pi)$与$\eta(\tilde{\pi})$无关，我们可以把整体策略的优化写成是
+    \begin{equation}\label{eq:jp_oj}
+        \max_{\tilde{\pi}} \eta(\tilde\pi)=\max_{\tilde{\pi}} 
+        \mathbb{E}_{(s_t^h,a_t^h)\sim\tilde\pi}
+        \Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_h(s_t^h, a_t^h)\Bigg].
+    \end{equation}
+    
+    我们把新的底层策略记为 $\tilde \pi_l$。对于按集分的情况，底层策略$\tilde\pi_l$的优化函数的直接优化目标是
+    \begin{align}
+        &\eta_l(\tilde\pi_l) = \mathbb{E}_{s_0^l \sim \rho_0^l}[V_l(s_0^l)] = \mathbb{E}_{(s^l_t, a^l_t)\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t = 0, 1, 2, ...} \gamma_l^{t} r_l(s_t^l, a_t^l)\Bigg].
+        \label{eq:low_level_obj}
+    \end{align}
+    回顾我们对底层策略奖励函数的定义\eqref{eq:Reward_calculation}并把它带入\eqref{eq:low_level_obj}，我们有（详细推导过程在\ref{sec:additional_proof}节引理\ref{lemma3}当中）
+    \begin{equation}\label{eq:ll_oj}
+        \begin{aligned}
+            \eta_l(\tilde\pi_l) = \mathbb{E}_{s_0^l}[V_l(s_0^l)] 
+            \approx \frac{1-\gamma_l^k}{1-\gamma_l}\mathbb{E}_{(s_t^h, a_t^h)\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\gamma_h^{t/k}A_h(s_t^h, a_t^h)\Bigg].
+        \end{aligned}
+    \end{equation} 
+    注意到在公式\eqref{eq:ll_oj}当中，我们做了一步假设。这个假设在$\gamma_h$ 和 $\gamma_l$ 都足够接近于 $1$ 并且 $k$ 不是非常大的情况下成立。事实上这在多数情况下也是成立的。现在我们比较一下\eqref{eq:ll_oj}当中的目标函数和\eqref{eq:jp_oj}当中的目标函数. 由于$\frac{1-\gamma_l^k}{1-\gamma_l}$ 是正常数，很显然的，提升\eqref{eq:ll_oj}当中的数值，亦即底层策略的目标函数，就也会增加$\pi$ 的目标函数\eqref{eq:jp_oj}.
+
 \subsection{上下层策略联合优化方法}
 综上所述，如果我们单次更新，分别固定$\pi_h$更新$\pi_l$或者是固定$\pi_l$更新$\pi_h$，都将使得整体策略的价值$\eta(\pi_h)$单调递增。
 
-在实际操作中，为了提高采样效率，我们每次采样之后，都既优化$\pi_h$又优化$\pi_l$。实验结果表面，同时优化上下层策略虽然在理论上无法保证整体策略$\eta(\pi_h)$的单调增特性，却能够将采样效率提高为交替优化单层策略的两倍。也就是说，在每次更新$\pi_l$和$\pi_h$变化都较小的情况下，同时优化两者并不会导致整体策略效果变差。
+在实际操作中，为了提高采样效率，我们每次采样之后，都既优化$\pi_h$又优化$\pi_l$。实验结果表明，同时优化上下层策略虽然在理论上无法保证整体策略$\eta(\pi_h)$的单调增特性，却能够将采样效率提高为交替优化单层策略的两倍。也就是说，在每次更新$\pi_l$和$\pi_h$变化都较小的情况下，同时优化两者并不会导致整体策略效果变差。具体内容在后续实验章节会有详细表述。在这里，我们可以先参照图\ref{fig:concurrent_VS_alternate}来理解这两者的训练表现差异。
 
-%%% 其它部分
-%\backmatter
+      \begin{figure}[h] % use float package if you want it here
+        \centering
+        \includegraphics[scale=0.7]{concurrent_VS_alternate}
+        \caption{对比同时进行上下层训练和交替进行上下层训练的训练表现差异。图中，蓝色曲线是每采集一组经验都同时训练上下层的训练区县，橙色曲线是每采集一组经验都只训练上层或者只训练下次的曲线。可以明显地看出，同时训练上下层的表现大约是交替训练上下层采样效率的两倍。}
+        \label{fig:concurrent_VS_alternate}
+      \end{figure}
 
-%%% 本科生要这几个索引，研究生不要。选择性留下。
-%% 插图索引
-%%\listoffigures
-%%% 表格索引
-%%\listoftables
-%%% 公式索引
-%%\listofequations
-%
-%
-%%% 参考文献
-%% 注意：至少需要引用一篇参考文献，否则下面两行可能引起编译错误。
-%% 如果不需要参考文献，请将下面两行删除或注释掉。
-%% 数字式引用
-%\bibliographystyle{thuthesis-numeric}
-%% 作者-年份式引用
-%% \bibliographystyle{thuthesis-author-year}
-%\bibliography{../../references/bibtex/all_references}
-%
-%
-%%% 致谢
-%%\include{data/ack}
-%
-%%% 附录
-%%\begin{appendix}
+
 \subsection{辅助结论的证明}
 \label{sec:additional_proof}
 结论\ref{conclusion:1}源自TRPO论文的引理1\cite{TRPO}，结论\ref{conclusion:2}也源自该论文，在表达式上有区别，但是思路相同。
 \newtheorem{conclusion}{结论} % 定义一个定理格式叫做“结论”
 
-\begin{conclusion}
+\begin{lemma}
 \label{conclusion:1}
 \begin{align}
   \tilde{\eta}(\pi_h) = \eta(\pi_h) + \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg].
 \end{align}
-\end{conclusion}
+\end{lemma}
 
 \begin{proof}
 \begin{align}
@@ -303,15 +349,15 @@
 \end{align}
 \end{proof}
 
-\begin{conclusion}
+\begin{lemma}
 \label{conclusion:2}
 \begin{align}
     \mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg] = \sum_{s^h}\tilde{\rho}_{\pi_h}(s^h)\sum_{a^h}\pi_h(a^h|s^h)A_{\pi_h}(s^h,a^h).
 \end{align}
-\end{conclusion}
+\end{lemma}
 
 \begin{proof}
-\label{conclusion:3}
+\label{proof:lemma2}
 \begin{align}
   &\mathbb{E}_{s_0^h, a_0^h, ... \sim \pi_h, \mathcal{E}(\tilde{\pi_l})}\Bigg[\sum_{t=0,k,2k,...} \gamma_h^{t/k} A_{\pi_h}(s_t^h, a_t^h)\Bigg]\\
   &= \sum_{t = 0,k,2k,...} \sum_{s^h} P(s_t^h = s^h| \pi_h, \mathcal{E}(\pi_l)) \sum_{a^h} \pi_h(a^h|s^h) \gamma_h^{t/k} A_{\pi_h}(s^h, a^h)\\
@@ -320,12 +366,12 @@
 \end{align}
 \end{proof}
 
-\begin{conclusion}
+\begin{lemma}
+\lanel{lemma:ER=EV}
 \begin{align}
   \mathbb{E}_{s\sim \rho_{\pi}, a \sim \pi}[R(s, a)] = \mathbb{E}[V_{s_0 \sim \rho(s_0)}(s_0)]
 \end{align}
-\end{conclusion}
-
+\end{lemma}
 \begin{proof}
 \begin{align}
   \mathbb{E}[V_{s_0 \sim \rho(s_0)}(s_0)]
@@ -336,6 +382,51 @@
   &= \sum_{s} \rho(s|\pi) \sum_{a}\pi(a|s) R(s, a)\\
   &= \mathbb{E}_{s\sim \rho_{\pi}, a \sim \pi}[R(s, a)].
 \end{align}
+\end{proof}
+
+\begin{lemma}
+    \label{lemma3}
+    当我们定义辅助奖励函数
+    $\underset{t\leq  i < t+k}{r_i^l}=\frac{1}{k} A_h(s_t^h,a_t^h)$的时候，
+    底层策略$\tilde\pi_l$ 的期望起始位置价值函数为
+    \begin{equation}
+        \begin{aligned}
+         \mathbb{E}_{s_0^l}[V_l(s_0^l)] \approx \frac{1-\gamma_l^k}{1-\gamma_l}\mathbb{E}_{\tau_h\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\gamma_h^{t/k}A_h(s_t^h, a_t^h)\Bigg]
+        \end{aligned}
+    \end{equation}
+    其中，$\tau_h$是上层步伐的轨迹$ = s_0^h,a_0^h,s_k^h,a_k^h,...$。
+    这一步近似在一定条件下成立。要求底层折扣$\gamma_l$和上层折扣值$\gamma_h$都接近于$1$，并且底层步长$k$不是非常大。
+\end{lemma}
+\begin{proof}
+我们定义$\tau$是联合策略$(\tilde\pi_l,\pi_h)$采集的轨迹。
+\begin{equation*}
+    \tau = s_0^h,a_0^h,s_1^l,a_1^l,...,s_{nk}^h,a_{nk}^h,s_{nk+1}^l,a^l_{nk + 1}...
+\end{equation*}
+上层轨迹定义为
+\begin{equation*}
+    \tau_h = s_0^h,a_0^h,s_k^h, a_k^h,...,s_{nk}^h,a_{nk}^h,...
+\end{equation*}
+上层的一步下，下层的轨迹$(s_t^h,a_t^h)$为
+\begin{equation*}
+    \tau_l(t) = s_{t}^l,a_{t}^l,...s_{t+k-1}^l,a_{t+k-1}^l
+\end{equation*}
+
+现在我们可以把初始状态的期望价值函数值写为
+        \begin{align}
+            &\mathbb{E}_{s_0^l}[V_l(s_0^l)] = \mathbb{E}_{\tau\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t = 0, 1, 2, ...} \gamma_l^{t} r_l(s_t^l, a_t^l)\Bigg]\\
+            =&\mathbb{E}_{\tau_h\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\mathbb{E}_{\tau_l(t)\sim(\tilde\pi_l,\pi_h)}\Big[\sum_{i = 0}^{k-1}\gamma_l^{t+i}A_h(s_t^h, a_t^h)\Big]\Bigg]\\
+            =&\mathbb{E}_{\tau_h\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\sum_{i = 0}^{k-1}\gamma_l^{t+i}A_h(s_t^h, a_t^h)\Bigg]\\
+            =&\mathbb{E}_{\tau_h\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\gamma_l^t\frac{1-\gamma_l^k}{1-\gamma_l}A_h(s_t^h, a_t^h)\Bigg]\\
+            =&\frac{1-\gamma_l^k}{1-\gamma_l}\mathbb{E}_{\tau_h\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\gamma_l^tA_h(s_t^h, a_t^h)\Bigg]
+        \end{align}
+    
+    当$\gamma_l$ 和 $\gamma_h$ 都接近于 $1$ 并且 $k$ 不是非常大的时候，我们可以将 $\gamma_l$ 近似写成是 $\gamma_h^{1/k}$，重新带入上式，得到
+    \begin{equation}
+    \begin{aligned}
+        &\frac{1-\gamma_l^k}{1-\gamma_l}\mathbb{E}_{\tau_h\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\gamma_l^tA_h(s_t^h, a_t^h)\Bigg]\\
+            \approx&\frac{1-\gamma_l^k}{1-\gamma_l}\mathbb{E}_{\tau_h\sim(\tilde\pi_l,\pi_h)}\Bigg[\sum_{t=0,k,2k,...}\gamma_h^{t/k}A_h(s_t^h, a_t^h)\Bigg]
+    \end{aligned}
+    \end{equation}
 \end{proof}
 %%\input{data/appendix01}
 %%\include{proposal/main_for_proposal}
