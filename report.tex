@@ -17,6 +17,10 @@
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
 
+\usepackage{wrapfig} % 让文字环绕图片
+%\usepackage[resetlabels,labeled]{multibib} % 附录和正文分开引用
+%\newcites{refappendix}{} % 附录的引用使用
+
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
 
@@ -25,7 +29,7 @@
 
 \begin{document}
 
-%%% 封面部分å
+%%% 封面部分
 \frontmatter
 \input{data/cover}
 % 如果使用授权说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
@@ -50,28 +54,11 @@
 
 \include{derivation}
 %\renewcommand\thesection{\arabic {section}} % use this command to disable chapter numbering
+\include{experiments}
 
-\chapter{基准环境实验}
-\section{基准环境介绍}
-%强化学习社区统一的一套实验方案
-\section{实验环境搭建}
-%介绍几个环境的共同点，特点，与之前的算法比有什么区别
-\section{实验结果及对比分析}
-%视频实验结果截图；附上视频链接
-\section{模型简化测试——控制变量}
-\section{实验附录：参数和细节}
-% ablation studies
+\include{self_driving}
 
-\chapter{自动驾驶环境算法迁移}
-%一个特殊的大实验
-\section{自动驾驶实验环境架构}
-\section{实验参数}
-\section{实验结果及分析}
-\section{自动驾驶实验总结}
-
-\chapter{总结及结论}
-\section{理论成果总结}
-\section{工作内容总结}
+\include{conclusion}
 %代码公开在Github上
 
 %%% 其它部分
@@ -82,8 +69,8 @@
 \listoffigures
 %% 表格索引
 \listoftables
-%% 公式索引
-\listofequations
+%% 公式索引 - 本科生也不需要
+%\listofequations
 
 
 %% 参考文献
@@ -93,7 +80,7 @@
 \bibliographystyle{thuthesis-numeric}
 % 作者-年份式引用
 % \bibliographystyle{thuthesis-author-year}
-\bibliography{../../references/bibtex/all_references}
+\bibliography{ref/all_references}
 
 
 %% 致谢
@@ -101,16 +88,16 @@
 
 %% 附录
 \begin{appendix}
-%\input{data/appendix01}
+\input{data/related_works}
 %\include{proposal/main_for_proposal}
-\includepdf[pages=-]{proposal/main_for_proposal.pdf}
 \end{appendix}
 
 %% 个人简历
-%\include{data/resume}
+\include{data/resume}
 
 %% 本科生进行格式审查是需要下面这个表格，答辩可能不需要。选择性留下。
 % 综合论文训练记录表
 \includepdf[pages=-]{scan-record.pdf}
+%\includepdf[pages=-]{proposal/main_for_proposal.pdf}
 
 \end{document}
