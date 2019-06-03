@@ -1,7 +1,9 @@
 # Rui Wang's Undergraduate Thesis
-## Skill Reusable Hierarchical Reinforcement Learning with Intrinsic Guidance
+## Hierarchical Reinforcement Learning with Advantage-Based Auxiliary Reward
 
 **Coauthors: Siyuan Li, Chongjie Zhang @ [IIIS MIG](http://iiis.tsinghua.edu.cn/~zhang/), Tsinghua University**
+
+Please checkout our paper here on [Arxiv]()!
 
 # Usage and Acknowledgement
 
