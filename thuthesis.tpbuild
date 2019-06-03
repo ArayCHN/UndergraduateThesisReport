@@ -1,0 +1,10 @@
+ePub.tpbuild#!/bin/bash
+
+# Texpad 1.7 Build script to build epub files
+# This will build both a pdf and an epub
+
+xelatex report
+bibtex data/related_works
+bibtex report
+xelatex report
+xelatex report

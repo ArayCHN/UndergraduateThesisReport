@@ -3,11 +3,15 @@
 
 **Coauthors: Siyuan Li, Chongjie Zhang @ [IIIS MIG](http://iiis.tsinghua.edu.cn/~zhang/), Tsinghua University**
 
-## Acknowledgement
+# Usage and Acknowledgement
 
-Below is the forked `README` from ThuThesis. I thank ThuThesis and its development team for making this LaTeX template possible. I won't be able to graduate (at least comfortably) without their contribution.
+I thank ThuThesis and its development team for making this LaTeX template possible. I won't be able to graduate (at least comfortably) without their contribution.
+
+In order to correctly cite references in the appendix, I also consulted this [Github Repo](https://github.com/linhr/thuappendixbib). Relavant file is `thuappendixbib.sty`. My typesetting command lines are located in `thuthesis.tpbuild`. Please star the repository if it is of some help to you.
 
 [![Build Status](https://travis-ci.org/xueruini/thuthesis.svg?branch=master)](https://travis-ci.org/xueruini/thuthesis) [![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Below is the forked `README` from ThuThesis. 
 
 # What's ThuThesis?
 ThuThesis is an abbreviation of <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template.
