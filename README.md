@@ -3,9 +3,13 @@
 
 **Coauthors: Siyuan Li, Chongjie Zhang @ [IIIS MIG](http://iiis.tsinghua.edu.cn/~zhang/), Tsinghua University**
 
-Please checkout our paper here on [Arxiv]()!
+Please checkout our paper here on [Arxiv](https://arxiv.org/pdf/1910.04450.pdf)!
+
+This work is published on [NeurIPS 2019](https://neurips.cc/).
 
 # Usage and Acknowledgement
+
+使用过程中我修改了原repo的部分文件，使得格式符合新的要求。
 
 I thank ThuThesis and its development team for making this LaTeX template possible. I won't be able to graduate (at least comfortably) without their contribution.
 
@@ -13,7 +17,7 @@ In order to correctly cite references in the appendix, I also consulted this [Gi
 
 [![Build Status](https://travis-ci.org/xueruini/thuthesis.svg?branch=master)](https://travis-ci.org/xueruini/thuthesis) [![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Below is the forked `README` from ThuThesis. 
+**Below is the forked `README` from ThuThesis.**
 
 # What's ThuThesis?
 ThuThesis is an abbreviation of <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template.
